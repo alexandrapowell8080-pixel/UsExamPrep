@@ -90,11 +90,11 @@
                     </div>
                 </div>
             </div>
-
+{{-- 
             <a class="nav-link" href="/pricing">Pricing</a>
             <a class="nav-link" href="/blog">Blog</a>
             <a class="nav-link" href="/about">About</a>
-            <a class="nav-link" href="/contact">Contact</a>
+            <a class="nav-link" href="/contact">Contact</a> --}}
         </div>
 
         <div class="nav-actions-desktop">
