@@ -25,7 +25,7 @@ class QuestionController extends Controller
 
         $breadcrumbs = [
             ['label' => 'Home', 'url' => route('home')],
-            ['label' => $exam->school->name, 'url' => route('schools.show', $schoolSlug)],
+            ['label' => $exam->school->name, 'url' => url("/cert/{$schoolSlug}")],
             ['label' => $exam->name, 'url' => $canonicalUrl],
         ];
 
