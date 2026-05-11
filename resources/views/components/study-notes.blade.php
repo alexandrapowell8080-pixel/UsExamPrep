@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title> @yield('title', 'UsExamPrep')</title>
+    <meta name="description" content="@yield('description', 'UsExamPrep')">
+    <meta name="keywords" content="@yield('keywords', 'UsExamPrep')">
+    <link rel="canonical" href="@yield('canonical', request()->url())">
+    <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
     </style>
@@ -110,12 +114,26 @@
             width: 1em;
             margin-left: -1em;
         }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Opera */
+        }
     </style>
 
 </head>
 
 <body>
+    @include('partials.nav-bar')
     {{ $slot }}
+    @include('partials.footer')
 </body>
 
 </html>

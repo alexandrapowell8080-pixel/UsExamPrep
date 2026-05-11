@@ -191,7 +191,7 @@ a:hover {
 }
 
 .border-b {
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: none;
 }
 
 .rounded-lg {
@@ -344,6 +344,10 @@ a:hover {
 
 .space-y-5 > * + * {
     margin-top: 1.25rem;
+}
+
+.space-y-6 > * + * {
+    margin-top: 1.5rem;
 }
 
 .w-full {
@@ -608,6 +612,10 @@ a:hover {
     transition-duration: 150ms;
 }
 
+.duration-300 {
+    transition-duration: 300ms;
+}
+
 .hover\:bg-gray-50:hover {
     background-color: #f9fafb;
 }
@@ -679,6 +687,43 @@ a:hover {
 .answer-option.disabled {
     opacity: 0.6;
     pointer-events: none;
+}
+
+.answer-option.correct {
+    border-color: #86efac;
+    background-color: #f0fdf4;
+}
+
+.answer-option.correct .letter-badge {
+    background-color: #22c55e;
+    color: white;
+}
+
+.answer-option.incorrect {
+    border-color: #fca5a5;
+    background-color: #fef2f2;
+}
+
+.answer-option.incorrect .letter-badge {
+    background-color: #ef4444;
+    color: white;
+}
+
+.letter-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    color: #ffffff !important;
+}
+
+.answer-option.correct .letter-badge,
+.answer-option.incorrect .letter-badge {
+    color: #ffffff !important;
+}
+#progressBar, #progressBar2, #accuracyBar {
+    transition: width 0.3s ease-in-out;
 }
 
 @media (min-width: 640px) {
