@@ -12,6 +12,7 @@ Route::get('/', function () {
 Route::get('/certifications', function () {
     return view('certifications');
 })->name('certifications');
+
 Route::get('/cert/{slug}', [CertificationController::class, 'show'])->name('cert.show');
 
 Route::prefix('study-notes')
