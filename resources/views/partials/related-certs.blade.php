@@ -6,7 +6,7 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
 
             @if($current !== 'nurse-aide')
-            <a class="block h-full" href="{{ route('cert.show', 'nurse-aide') }}">
+            <a class="block h-full" href="{{ route('certification.show', 'nurse-aide') }}">
                 <div
                     class="h-full rounded-2xl border border-emerald-200 bg-emerald-50 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 group">
                     <div class="flex items-start justify-between mb-4">
@@ -33,7 +33,7 @@
             @endif
 
             @if($current !== 'cna')
-            <a class="block h-full" href="{{ route('cert.show', 'cna') }}">
+            <a class="block h-full" href="{{ route('certification.show', 'cna') }}">
                 <div
                     class="h-full rounded-2xl border border-teal-200 bg-teal-50 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 group">
                     <div class="flex items-start justify-between mb-4">

@@ -91,7 +91,7 @@ class CertificationController extends Controller
         }
 
         return view('pages.service', [
-            'cert' => $certifications[$slug]
+            'certification' => $certifications[$slug]
         ]);
     }
 }
