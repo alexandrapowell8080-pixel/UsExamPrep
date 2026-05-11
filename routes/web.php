@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/cert/{schoolSlug}', function ($schoolSlug) {
+    return redirect()->route('questions.index', ['schoolSlug' => $schoolSlug, 'examSlug' => 'cna-practice-test']);
+})->name('schools.show');
+
 Route::get('/{schoolSlug}/{examSlug}/questions', [QuestionController::class, 'index'])
     ->name('questions.index');
 
