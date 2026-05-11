@@ -4,34 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $metaTitle }}</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta name="description" content="{{ $metaDescription }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/welcome.js') }}" defer></script>
+
 </head>
 <body class="bg-teal-50">
-    <header class="border-b bg-white sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-8">
-                    <a href="/" class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                        </div>
-                        <span class="font-heading font-bold text-xl text-gray-900">UsExamPrep</span>
-                    </a>
-                    <nav class="hidden md:flex items-center gap-6">
-                        <a href="/" class="text-sm font-medium text-gray-600 hover:text-gray-900">Home</a>
-                        <a href="/pricing" class="text-sm font-medium text-gray-600 hover:text-gray-900">Pricing</a>
-                        <a href="/blog" class="text-sm font-medium text-gray-600 hover:text-gray-900">Blog</a>
-                    </nav>
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="/dashboard" class="text-sm font-medium text-gray-600 hover:text-gray-900">Dashboard</a>
-                    <a href="/start-practicing" class="inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-teal-400 to-teal-600 hover:from-teal-500 hover:to-teal-700">Start Practicing</a>
-                </div>
-            </div>
-        </div>
-    </header>
+    @include('partials.nav-bar')
 
     <main class="flex-1">
         <div class="min-h-screen bg-teal-50">
@@ -63,7 +45,7 @@
                                 <div>
                                     <h3 class="font-heading font-bold text-sm mb-2">Progress</h3>
                                     <div class="relative w-full overflow-hidden rounded-full bg-teal-100 h-2 mb-2">
-                                        <div id="progressBar" class="h-full bg-teal-500 transition-all" style="width: 0%"></div>
+                                        <div id="progressBar" class="h-full bg-teal-500 transition-all duration-300" style="width: 0%"></div>
                                     </div>
                                     <p class="text-xs text-gray-500"><span id="answeredCount">0</span> of {{ $questions->total() }} answered</p>
                                 </div>
@@ -125,7 +107,7 @@
                                     <p class="font-medium text-gray-900 leading-relaxed">{{ $question->question }}</p>
                                 </div>
 
-                                <div class="space-y-2.5">
+                                <div class="space-y-4">
                                     @php
                                         $choices = $question->choices;
                                         $letters = range('A', 'G');
@@ -249,7 +231,7 @@
                                                 <span class="font-semibold"><span id="progressAnswered">0</span>/{{ $questions->total() }}</span>
                                             </div>
                                             <div class="relative w-full overflow-hidden rounded-full bg-teal-100 h-2">
-                                                <div id="progressBar2" class="h-full bg-teal-500 transition-all" style="width: 0%"></div>
+                                                <div id="progressBar2" class="h-full bg-teal-500 transition-all duration-300" style="width: 0%"></div>
                                             </div>
                                         </div>
                                         <div>
@@ -258,7 +240,7 @@
                                                 <span class="font-semibold"><span id="accuracyPercent">0</span>%</span>
                                             </div>
                                             <div class="relative w-full overflow-hidden rounded-full bg-teal-100 h-2">
-                                                <div id="accuracyBar" class="h-full bg-teal-500 transition-all" style="width: 0%"></div>
+                                                <div id="accuracyBar" class="h-full bg-teal-500 transition-all duration-300" style="width: 0%"></div>
                                             </div>
                                         </div>
                                         <div class="grid grid-cols-2 gap-3">
@@ -317,7 +299,7 @@
             </div>
         </div>
     </main>
-
+@include('partials.footer')
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
