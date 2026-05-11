@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\StudyNotesController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\CertificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,6 +12,7 @@ Route::get('/', function () {
 Route::get('/certifications', function () {
     return view('certifications');
 })->name('certifications');
+Route::get('/cert/{slug}', [CertificationController::class, 'show'])->name('cert.show');
 
 Route::prefix('study-notes')
     ->name('study-notes.')
