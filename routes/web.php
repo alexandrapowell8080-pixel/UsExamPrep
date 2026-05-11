@@ -2,14 +2,19 @@
 
 use App\Http\Controllers\StudyNotesController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\CertificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/certifications', function () {
+    return view('certifications');
+})->name('certifications');
 
-// ==================== STUDY NOTES ROUTES. ====================
+Route::get('/cert/{slug}', [CertificationController::class, 'show'])->name('cert.show');
+
 Route::prefix('study-notes')
     ->name('study-notes.')
     ->controller(StudyNotesController::class)
@@ -22,7 +27,6 @@ Route::prefix('study-notes')
             ->name('content');
 
     });
-
 
 Route::get('/{schoolSlug}/{examSlug}/questions', [QuestionController::class, 'index'])
     ->name('questions.index');
