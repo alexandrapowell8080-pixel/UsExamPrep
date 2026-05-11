@@ -1,4 +1,11 @@
 <x-study-notes>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @section('title', $school->name)
+    @section('description', $school->name . ' outline')
+    @section('keywords', $school->name)
+    @section('canonical', config('app.url') . '/study-notes/' . $school->slug)
 
     <div class="min-h-screen bg-brand-hero py-16 px-4">
         <div class="max-w-7xl mx-auto">
@@ -22,7 +29,7 @@
             </div>
 
             {{-- Grid Sections --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
                 @foreach ($sections as $index => $section)
                     <div
                         class="group bg-white rounded-3xl shadow-sm border border-slate-200/60 overflow-hidden hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 flex flex-col">
@@ -31,7 +38,7 @@
                             {{-- Section Icon & Badge --}}
                             <div class="flex justify-between items-start mb-6">
                                 <div
-                                    class="w-14 h-14 flex items-center justify-center rounded-2xl bg-teal-50 text-teal-600 group-hover:bg-brand-primary group-hover:text-white transition-colors duration-300 shadow-inner">
+                                    class="w-14 h-14 flex items-center justify-center rounded-2xl bg-teal-50 text-teal-600 group-hover:bg-brand-primary  transition-colors duration-300 shadow-inner">
                                     <i class="fa-solid fa-book-open text-xl"></i>
                                 </div>
                                 <span
@@ -112,4 +119,5 @@
             </div>
         </div>
     </div>
+
 </x-study-notes>
