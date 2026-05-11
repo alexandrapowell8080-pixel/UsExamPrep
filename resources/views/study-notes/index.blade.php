@@ -1,5 +1,7 @@
 <x-study-notes>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <div class="min-h-screen bg-brand-hero py-16 px-4">
         <div class="max-w-7xl mx-auto">
 
@@ -22,7 +24,7 @@
             </div>
 
             {{-- Grid Sections --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
                 @foreach ($sections as $index => $section)
                     <div
                         class="group bg-white rounded-3xl shadow-sm border border-slate-200/60 overflow-hidden hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 flex flex-col">
