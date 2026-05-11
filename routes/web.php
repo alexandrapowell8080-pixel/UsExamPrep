@@ -8,8 +8,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/certifications', function () {
+    return view('certifications');
+})->name('certifications');
 
-// ==================== STUDY NOTES ROUTES. ====================
 Route::prefix('study-notes')
     ->name('study-notes.')
     ->controller(StudyNotesController::class)
@@ -22,7 +24,6 @@ Route::prefix('study-notes')
             ->name('content');
 
     });
-
 
 Route::get('/{schoolSlug}/{examSlug}/questions', [QuestionController::class, 'index'])
     ->name('questions.index');
