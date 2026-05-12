@@ -154,23 +154,21 @@ document.addEventListener('DOMContentLoaded', function() {
             
             options.forEach(opt => {
                 opt.style.pointerEvents = 'none';
-                opt.style.opacity = '0.6';
+                opt.classList.remove('cursor-pointer');
                 
                 const badge = opt.querySelector('.letter-badge');
                 const isThisCorrect = opt.dataset.correct === 'true';
                 
                 if (isThisCorrect) {
-                    opt.classList.add('border-green-300', 'bg-green-50');
+                    opt.classList.add('correct');
                     opt.classList.remove('border-gray-200');
-                    badge.classList.remove('bg-gradient-to-br', 'from-teal-400', 'to-teal-600', 'text-white', 'bg-white', 'text-teal-600');
-                    badge.classList.add('bg-green-500', 'text-white');
                     badge.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>';
                 } else if (opt === selectedOption && !isCorrect) {
-                    opt.classList.add('border-red-300', 'bg-red-50');
+                    opt.classList.add('incorrect');
                     opt.classList.remove('border-gray-200');
-                    badge.classList.remove('bg-gradient-to-br', 'from-teal-400', 'to-teal-600', 'text-white', 'bg-white', 'text-teal-600');
-                    badge.classList.add('bg-red-500', 'text-white');
                     badge.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>';
+                } else {
+                    opt.style.opacity = '0.5';
                 }
             });
             

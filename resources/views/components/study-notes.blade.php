@@ -10,6 +10,7 @@
     <meta name="keywords" content="@yield('keywords', 'UsExamPrep')">
     <link rel="canonical" href="@yield('canonical', request()->url())">
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
