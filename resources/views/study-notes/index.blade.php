@@ -7,38 +7,38 @@
     @section('keywords', $school->name)
     @section('canonical', config('app.url') . '/study-notes/' . $school->slug)
 
-    <div class="min-h-screen bg-brand-hero py-16 px-4">
+    <div class="min-h-screen bg-brand-hero sm:py-16 py-5 px-4">
         <div class="max-w-7xl mx-auto">
 
             {{-- Header --}}
-            <div class="text-center mb-16">
+            <div class="text-center sm:mb-16 mb-6">
                 <div
                     class="inline-flex items-center gap-2 bg-white border border-teal-100 text-teal-700 px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-sm">
                     <span class="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse"></span>
                     Certified Nursing Assistant Program
                 </div>
 
-                <h1 class="text-4xl md:text-6xl font-black text-[#1e293b] tracking-tight leading-none mb-6">
+                <h1 class="sm:text-4xl text-2xl md:text-6xl font-black text-[#1e293b] tracking-tight leading-none mb-6">
                     MASTER <span class="text-brand-gradient">STUDY GUIDE</span>
                 </h1>
 
-                <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                <p class="sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
                     A comprehensive clinical roadmap designed to take you from foundational healthcare knowledge to
                     professional certification.
                 </p>
             </div>
 
             {{-- Grid Sections --}}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:px-5 ">
                 @foreach ($sections as $index => $section)
                     <div
-                        class="group bg-white rounded-3xl shadow-sm border border-slate-200/60 overflow-hidden hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 flex flex-col">
+                        class="group bg-white sm:rounded-3xl rounded-xl shadow-sm border border-slate-200/60 overflow-hidden hover:shadow-xl hover:shadow-teal-500/5 transition-all duration-300 flex flex-col">
 
-                        <div class="p-8 flex-grow">
+                        <div class="sm:p-8 p-4 flex-grow">
                             {{-- Section Icon & Badge --}}
                             <div class="flex justify-between items-start mb-6">
                                 <div
-                                    class="w-14 h-14 flex items-center justify-center rounded-2xl bg-teal-50 text-teal-600 group-hover:bg-brand-primary  transition-colors duration-300 shadow-inner">
+                                    class="sm:w-14 sm:h-14 w-10 h-10 flex items-center justify-center rounded-2xl bg-teal-50 text-teal-600 group-hover:bg-brand-primary  transition-colors duration-300 shadow-inner">
                                     <i class="fa-solid fa-book-open text-xl"></i>
                                 </div>
                                 <span
@@ -55,7 +55,7 @@
                             <ul class="space-y-3">
                                 @foreach ($section->topics as $topic)
                                     <li>
-                                        <a href="{{ route('study-notes.content', ['school' => 'default-school', 'section' => $section->slug, 'topic' => $topic->slug]) }}"
+                                        <a href="{{ route('study-notes.content', ['school' => request('school'), 'section' => $section->slug, 'topic' => $topic->slug]) }}"
                                             class="flex items-center group/link">
                                             <div
                                                 class="mr-3 w-1.5 h-1.5 rounded-full bg-slate-200 group-hover/link:bg-teal-500 group-hover/link:scale-125 transition-all">
@@ -72,7 +72,7 @@
                             </ul>
                         </div>
 
-                        <div
+                        {{-- <div
                             class="px-8 py-4 bg-slate-50/50 border-t border-slate-100 flex justify-between items-center">
                             <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Core
                                 Skill</span>
@@ -80,7 +80,7 @@
                                 class="text-teal-600 text-xs font-black hover:text-teal-800 transition-colors tracking-tight">
                                 EXPLORE TOPICS →
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 @endforeach
             </div>
