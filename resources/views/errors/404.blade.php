@@ -33,7 +33,7 @@
 
                     <div>
                         <h2 class="error-msg-title">
-                            {{ $exception->getMessage() ?: "We can't find that page." }}
+                            {{ $exception->getMessage() == 'No notes found' ? 'No notes found': "We can't find that page." }}
                         </h2>
                         <p class="error-msg-desc">
                             The link might be broken, or the page may have moved. Let's get you back on track.
