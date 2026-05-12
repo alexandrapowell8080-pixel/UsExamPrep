@@ -44,7 +44,6 @@
                                         {{ $certification['stats']['questions'] }} Questions
                                     </div>
 
-
                                     <div class="srv-meta-item">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -59,18 +58,12 @@
                                 </div>
 
                                 <div class="srv-btn-group">
-                                    <a href="{{ route('questions.index', ['schoolSlug' => $certification['school_slug'], 'examSlug' => $certification['id']]) }}"
-                                        class="btn btn-theme-gradient btn-lg">
-                                        Start Questions Now
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="srv-icon-right">
-                                            <path d="M5 12h14"></path>
-                                            <path d="m12 5 7 7-7 7"></path>
-                                        </svg>
+                                    @foreach($certification['categories'] as $category)
+                                    <a href="{{ route('questions.index', ['schoolSlug' => $certification['classification_slug'], 'examSlug' => $certification['id']]) }}"
+                                        class="btn btn-outline">
+                                        {{ $category }}
                                     </a>
-                                    <a href="{{ route('study-notes.outline', ['school' => $certification['id']]) }}"
-                                        class="btn btn-outline btn-lg">View Study Notes</a>
+                                    @endforeach
                                 </div>
                             </div>
 
@@ -287,7 +280,7 @@
                         <p class="cta-desc">Get unlimited access to {{ $certification['stats']['questions'] }} practice
                             questions, study notes, flashcards, and video lessons.</p>
                         <div class="srv-btn-group justify-center">
-                            <a href="{{ route('questions.index', ['schoolSlug' => $certification['school_slug'], 'examSlug' => $certification['id']]) }}"
+                            <a href="{{ route('questions.index', ['schoolSlug' => $certification['classification_slug'], 'examSlug' => $certification['id']]) }}"
                                 class="btn btn-white btn-lg shadow-xl">
                                 Start Free Practice &rarr;
                             </a>
@@ -384,8 +377,9 @@
                         <span class="widget-title">Free Practice Quiz!</span>
                     </div>
                     <p class="widget-desc">Try {{ $certification['stats']['free_q'] }} and see how you score.</p>
+
                     <a
-                        href="{{ route('questions.index', ['schoolSlug' => $certification['school_slug'], 'examSlug' => $certification['id']]) }}">
+                        href="{{ route('questions.index', ['schoolSlug' => $certification['classification_slug'], 'examSlug' => $certification['id']]) }}">
                         <button class="btn btn-white w-full shadow-sm widget-action-text">Start Free Quiz
                             &rarr;</button>
                     </a>
