@@ -108,26 +108,26 @@
                                 </div>
 
                                 <div class="space-y-4">
-                                    @php
-                                        $choices = $question->choices;
-                                        $letters = range('A', 'G');
-                                    @endphp
-                                    
-                                    @foreach($choices as $choiceIndex => $choice)
-                                        @php
-                                            $letter = $letters[$choiceIndex] ?? '';
-                                            $isCorrect = strtoupper($letter) === strtoupper($question->correct_answer);
-                                        @endphp
-                                        <div class="bg-white border rounded-xl p-4 cursor-pointer transition-all text-sm hover:border-gray-400/30 hover:shadow-sm answer-option" data-correct="{{ $isCorrect ? 'true' : 'false' }}" data-question="{{ $index }}">
-                                            <div class="flex items-start gap-3">
-                                                <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold bg-gradient-to-br from-teal-400 to-teal-600 text-white letter-badge">{{ $letter }}</div>
-                                                <div class="flex-1">
-                                                    <span>{{ $letter }}. {{ $choice }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
+    @php
+        $choices = $question->choices;
+        $letters = range('A', 'G');
+    @endphp
+    
+    @foreach($choices as $choiceIndex => $choice)
+        @php
+            $letter = $letters[$choiceIndex] ?? '';
+            $isCorrect = strtoupper($letter) === strtoupper($question->correct_answer);
+        @endphp
+        <div class="bg-white border rounded-xl p-4 cursor-pointer transition-all text-sm hover:border-gray-400/30 hover:shadow-sm answer-option" data-correct="{{ $isCorrect ? 'true' : 'false' }}" data-question="{{ $index }}">
+            <div class="flex items-start gap-3">
+                <div style="width:28px;height:28px;border-radius:50%;background:#14b8a6;color:#ffffff!important;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{{ $letter }}</div>
+                <div class="flex-1">
+                    <span>{{ $letter }} {{ $choice }}</span>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
 
                                 <div class="flex items-center gap-3">
                                     <button class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium h-9 px-4 py-2 flex-1 bg-gradient-to-r from-teal-400 to-teal-600 text-white shadow-lg disabled:opacity-50 check-answer-btn">
