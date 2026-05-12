@@ -24,7 +24,7 @@
                             <a class="font-heading font-bold text-teal-700" href="/cert/{{ $exam->school->slug }}">{{ $exam->name }}</a>
                         </div>
                         <div class="inline-flex h-9 items-center justify-center rounded-lg p-1 bg-gray-100">
-                            <a href="/notes/{{ $exam->school->slug }}/{{ $exam->slug }}" class="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-md hover:bg-white transition-colors">
+                            <a href="/study-notes/{{ $exam->school->slug }}" class="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-md hover:bg-white transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
                                 Study Notes
                             </a>
