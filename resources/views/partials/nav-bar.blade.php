@@ -37,15 +37,18 @@
                             </svg>
                         </div>
                         <div class="dropdown-subcontent" role="menu">
-                            <a class="dropdown-link" href="/cert/cna" role="menuitem">CNA — Certified Nursing
+                            <a class="dropdown-link" href="/certification/cna" role="menuitem">CNA — Certified Nursing
                                 Assistant</a>
-                            <a class="dropdown-link" href="/cert/nurse-aide" role="menuitem">Nurse Aide — Nurse Aide
+                            <a class="dropdown-link" href="/certification/nurse-aide" role="menuitem">Nurse Aide — Nurse
+                                Aide
                                 Certification</a>
-                            <a class="dropdown-link" href="/cert/hospice" role="menuitem">Hospice — Hospice &amp;
+                            <a class="dropdown-link" href="/certification/hospice-and-palliative-care"
+                                role="menuitem">Hospice — Hospice &amp;
                                 Palliative Care</a>
-                            <a class="dropdown-link" href="/cert/cen" role="menuitem">CEN — Certified Emergency
+                            <a class="dropdown-link" href="/certification/cen" role="menuitem">CEN — Certified Emergency
                                 Nurse</a>
-                            <a class="dropdown-link" href="/cert/fmp" role="menuitem">FMP — Family Medicine Practice</a>
+                            <a class="dropdown-link" href="/certification/fmp" role="menuitem">FMP — Family Medicine
+                                Practice</a>
                         </div>
                     </div>
 
@@ -59,17 +62,22 @@
                             </svg>
                         </div>
                         <div class="dropdown-subcontent" role="menu">
-                            <a class="dropdown-link" href="/cert/ccma" role="menuitem">CCMA — Certified Clinical Medical
+                            <a class="dropdown-link" href="/certification/ccma" role="menuitem">CCMA — Certified
+                                Clinical Medical
                                 Assistant</a>
-                            <a class="dropdown-link" href="/cert/aama" role="menuitem">AAMA — American Association of
+                            <a class="dropdown-link" href="/certification/aama" role="menuitem">AAMA — American
+                                Association of
                                 Medical Assistants</a>
-                            <a class="dropdown-link" href="/cert/phlebotomy" role="menuitem">Phlebotomy — Phlebotomy
+                            <a class="dropdown-link" href="/certification/phlebotomy" role="menuitem">Phlebotomy —
+                                Phlebotomy
                                 Technician Certification</a>
-                            <a class="dropdown-link" href="/cert/dental" role="menuitem">Dental — Dental Assistant
+                            <a class="dropdown-link" href="/certification/dental-assistant" role="menuitem">Dental —
+                                Dental Assistant
                                 Certification</a>
-                            <a class="dropdown-link" href="/cert/slp" role="menuitem">SLP — Speech-Language
+                            <a class="dropdown-link" href="/certification/slp" role="menuitem">SLP — Speech-Language
                                 Pathology</a>
-                            <a class="dropdown-link" href="/cert/counsellor" role="menuitem">Counsellor — Professional
+                            <a class="dropdown-link" href="/certification/counsellor" role="menuitem">Counsellor —
+                                Professional
                                 Counselling Certification</a>
                         </div>
                     </div>
@@ -84,17 +92,18 @@
                             </svg>
                         </div>
                         <div class="dropdown-subcontent" role="menu">
-                            <a class="dropdown-link" href="/cert/ptce" role="menuitem">PTCE — Pharmacy Technician
+                            <a class="dropdown-link" href="/certification/ptce" role="menuitem">PTCE — Pharmacy
+                                Technician
                                 Certification Exam</a>
                         </div>
                     </div>
                 </div>
             </div>
-{{-- 
+
             <a class="nav-link" href="/pricing">Pricing</a>
             <a class="nav-link" href="/blog">Blog</a>
             <a class="nav-link" href="/about">About</a>
-            <a class="nav-link" href="/contact">Contact</a> --}}
+            <a class="nav-link" href="/contact">Contact</a>
         </div>
 
         <div class="nav-actions-desktop">
