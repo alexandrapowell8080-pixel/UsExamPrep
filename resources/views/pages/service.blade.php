@@ -284,7 +284,6 @@
                                 class="btn btn-white btn-lg shadow-xl">
                                 Start Free Practice &rarr;
                             </a>
-                            <a href="/pricing" class="btn btn-outline-white btn-lg">View Pricing</a>
                         </div>
                     </div>
                 </section>
@@ -350,8 +349,7 @@
                         </div>
                     </div>
                 </section>
-
-                @include('partials.related-certs', ['relatedCerts' => $relatedCerts])
+                @include('partials.related-certs', ['otherCerts' => $otherCerts])
 
             </main>
 

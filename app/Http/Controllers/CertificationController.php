@@ -329,14 +329,21 @@ class CertificationController extends Controller
 
         $currentCert = $certifications[$slug];
 
-        $relatedCerts = array_filter($certifications, function ($cert) use ($currentCert) {
-            return $cert['classification_slug'] === $currentCert['classification_slug'] && $cert['id'] !== $currentCert['id'];
-        });
-        $relatedCerts = array_slice($relatedCerts, 0, 3);
+        $keys = array_keys($certifications);
+        $currentIndex = array_search($slug, $keys);
+        $totalCerts = count($certifications);
+
+        $otherCerts = [];
+        
+        for ($i = 1; $i <= 3; $i++) {
+            $nextIndex = ($currentIndex + $i) % $totalCerts;
+            $nextKey = $keys[$nextIndex];
+            $otherCerts[] = $certifications[$nextKey];
+        }
 
         return view('pages.service', [
             'certification' => $currentCert,
-            'relatedCerts' => $relatedCerts 
+            'otherCerts' => $otherCerts 
         ]);
     }
 }

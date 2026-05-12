@@ -1,16 +1,16 @@
 <section class="srv-section srv-bg-muted">
     <div class="max-width-wrapper">
         <div class="section-title-wrapper mb-lg">
-            <h2 class="section-heading">Related Certifications</h2>
+            <h2 class="section-heading">Other Certifications</h2>
         </div>
         <div class="srv-related-grid">
 
-            @foreach($relatedCerts as $rel)
-            <a href="{{ route('certification.show', $rel['id']) }}"
-                class="related-card {{ $rel['colors']['theme_class'] }}">
+            @foreach($otherCerts as $other)
+            <a href="{{ route('certification.show', $other['id']) }}"
+                class="related-card {{ $other['colors']['theme_class'] }}">
                 <div class="rc-header">
                     <div class="rc-icon">
-                        @switch($rel['id'])
+                        @switch($other['id'])
                         @case('cna')
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -140,11 +140,11 @@
                         </svg>
                         @endswitch
                     </div>
-                    <div class="rc-badge">{{ $rel['stats']['difficulty'] }}</div>
+                    <div class="rc-badge">{{ $other['stats']['difficulty'] }}</div>
                 </div>
-                <h3 class="rc-title">{{ $rel['title_abbr'] }}</h3>
-                <p class="rc-subtitle">{{ $rel['title_full'] }}</p>
-                <p class="rc-desc">{{ \Illuminate\Support\Str::limit($rel['description'], 110) }}</p>
+                <h3 class="rc-title">{{ $other['title_abbr'] }}</h3>
+                <p class="rc-subtitle">{{ $other['title_full'] }}</p>
+                <p class="rc-desc">{{ \Illuminate\Support\Str::limit($other['description'], 110) }}</p>
             </a>
             @endforeach
 
