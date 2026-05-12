@@ -37,52 +37,52 @@
             <div class="footer-cards-column">
                 <h3 class="footer-column-heading">All Certifications</h3>
                 <div class="footer-cert-quick-grid">
-                    <a href="/cert/cna" class="quick-cert-box">
+                    <a href="/certification/cna" class="quick-cert-box">
                         <span class="box-emoji">🩺</span>
                         <span class="box-name">CNA</span>
                         <span class="box-count">850+ Q's</span>
                     </a>
-                    <a href="/cert/ccma" class="quick-cert-box">
+                    <a href="/certification/ccma" class="quick-cert-box">
                         <span class="box-emoji">❤️</span>
                         <span class="box-name">CCMA</span>
                         <span class="box-count">1200+ Q's</span>
                     </a>
-                    <a href="/cert/ptce" class="quick-cert-box">
+                    <a href="/certification/ptce" class="quick-cert-box">
                         <span class="box-emoji">💊</span>
                         <span class="box-name">PTCE</span>
                         <span class="box-count">1050+ Q's</span>
                     </a>
-                    <a href="/cert/phlebotomy" class="quick-cert-box">
+                    <a href="/certification/phlebotomy" class="quick-cert-box">
                         <span class="box-emoji">🔬</span>
                         <span class="box-name">Phlebotomy</span>
                         <span class="box-count">760+ Q's</span>
                     </a>
-                    <a href="/cert/dental" class="quick-cert-box">
+                    <a href="/certification/dental-assistant" class="quick-cert-box">
                         <span class="box-emoji">🦷</span>
                         <span class="box-name">Dental Assistant</span>
                         <span class="box-count">1600+ Q's</span>
                     </a>
-                    <a href="/cert/nurse-aide" class="quick-cert-box">
+                    <a href="/certification/nurse-aide" class="quick-cert-box">
                         <span class="box-emoji">👨‍⚕️</span>
                         <span class="box-name">Nurse Aide</span>
                         <span class="box-count">800+ Q's</span>
                     </a>
-                    <a href="/cert/slp" class="quick-cert-box">
+                    <a href="/certification/slp" class="quick-cert-box">
                         <span class="box-emoji">🗣️</span>
                         <span class="box-name">SLP (Praxis)</span>
                         <span class="box-count">1200+ Q's</span>
                     </a>
-                    <a href="/cert/fmp" class="quick-cert-box">
+                    <a href="/certification/fmp" class="quick-cert-box">
                         <span class="box-emoji">🏥</span>
                         <span class="box-name">FNP</span>
                         <span class="box-count">2050+ Q's</span>
                     </a>
-                    <a href="/cert/cen" class="quick-cert-box">
+                    <a href="/certification/cen" class="quick-cert-box">
                         <span class="box-emoji">🚨</span>
                         <span class="box-name">CEN</span>
                         <span class="box-count">1800+ Q's</span>
                     </a>
-                    <a href="/cert/counsellor" class="quick-cert-box">
+                    <a href="/certification/counsellor" class="quick-cert-box">
                         <span class="box-emoji">🧠</span>
                         <span class="box-name">NCE</span>
                         <span class="box-count">1400+ Q's</span>
@@ -95,10 +95,10 @@
             <div>
                 <h3 class="footer-list-heading">Certifications</h3>
                 <ul class="footer-links-list">
-                    <li><a href="/cert/cna">CNA Prep</a></li>
-                    <li><a href="/cert/ccma">CCMA Prep</a></li>
-                    <li><a href="/cert/ptce">PTCE Prep</a></li>
-                    <li><a href="/cert/phlebotomy">Phlebotomy Prep</a></li>
+                    <li><a href="/certification/cna">CNA Prep</a></li>
+                    <li><a href="/certification/ccma">CCMA Prep</a></li>
+                    <li><a href="/certification/ptce">PTCE Prep</a></li>
+                    <li><a href="/certification/phlebotomy">Phlebotomy Prep</a></li>
                     <li><a href="/certifications">All Certifications</a></li>
                 </ul>
             </div>
