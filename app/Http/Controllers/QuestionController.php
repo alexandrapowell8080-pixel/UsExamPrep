@@ -17,7 +17,47 @@ class QuestionController extends Controller
             ->with('school')
             ->firstOrFail();
 
-        $questions = Question::where('exam_id', $exam->id)->paginate(10);
+        // Get all questions for this exam with proper ordering
+        $questions = Question::where('exam_id', $exam->id)
+            ->orderBy('id', 'asc')
+            ->get();
+
+        // Transform questions to include choices array and other computed fields
+        $questions = $questions->map(function ($question) {
+            // Build choices array from choiceA through choiceG
+            $choices = [];
+            $letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+            foreach ($letters as $index => $letter) {
+                $choiceColumn = 'choice'.$letter;
+                if (! is_null($question->$choiceColumn)) {
+                    $choices[] = [
+                        'letter' => $letter,
+                        'text' => $question->$choiceColumn,
+                        'is_correct' => strtoupper($question->correct_answer) === $letter,
+                    ];
+                }
+            }
+
+            return (object) [
+                'id' => $question->id,
+                'exam_id' => $question->exam_id,
+                'extract' => $question->extract,
+                'question' => $question->question,
+                'choices' => $choices,
+                'correct_answer' => strtoupper($question->correct_answer),
+                'rationale' => $question->rationale,
+                'question_type' => $question->question_type,
+                'image' => $question->image,
+                'url' => $question->url,
+                'wrong_answer' => $question->wrong_answer,
+                'created_at' => $question->created_at,
+                'updated_at' => $question->updated_at,
+            ];
+        });
+
+        // Get total count for the view
+        $totalQuestions = $questions->count();
 
         $metaTitle = substr("{$exam->name} Practice Questions | UsExamPrep", 0, 60);
         $metaDescription = substr("Prepare for {$exam->name} with expert-reviewed practice questions. Test your knowledge with detailed rationales. Start practicing now.", 0, 160);
@@ -32,6 +72,7 @@ class QuestionController extends Controller
         return view('questions.index', compact(
             'exam',
             'questions',
+            'totalQuestions',
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
@@ -48,6 +89,37 @@ class QuestionController extends Controller
                 });
         })->findOrFail($id);
 
-        return view('questions.show', compact('question'));
+        // Build choices array for single question view
+        $choices = [];
+        $letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+
+        foreach ($letters as $index => $letter) {
+            $choiceColumn = 'choice'.$letter;
+            if (! is_null($question->$choiceColumn)) {
+                $choices[] = [
+                    'letter' => $letter,
+                    'text' => $question->$choiceColumn,
+                    'is_correct' => strtoupper($question->correct_answer) === $letter,
+                ];
+            }
+        }
+
+        $transformedQuestion = (object) [
+            'id' => $question->id,
+            'exam_id' => $question->exam_id,
+            'extract' => $question->extract,
+            'question' => $question->question,
+            'choices' => $choices,
+            'correct_answer' => strtoupper($question->correct_answer),
+            'rationale' => $question->rationale,
+            'question_type' => $question->question_type,
+            'image' => $question->image,
+            'url' => $question->url,
+            'wrong_answer' => $question->wrong_answer,
+            'created_at' => $question->created_at,
+            'updated_at' => $question->updated_at,
+        ];
+
+        return view('questions.show', compact('transformedQuestion'));
     }
 }
