@@ -58,7 +58,18 @@ a:hover {
 .text-purple-600 { color: #9333ea; }
 .text-yellow-300 { color: #fde047; }
 .text-yellow-700 { color: #a16207; }
+.bg-teal-500 { background-color: #14b8a6; }
+.bg-green-500 { background-color: #22c55e !important; }
 
+
+.from-green-400 { --tw-gradient-from: #4ade80; --tw-gradient-to: rgba(74, 222, 128, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.to-green-600 { --tw-gradient-to: #16a34a; }
+
+.from-yellow-400 { --tw-gradient-from: #facc15; --tw-gradient-to: rgba(250, 204, 21, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.to-yellow-600 { --tw-gradient-to: #ca8a04; }
+
+.from-red-400 { --tw-gradient-from: #f87171; --tw-gradient-to: rgba(248, 113, 113, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.to-red-600 { --tw-gradient-to: #dc2626; }
 .border { border: 1px solid #e5e7eb; }
 .border-gray-200 { border: 1px solid #e5e7eb; }
 .border-teal-200 { border: 1px solid #99f6e4; }
@@ -142,7 +153,8 @@ a:hover {
 .h-10 { height: 2.5rem; }
 .h-12 { height: 3rem; }
 .h-16 { height: 4rem; }
-
+.h-full { height: 100%; }
+.duration-500 { transition-duration: 500ms; }
 .min-h-screen { min-height: 100vh; }
 .max-w-7xl { max-width: 80rem; }
 .mx-auto { margin-left: auto; margin-right: auto; }
