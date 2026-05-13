@@ -57,16 +57,7 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="srv-btn-group">
-                                    @foreach($certification['categories'] as $category)
-                                    <a href="{{ route('questions.index', [
-                                                                            'schoolSlug' => $certification['classification_slug'], 
-                                                                            'examSlug' => $category->slug ?? $category['slug'] ?? \Illuminate\Support\Str::slug($category)
-                                                                        ]) }}" class="btn btn-outline">
-                                        {{ $category->name ?? $category['name'] ?? $category }}
-                                    </a>
-                                    @endforeach
-                                </div> --}}
+                                {{-- pull exams names here --}}
                             </div>
 
                             <div class="srv-hero-visual">
