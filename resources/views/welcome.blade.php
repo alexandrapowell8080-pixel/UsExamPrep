@@ -118,7 +118,7 @@
                     </div>
 
                     <div class="hero-cta-group">
-                        <a class="hero-cta-btn btn-secondary-gray" href="{{ route('certifications') }}" <span
+                        <a class="hero-cta-btn btn-secondary-gray" href="{{ route('home') }}#certifications" <span
                             class="btn-inner-content">
                             <span class="btn-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -218,7 +218,7 @@
             </div>
         </section>
 
-        <section class="certifications-section">
+        <section class="certifications-section" id="certifications">
             <div class="max-width-wrapper">
                 <div class="section-title-wrapper">
                     <span class="section-badge text-teal">Certifications</span>
