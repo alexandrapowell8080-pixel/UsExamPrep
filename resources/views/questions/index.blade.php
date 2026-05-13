@@ -16,7 +16,7 @@
     @include('partials.nav-bar')
 
     <main class="flex-1">
-        <div class="min-h-screen bg-teal-50">
+        <div class="min-h-screen bg-teal-50" id="quizContainer">
             <div class="border-b bg-white/80 backdrop-blur-sm sticky top-16 z-40">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
                     <div class="flex items-center justify-between">
@@ -108,26 +108,28 @@
                                 </div>
 
                                 <div class="space-y-4">
-    @php
-        $choices = $question->choices;
-        $letters = range('A', 'G');
-    @endphp
-    
-    @foreach($choices as $choiceIndex => $choice)
-        @php
-            $letter = $letters[$choiceIndex] ?? '';
-            $isCorrect = strtoupper($letter) === strtoupper($question->correct_answer);
-        @endphp
-        <div class="bg-white border rounded-xl p-4 cursor-pointer transition-all text-sm hover:border-gray-400/30 hover:shadow-sm answer-option" data-correct="{{ $isCorrect ? 'true' : 'false' }}" data-question="{{ $index }}">
-            <div class="flex items-start gap-3">
-                <div style="width:28px;height:28px;border-radius:50%;background:#14b8a6;color:#ffffff!important;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{{ $letter }}</div>
-                <div class="flex-1">
-                    <span>{{ $letter }} {{ $choice }}</span>
-                </div>
-            </div>
-        </div>
-    @endforeach
-</div>
+                                    @php
+                                        $choices = $question->choices;
+                                        $letters = range('A','G');
+                                    @endphp
+                                    
+                                    @foreach($choices as $choiceIndex => $choice)
+                                        @php
+                                            $letter = $letters[$choiceIndex] ?? '';
+                                            $isCorrect = strtoupper($letter) === strtoupper($question->correct_answer);
+                                        @endphp
+                                        <div class="bg-white border rounded-xl p-4 cursor-pointer transition-all text-sm hover:border-gray-400/30 hover:shadow-sm answer-option" data-correct="{{ $isCorrect ? 'true' : 'false' }}" data-question="{{ $index }}">
+                                            <div class="flex items-start gap-3">
+                                                <div style="width:28px;height:28px;border-radius:50%;background:#14b8a6;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                                    <span style="color:#ffffff;font-size:12px;font-weight:700;line-height:1;">{{ $letter }}</span>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <span>{{ $letter }}. {{ $choice }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
 
                                 <div class="flex items-center gap-3">
                                     <button class="inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium h-9 px-4 py-2 flex-1 bg-gradient-to-r from-teal-400 to-teal-600 text-white shadow-lg disabled:opacity-50 check-answer-btn">
@@ -295,6 +297,54 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsSection" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl border shadow-2xl p-8 max-w-md w-full text-center">
+                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center mx-auto mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Quiz Complete! 🎉</h2>
+                <p class="text-gray-600 mb-6">Great job finishing the practice test</p>
+                
+                <div class="mb-6">
+                    <div class="text-5xl font-bold text-teal-600 mb-2" id="finalAccuracyLarge">0%</div>
+                    <div class="text-sm text-gray-500">Overall Accuracy</div>
+                </div>
+              
+                <div class="mb-6">
+                    <div class="relative w-full overflow-hidden rounded-full bg-teal-100 h-3">
+                        <div id="finalAccuracyBar" class="h-full bg-gradient-to-r from-teal-400 to-teal-600 transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-3 gap-3 mb-6">
+                    <div class="bg-teal-50 rounded-lg p-3">
+                        <div class="text-2xl font-bold text-teal-600" id="finalAnswered">0</div>
+                        <div class="text-xs text-gray-500">Answered</div>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-3">
+                        <div class="text-2xl font-bold text-green-600" id="finalCorrect">0</div>
+                        <div class="text-xs text-gray-500">Correct</div>
+                    </div>
+                    <div class="bg-red-50 rounded-lg p-3">
+                        <div class="text-2xl font-bold text-red-600" id="finalIncorrect">0</div>
+                        <div class="text-xs text-gray-500">Incorrect</div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-3 justify-center">
+                    <button id="reviewBtn" class="inline-flex items-center justify-center gap-2 rounded-lg text-sm font-medium h-10 px-5 border border-gray-200 hover:bg-gray-50 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Review
+                    </button>
+                    <button id="restartBtn" class="inline-flex items-center justify-center gap-2 rounded-lg text-sm font-medium h-10 px-5 bg-gradient-to-r from-teal-400 to-teal-600 text-white shadow-lg hover:from-teal-500 hover:to-teal-700 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
+                        Try Again
+                    </button>
                 </div>
             </div>
         </div>
