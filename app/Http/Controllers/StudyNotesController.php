@@ -20,7 +20,7 @@ class StudyNotesController extends Controller
         if (! $school) {
             abort(404, 'School Not found!!');
         }
-        $sections = $school->exams()->with('topics')->get();
+        $sections = $school->sections()->with('topics')->get();
 
         return view('study-notes.index', compact('sections', 'school'));
     }
@@ -30,15 +30,15 @@ class StudyNotesController extends Controller
      *
      * @param  Section  $section
      */
-    public function show(School $school, Exam $exam, Topic $topic): View
+    public function show(School $school, Section $section, Topic $topic): View
     {
         //   dd($topic->name,$exam->name,$school->name);
         $notes = Notes::where('topic_id', $topic->id)->first();
         if (! $notes) {
             abort(404, 'No notes found');
         }
-        $exams = $school->exams()->with('topics')->get();
+        $sections = $school->sections()->with('topics')->get();
 
-        return view('study-notes.chapter', compact('notes', 'exams', 'topic', 'exam', 'school'));
+        return view('study-notes.chapter', compact('notes', 'sections', 'topic', 'section', 'school'));
     }
 }
