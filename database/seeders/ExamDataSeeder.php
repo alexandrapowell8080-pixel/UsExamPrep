@@ -12,18 +12,18 @@ class ExamDataSeeder extends Seeder
 {
     public function run(): void
     {
-        // This array maps perfectly to the 'classification_slug' values in your CertificationController
+        // This array maps perfectly to the slugs in your schools database
         $certifications = [
-            ['name' => 'CNA', 'slug' => 'cna', 'type' => 'nursing'],
+            ['name' => 'Certified Nursing Assistant', 'slug' => 'certified-nursing-assistant', 'type' => 'nursing'],
             ['name' => 'Nurse Aide', 'slug' => 'nurse-aide', 'type' => 'nursing'],
-            ['name' => 'Hospice & Palliative Care', 'slug' => 'hospice-and-palliative-care', 'type' => 'nursing'],
-            ['name' => 'CEN', 'slug' => 'cen', 'type' => 'nursing'],
-            ['name' => 'FNP', 'slug' => 'fnp', 'type' => 'nursing'],
+            ['name' => 'Hospice & Palliative Care', 'slug' => 'hospice-palliative-care', 'type' => 'nursing'],
+            ['name' => 'Certified Emergency Nurse', 'slug' => 'certified-emergency-nurse', 'type' => 'nursing'],
+            ['name' => 'Family Nurse Practitioner', 'slug' => 'family-nurse-practitioner', 'type' => 'nursing'],
             // Notice the groups here which trigger the smart grouping algorithm in the UI
             ['name' => 'Medical Assistant', 'slug' => 'medical-assistant', 'type' => 'ma', 'groups' => ['CCMA', 'AAMA']],
             ['name' => 'Pharmacy Technician', 'slug' => 'pharmacy-technician', 'type' => 'pharmacy', 'groups' => ['PTCE', 'ExCPT']],
-            ['name' => 'Phlebotomy', 'slug' => 'phlebotomy', 'type' => 'ma'],
-            ['name' => 'Counsellor', 'slug' => 'counsellor', 'type' => 'counselling'],
+            ['name' => 'Phlebotomy Technician Certification', 'slug' => 'phlebotomy-technician-certification', 'type' => 'ma'],
+            ['name' => 'National Counselor Examination', 'slug' => 'national-counselor-examination', 'type' => 'counselling'],
         ];
 
         foreach ($certifications as $cert) {

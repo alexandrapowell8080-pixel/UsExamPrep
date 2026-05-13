@@ -60,16 +60,17 @@
                                 @php
                                 $pageExams = \App\Models\Exam::whereHas('school', function ($query) use ($certification)
                                 {
-                                $query->where('slug', $certification['classification_slug']);
+                                // Changed classification_slug to id to match the new database alignment
+                                $query->where('slug', $certification['id']);
                                 })->get();
 
                                 $groupedExams = [];
-
                           
                                 $rawGroups = preg_split('/[&\/]/', $certification['title_abbr']);
                                 $expectedGroups = array_filter(array_map('trim', $rawGroups));
 
                                 foreach($pageExams as $exam) {
+
                                 $exam->q_count = \App\Models\Question::where('exam_id', $exam->id)->count();
 
                                 $assignedGroup = 'General';
@@ -101,7 +102,9 @@
 
                                         <div class="library-grid">
                                             @foreach($exams as $pageExam)
-                                            <a href="{{ route('questions.index', ['schoolSlug' => $certification['classification_slug'], 'examSlug' => $pageExam->slug]) }}"
+                                            {{-- Also changed classification_slug to id here to fix the URL generation
+                                            --}}
+                                            <a href="{{ route('questions.index', ['schoolSlug' => $certification['id'], 'examSlug' => $pageExam->slug]) }}"
                                                 class="library-card">
                                                 <div class="lc-content">
                                                     <h4 class="lc-title">{{ $pageExam->name }}</h4>

@@ -37,7 +37,7 @@
             <div class="footer-cards-column">
                 <h3 class="footer-column-heading">All Certifications</h3>
                 <div class="footer-cert-quick-grid">
-                    <a href="/certification/cna" class="quick-cert-box">
+                    <a href="/certification/certified-nursing-assistant" class="quick-cert-box">
                         <div class="box-emoji">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -86,7 +86,7 @@
                         <span class="box-name">ExCPT</span>
                         <span class="box-count">1050+ Q's</span>
                     </a>
-                    <a href="/certification/phlebotomy" class="quick-cert-box">
+                    <a href="/certification/phlebotomy-technician-certification" class="quick-cert-box">
                         <div class="box-emoji">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -112,7 +112,7 @@
                         <span class="box-name">AAMA</span>
                         <span class="box-count">1100+ Q's</span>
                     </a>
-                    <a href="/certification/fnp" class="quick-cert-box">
+                    <a href="/certification/family-nurse-practitioner" class="quick-cert-box">
                         <div class="box-emoji">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -123,7 +123,7 @@
                         <span class="box-name">FNP</span>
                         <span class="box-count">2050+ Q's</span>
                     </a>
-                    <a href="/certification/hospice-and-palliative-care" class="quick-cert-box">
+                    <a href="/certification/hospice-palliative-care" class="quick-cert-box">
                         <div class="box-emoji">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -135,7 +135,7 @@
                         <span class="box-name">Hospice</span>
                         <span class="box-count">950+ Q's</span>
                     </a>
-                    <a href="/certification/cen" class="quick-cert-box">
+                    <a href="/certification/certified-emergency-nurse" class="quick-cert-box">
                         <div class="box-emoji">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -148,7 +148,7 @@
                         <span class="box-name">CEN</span>
                         <span class="box-count">1800+ Q's</span>
                     </a>
-                    <a href="/certification/counsellor" class="quick-cert-box">
+                    <a href="/certification/national-counselor-examination" class="quick-cert-box">
                         <div class="box-emoji">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -170,7 +170,7 @@
                     <li><a href="/certification/nurse-aide">NA Prep</a></li>
                     <li><a href="/certification/medical-assistant">CCMA Prep</a></li>
                     <li><a href="/certification/pharmacy-technician">PTCE Prep</a></li>
-                    <li><a href="/certification/phlebotomy">Phlebotomy Prep</a></li>
+                    <li><a href="/certification/phlebotomy-technician-certification">Phlebotomy Prep</a></li>
                     <li><a href="/certifications">All Certifications</a></li>
                 </ul>
             </div>

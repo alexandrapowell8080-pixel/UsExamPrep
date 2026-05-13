@@ -15,7 +15,7 @@
 
             <div class="nav-dropdown-wrapper">
                 <button
-                    class="nav-dropdown-btn {{ request()->is('certification/cna', 'certification/nurse-aide', 'certification/fnp', 'certification/hospice-and-palliative-care', 'certification/cen') ? 'active' : '' }}"
+                    class="nav-dropdown-btn {{ request()->is('certification/certified-nursing-assistant', 'certification/nurse-aide', 'certification/family-nurse-practitioner', 'certification/hospice-palliative-care', 'certification/certified-emergency-nurse') ? 'active' : '' }}"
                     type="button">
                     Nursing
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -24,7 +24,7 @@
                     </svg>
                 </button>
                 <div class="dropdown-content">
-                    <a class="dropdown-link" href="/certification/cna">
+                    <a class="dropdown-link" href="/certification/certified-nursing-assistant">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             style="width:1rem; height:1rem; color:var(--cna-teal);">
@@ -44,7 +44,7 @@
                         </svg>
                         Nurse Aide Prep
                     </a>
-                    <a class="dropdown-link" href="/certification/fnp">
+                    <a class="dropdown-link" href="/certification/family-nurse-practitioner">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             style="width:1rem; height:1rem; color:var(--fnp-orange);">
@@ -53,7 +53,7 @@
                         </svg>
                         FNP Prep
                     </a>
-                    <a class="dropdown-link" href="/certification/hospice-and-palliative-care">
+                    <a class="dropdown-link" href="/certification/hospice-palliative-care">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             style="width:1rem; height:1rem; color:var(--hosp-purple);">
@@ -63,7 +63,7 @@
                         </svg>
                         Hospice &amp; Palliative
                     </a>
-                    <a class="dropdown-link" href="/certification/cen">
+                    <a class="dropdown-link" href="/certification/certified-emergency-nurse">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             style="width:1rem; height:1rem; color:var(--cen-red);">
@@ -143,10 +143,10 @@
                 </div>
             </div>
 
-            <a class="nav-link {{ request()->is('certification/phlebotomy') ? 'active' : '' }}"
-                href="/certification/phlebotomy">Phlebotomy Technician</a>
-            <a class="nav-link {{ request()->is('certification/counsellor') ? 'active' : '' }}"
-                href="/certification/counsellor">Counsellor</a>
+            <a class="nav-link {{ request()->is('certification/phlebotomy-technician-certification') ? 'active' : '' }}"
+                href="/certification/phlebotomy-technician-certification">Phlebotomy Technician</a>
+            <a class="nav-link {{ request()->is('certification/national-counselor-examination') ? 'active' : '' }}"
+                href="/certification/national-counselor-examination">Counsellor</a>
         </div>
 
         <div class="nav-actions-desktop">
