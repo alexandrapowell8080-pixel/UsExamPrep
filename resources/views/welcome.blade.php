@@ -246,7 +246,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr onclick="window.location='{{ route('certification.show', 'cna') }}'"
+                                <tr onclick="window.location='{{ route('certification.show', 'certified-nursing-assistant') }}'"
                                     class="clickable-row">
                                     <td class="col-id">1</td>
                                     <td>
@@ -280,8 +280,8 @@
                                         <span class="diff-badge diff-intermediate">Moderate</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <a href="{{ route('certification.show', 'cna') }}" class="table-link-btn"
-                                            style="padding: 0; background: none;"><svg
+                                        <a href="{{ route('certification.show', 'certified-nursing-assistant') }}"
+                                            class="table-link-btn" style="padding: 0; background: none;"><svg
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="row-arrow-svg">
@@ -332,7 +332,7 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr onclick="window.location='{{ route('certification.show', 'hospice-and-palliative-care') }}'"
+                                <tr onclick="window.location='{{ route('certification.show', 'hospice-palliative-care') }}'"
                                     class="clickable-row">
                                     <td class="col-id">3</td>
                                     <td>
@@ -366,7 +366,7 @@
                                         <span class="diff-badge diff-advanced">Advanced</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <a href="{{ route('certification.show', 'hospice-and-palliative-care') }}"
+                                        <a href="{{ route('certification.show', 'hospice-palliative-care') }}"
                                             class="table-link-btn" style="padding: 0; background: none;"><svg
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -375,7 +375,7 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr onclick="window.location='{{ route('certification.show', 'cen') }}'"
+                                <tr onclick="window.location='{{ route('certification.show', 'certified-emergency-nurse') }}'"
                                     class="clickable-row">
                                     <td class="col-id">4</td>
                                     <td>
@@ -409,8 +409,8 @@
                                         <span class="diff-badge diff-advanced">Very High</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <a href="{{ route('certification.show', 'cen') }}" class="table-link-btn"
-                                            style="padding: 0; background: none;"><svg
+                                        <a href="{{ route('certification.show', 'certified-emergency-nurse') }}"
+                                            class="table-link-btn" style="padding: 0; background: none;"><svg
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="row-arrow-svg">
@@ -418,7 +418,7 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr onclick="window.location='{{ route('certification.show', 'fnp') }}'"
+                                <tr onclick="window.location='{{ route('certification.show', 'family-nurse-practitioner') }}'"
                                     class="clickable-row">
                                     <td class="col-id">5</td>
                                     <td>
@@ -452,8 +452,8 @@
                                         <span class="diff-badge diff-advanced">Advanced</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <a href="{{ route('certification.show', 'fnp') }}" class="table-link-btn"
-                                            style="padding: 0; background: none;"><svg
+                                        <a href="{{ route('certification.show', 'family-nurse-practitioner') }}"
+                                            class="table-link-btn" style="padding: 0; background: none;"><svg
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="row-arrow-svg">
@@ -706,7 +706,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr onclick="window.location='{{ route('certification.show', 'phlebotomy') }}'"
+                                <tr onclick="window.location='{{ route('certification.show', 'phlebotomy-technician-certification') }}'"
                                     class="clickable-row">
                                     <td class="col-id">1</td>
                                     <td>
@@ -740,8 +740,8 @@
                                         <span class="diff-badge diff-intermediate">Moderate</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <a href="{{ route('certification.show', 'phlebotomy') }}" class="table-link-btn"
-                                            style="padding: 0; background: none;"><svg
+                                        <a href="{{ route('certification.show', 'phlebotomy-technician-certification') }}"
+                                            class="table-link-btn" style="padding: 0; background: none;"><svg
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="row-arrow-svg">
@@ -773,7 +773,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr onclick="window.location='{{ route('certification.show', 'counsellor') }}'"
+                                <tr onclick="window.location='{{ route('certification.show', 'national-counselor-examination') }}'"
                                     class="clickable-row">
                                     <td class="col-id">1</td>
                                     <td>
@@ -807,8 +807,8 @@
                                         <span class="diff-badge diff-advanced">High</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <a href="{{ route('certification.show', 'counsellor') }}" class="table-link-btn"
-                                            style="padding: 0; background: none;"><svg
+                                        <a href="{{ route('certification.show', 'national-counselor-examination') }}"
+                                            class="table-link-btn" style="padding: 0; background: none;"><svg
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="row-arrow-svg">
@@ -1027,7 +1027,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'certified-nursing-assistant') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">🩺</span>
@@ -1045,7 +1046,8 @@
                                     <td class="text-center text-salary">$38,130</td>
                                     <td class="text-center text-muted">4%</td>
                                     <td class="text-center">
-                                        <a href="{{ route('certification.show', 'cna') }}" class="table-link-btn">Start
+                                        <a href="{{ route('certification.show', 'certified-nursing-assistant') }}"
+                                            class="table-link-btn">Start
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="arrow-link-svg">
@@ -1054,7 +1056,8 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'nurse-aide') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">👨‍⚕️</span>
@@ -1082,7 +1085,8 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'hospice-palliative-care') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">🌿</span>
@@ -1099,7 +1103,7 @@
                                     <td class="text-center text-salary">$89,000</td>
                                     <td class="text-center text-muted">6%</td>
                                     <td class="text-center">
-                                        <a href="{{ route('certification.show', 'hospice-and-palliative-care') }}"
+                                        <a href="{{ route('certification.show', 'hospice-palliative-care') }}"
                                             class="table-link-btn">Start <svg xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round" class="arrow-link-svg">
@@ -1108,7 +1112,8 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'certified-emergency-nurse') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">🚨</span>
@@ -1125,7 +1130,8 @@
                                     <td class="text-center text-salary">$85,000</td>
                                     <td class="text-center text-muted">6%</td>
                                     <td class="text-center">
-                                        <a href="{{ route('certification.show', 'cen') }}" class="table-link-btn">Start
+                                        <a href="{{ route('certification.show', 'certified-emergency-nurse') }}"
+                                            class="table-link-btn">Start
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="arrow-link-svg">
@@ -1134,7 +1140,8 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'family-nurse-practitioner') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">🏥</span>
@@ -1151,7 +1158,8 @@
                                     <td class="text-center text-salary">$125,000</td>
                                     <td class="text-center text-muted">38%</td>
                                     <td class="text-center">
-                                        <a href="{{ route('certification.show', 'fnp') }}" class="table-link-btn">Start
+                                        <a href="{{ route('certification.show', 'family-nurse-practitioner') }}"
+                                            class="table-link-btn">Start
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="arrow-link-svg">
@@ -1160,7 +1168,8 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'medical-assistant') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">❤️</span>
@@ -1186,7 +1195,8 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'medical-assistant') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">📋</span>
@@ -1212,7 +1222,8 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'pharmacy-technician') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">💊</span>
@@ -1238,7 +1249,8 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'pharmacy-technician') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">🧪</span>
@@ -1264,7 +1276,8 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'phlebotomy-technician-certification') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">🔬</span>
@@ -1282,7 +1295,7 @@
                                     <td class="text-center text-salary">$41,810</td>
                                     <td class="text-center text-muted">8%</td>
                                     <td class="text-center">
-                                        <a href="{{ route('certification.show', 'phlebotomy') }}"
+                                        <a href="{{ route('certification.show', 'phlebotomy-technician-certification') }}"
                                             class="table-link-btn">Start
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1292,7 +1305,8 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'national-counselor-examination') }}'"
+                                    class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">🧠</span>
@@ -1309,7 +1323,7 @@
                                     <td class="text-center text-salary">$53,710</td>
                                     <td class="text-center text-muted">18%</td>
                                     <td class="text-center">
-                                        <a href="{{ route('certification.show', 'counsellor') }}"
+                                        <a href="{{ route('certification.show', 'national-counselor-examination') }}"
                                             class="table-link-btn">Start
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
