@@ -28,7 +28,7 @@ class NotesPointers extends Command
             'section.school:id,name',
         ])
             ->doesntHave('pointers')
-            ->take(1)
+            ->take(2)
             ->get(['id', 'name', 'section_id']);
 
         if (! $topics) {
@@ -40,7 +40,7 @@ class NotesPointers extends Command
             NotesPointer::updateOrCreate(
                 ['topic_id' => $topic->id], // condition to check existence
                 [
-                    'status' => 'created',
+                    'status' => 'draft',
                     'pointers' => '"'.implode('","', $pointers['message']).'"',
                 ]
             );

@@ -3,11 +3,13 @@
 namespace App\Console\Commands;
 
 use App\Models\Notes;
+use App\Models\NotesPointer;
 use App\Models\Topic;
 use App\Services\NotesGeneratorServices;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 #[Signature('notes:generate')]
 #[Description('Generate notes')]
@@ -29,7 +31,7 @@ class NotesGenerate extends Command
             'section.school:id,name',
         ])
             ->whereHas('pointers', function ($query) {
-                $query->where('status', 'created');
+                $query->where('status', 'draft');
             })
             ->take(1)
             ->get(['id', 'name', 'section_id']);
@@ -41,7 +43,7 @@ class NotesGenerate extends Command
         foreach ($topics as $key => $topic) {
 
             $this->line('------------------------------------------------');
-            $this->info("🚀 STARTING TOPIC #{$key} {$topic->id}");
+            $this->info("🚀 STARTING TOPIC #{$key}");
             $this->line("Topic: {$topic->name}");
             $this->line("Section: {$topic->section->name}");
             $this->line("School: {$topic->section->school->name}");
@@ -58,13 +60,15 @@ class NotesGenerate extends Command
                 );
 
                 $this->comment('💾 Saving to database...');
-
-                Notes::updateOrCreate(
-                    ['topic_id' => $topic->id],
-                    [
-                        'content' => $notes['message'],
-                    ]
-                );
+                DB::transaction(function () use($topic,$notes) {
+                    NotesPointer::where('id',$topic->pointers->id)->update(['status'=>'published']);
+                    Notes::updateOrCreate(
+                        ['topic_id' => $topic->id],
+                        [
+                            'content' => $notes['message'],
+                        ]
+                    );
+                });
 
                 $this->info("✅ DONE: {$topic->name}");
 
