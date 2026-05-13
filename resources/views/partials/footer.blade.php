@@ -178,19 +178,17 @@
                 <h3 class="footer-list-heading">Resources</h3>
                 <ul class="footer-links-list">
                     <li><a href="/certifications">Practice Questions</a></li>
-                    <li><a href="/certifications">Study Notes</a></li>
-                    <li><a href="/certifications">Flashcards</a></li>
-                    <li><a href="/certifications">Video Lessons</a></li>
-                    <li><a href="/blog">Blog &amp; Tips</a></li>
+                    <li><a href="/study-notes">Study Notes</a></li>
+                    {{-- <li><a href="/blog">Blog &amp; Tips</a></li> --}}
                 </ul>
             </div>
             <div>
                 <h3 class="footer-list-heading">Company</h3>
                 <ul class="footer-links-list">
                     <li><a href="/about">About Us</a></li>
-                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms-of-service">Terms of Service</a></li>
                     <li><a href="/contact">Contact</a></li>
-                    <li><a href="/dashboard">Dashboard</a></li>
                 </ul>
             </div>
         </div>
