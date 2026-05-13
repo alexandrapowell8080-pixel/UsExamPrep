@@ -10,14 +10,9 @@ class School extends Model
     
     protected $fillable = ['name','slug'];
 
-
-    public function sections():HasMany
-    {
-        return $this->hasMany(Section::class);
-    }
-
     public function exams(): HasMany
     {
         return $this->hasMany(Exam::class);
     }
+
 }

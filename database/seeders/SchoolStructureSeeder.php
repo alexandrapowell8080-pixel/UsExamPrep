@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Exam;
 use App\Models\Notes;
 use App\Models\School;
 use App\Models\Section;
@@ -671,17 +672,17 @@ class SchoolStructureSeeder extends Seeder
             foreach ($schoolData['sections'] as $sectionData) {
 
                 // Create Section
-                $section = Section::create([
+                $section = Exam::create([
                     'school_id' => $school->id,
                     'name' => $sectionData['name'],
-                    'slug' => Str::slug($sectionData['name']),
+                    'slug' => $this->generateUniqueSlug($sectionData['name']) ,
                 ]);
 
                 foreach ($sectionData['children'] as $topicName) {
 
                     // Create Topic
                     $topic = Topic::create([
-                        'section_id' => $section->id,
+                        'exam_id' => $section->id,
                         'name' => $topicName,
                         'slug' => Str::slug($topicName),
                     ]);
@@ -694,5 +695,21 @@ class SchoolStructureSeeder extends Seeder
                 }
             }
         }
+
+        
     }
+
+    private function generateUniqueSlug($name)
+{
+    $slug = Str::slug($name);
+    $originalSlug = $slug;
+    $count = 1;
+
+    while (Exam::where('slug', $slug)->exists()) {
+        $slug = $originalSlug . '-' . $count;
+        $count++;
+    }
+
+    return $slug;
+}
 }

@@ -969,6 +969,15 @@ body {
     color: #065f46;
 }
 
+.cat-rose {
+    background-color: #ffe4e6;
+    color: #be185d;
+}
+.cat-indigo {
+    background-color: #e0e7ff;
+    color: #4338ca;
+}
+
 .col-fullname {
     font-weight: 500;
 }
@@ -986,7 +995,6 @@ body {
     gap: 0.25rem;
     flex-wrap: wrap;
 }
-
 .pill-badge {
     padding: 0.125rem 0.5rem;
     border-radius: 9999px;
@@ -2457,4 +2465,3 @@ body {
         grid-template-columns: repeat(4, 1fr);
     }
 }
-

@@ -634,3 +634,106 @@
     --theme-badge-text: #6d28d9;
     --theme-gradient: linear-gradient(135deg, #a78bfa 0%, #9333ea 100%);
 }
+
+.srv-exam-library {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.library-section {
+    background-color: var(--white);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.library-header {
+    background-color: var(--bg-muted, #f8fafc);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color, #e2e8f0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.library-group-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.library-group-count {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--theme-badge-text);
+    background-color: var(--theme-badge-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
+.library-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.library-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.75rem;
+    background-color: var(--white);
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.library-card:hover {
+    border-color: var(--theme-light-border);
+    background-color: var(--theme-light-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.lc-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.lc-title {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.lc-meta {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.lc-action {
+    color: var(--theme-badge-text);
+    opacity: 0.5;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lc-action svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}

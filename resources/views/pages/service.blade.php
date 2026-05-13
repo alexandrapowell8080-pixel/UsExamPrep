@@ -57,16 +57,72 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="srv-btn-group">
-                                    @foreach($certification['categories'] as $category)
-                                    <a href="{{ route('questions.index', [
-                                                                            'schoolSlug' => $certification['classification_slug'], 
-                                                                            'examSlug' => $category->slug ?? $category['slug'] ?? \Illuminate\Support\Str::slug($category)
-                                                                        ]) }}" class="btn btn-outline">
-                                        {{ $category->name ?? $category['name'] ?? $category }}
-                                    </a>
+                                @php
+                                $pageExams = \App\Models\Exam::whereHas('school', function ($query) use ($certification)
+                                {
+                                $query->where('slug', $certification['classification_slug']);
+                                })->get();
+
+                                $groupedExams = [];
+
+                                ['CCMA', 'AAMA'])
+                                $rawGroups = preg_split('/[&\/]/', $certification['title_abbr']);
+                                $expectedGroups = array_filter(array_map('trim', $rawGroups));
+
+                                foreach($pageExams as $exam) {
+                                $exam->q_count = \App\Models\Question::where('exam_id', $exam->id)->count();
+
+                                $assignedGroup = 'General';
+
+                                if (count($expectedGroups) > 1) {
+                                foreach ($expectedGroups as $group) {
+                                if (stripos($exam->name, $group) !== false) {
+                                $assignedGroup = $group;
+                                break;
+                                }
+                                }
+                                } else {
+                                $assignedGroup = $certification['title_abbr'];
+                                }
+
+                                $groupedExams[$assignedGroup][] = $exam;
+                                }
+                                @endphp
+
+                                @if($pageExams->isNotEmpty())
+                                <div class="srv-exam-library">
+                                    @foreach($groupedExams as $groupName => $exams)
+                                    @if(count($exams) > 0)
+                                    <div class="library-section">
+                                        <div class="library-header">
+                                            <h3 class="library-group-title">{{ $groupName }} Practice Exams</h3>
+                                            <span class="library-group-count">{{ count($exams) }} Tests</span>
+                                        </div>
+
+                                        <div class="library-grid">
+                                            @foreach($exams as $pageExam)
+                                            <a href="{{ route('questions.index', ['schoolSlug' => $certification['classification_slug'], 'examSlug' => $pageExam->slug]) }}"
+                                                class="library-card">
+                                                <div class="lc-content">
+                                                    <h4 class="lc-title">{{ $pageExam->name }}</h4>
+                                                    <span class="lc-meta">{{ $pageExam->q_count }} Questions</span>
+                                                </div>
+                                                <div class="lc-action">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                        fill="none" stroke="currentColor" stroke-width="2"
+                                                        stroke-linecap="round" stroke-linejoin="round">
+                                                        <circle cx="12" cy="12" r="10"></circle>
+                                                        <path d="m10 8 6 4-6 4Z"></path>
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    @endif
                                     @endforeach
-                                </div> --}}
+                                </div>
+                                @endif
                             </div>
 
                             <div class="srv-hero-visual">
@@ -282,8 +338,7 @@
                         <p class="cta-desc">Get unlimited access to {{ $certification['stats']['questions'] }} practice
                             questions, study notes, flashcards, and video lessons.</p>
                         <div class="srv-btn-group justify-center">
-                            <a href="{{ route('questions.index', ['schoolSlug' => $certification['classification_slug'], 'examSlug' => $certification['id']]) }}"
-                                class="btn btn-white btn-lg shadow-xl">
+                            <a href="{{ route('certifications') }}" class="btn btn-white btn-lg shadow-xl">
                                 Start Free Practice &rarr;
                             </a>
                         </div>
