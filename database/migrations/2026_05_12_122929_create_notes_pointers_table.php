@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Topic::class,'topic_id');
             $table->text('pointers');
-            $table->enum('status',['created','completed']);
+            $table->enum('status',['draft','published']);
             $table->timestamps();
         });
     }
