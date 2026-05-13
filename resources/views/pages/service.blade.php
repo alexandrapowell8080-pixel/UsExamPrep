@@ -65,7 +65,7 @@
                                 })->get();
 
                                 $groupedExams = [];
-
+                          
                                 $rawGroups = preg_split('/[&\/]/', $certification['title_abbr']);
                                 $expectedGroups = array_filter(array_map('trim', $rawGroups));
 
