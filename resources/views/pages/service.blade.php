@@ -19,7 +19,7 @@
 
             <main class="main-content">
 
-                <section class="srv-hero">
+                <section class="srv-hero" id="service-hero">
                     <div class="srv-hero-bg"></div>
                     <div class="max-width-wrapper relative-z">
                         <div class="srv-hero-grid">
@@ -65,7 +65,7 @@
                                 })->get();
 
                                 $groupedExams = [];
-                          
+
                                 $rawGroups = preg_split('/[&\/]/', $certification['title_abbr']);
                                 $expectedGroups = array_filter(array_map('trim', $rawGroups));
 
@@ -341,7 +341,7 @@
                         <p class="cta-desc">Get unlimited access to {{ $certification['stats']['questions'] }} practice
                             questions, study notes, flashcards, and video lessons.</p>
                         <div class="srv-btn-group justify-center">
-                            <a href="{{ route('certifications') }}" class="btn btn-white btn-lg shadow-xl">
+                            <a href="#service-hero" class="btn btn-white btn-lg shadow-xl">
                                 Start Free Practice &rarr;
                             </a>
                         </div>
