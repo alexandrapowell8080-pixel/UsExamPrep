@@ -57,16 +57,24 @@
                                     </div>
                                 </div>
 
-                                {{-- <div class="srv-btn-group">
-                                    @foreach($certification['categories'] as $category)
-                                    <a href="{{ route('questions.index', [
-                                                                            'schoolSlug' => $certification['classification_slug'], 
-                                                                            'examSlug' => $category->slug ?? $category['slug'] ?? \Illuminate\Support\Str::slug($category)
-                                                                        ]) }}" class="btn btn-outline">
-                                        {{ $category->name ?? $category['name'] ?? $category }}
+                                @php
+                                $pageExams = \App\Models\Exam::whereHas('school', function ($query) use ($certification)
+                                {
+                                $query->where('slug', $certification['classification_slug']);
+                                })->get();
+                                @endphp
+
+                                @if($pageExams->isNotEmpty())
+                                <div class="srv-page-exams"
+                                    style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                                    @foreach($pageExams as $pageExam)
+                                    <a href="{{ route('questions.index', ['schoolSlug' => $certification['classification_slug'], 'examSlug' => $pageExam->slug]) }}"
+                                        class="srv-exam-link">
+                                        {{ $pageExam->name }}
                                     </a>
                                     @endforeach
-                                </div> --}}
+                                </div>
+                                @endif
                             </div>
 
                             <div class="srv-hero-visual">
