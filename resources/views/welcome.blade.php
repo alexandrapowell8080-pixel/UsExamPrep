@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
-    <link href="/manifest.json" rel="manifest">
     <title>UsExamPrep</title>
     <meta
         content="An interactive, animated, and smart exam preparation platform designed to help healthcare students master their certification tests through gamified practice."
@@ -224,7 +223,7 @@
                 <div class="section-title-wrapper">
                     <span class="section-badge text-teal">Certifications</span>
                     <h2 class="section-heading">Choose Your Certification Path</h2>
-                    <p class="section-subheading">We offer comprehensive prep for 12 healthcare certifications. Click
+                    <p class="section-subheading">We offer comprehensive prep for 9 healthcare certifications. Click
                         any row to get started.</p>
                 </div>
 
@@ -247,7 +246,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr onclick="window.location='/cert/cna'" class="clickable-row">
+                                <tr onclick="window.location='{{ route('certification.show', 'cna') }}'"
+                                    class="clickable-row">
                                     <td class="col-id">1</td>
                                     <td>
                                         <div class="cert-flex-badge">
@@ -277,17 +277,20 @@
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-intermediate">Intermediate</span>
+                                        <span class="diff-badge diff-intermediate">Moderate</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
+                                        <a href="{{ route('certification.show', 'cna') }}" class="table-link-btn"
+                                            style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
                                     </td>
                                 </tr>
-                                <tr onclick="window.location='/cert/nurse-aide'" class="clickable-row">
+                                <tr onclick="window.location='{{ route('certification.show', 'nurse-aide') }}'"
+                                    class="clickable-row">
                                     <td class="col-id">2</td>
                                     <td>
                                         <div class="cert-flex-badge">
@@ -317,17 +320,20 @@
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-beginner">Beginner</span>
+                                        <span class="diff-badge diff-beginner">Moderate</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
+                                        <a href="{{ route('certification.show', 'nurse-aide') }}" class="table-link-btn"
+                                            style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
                                     </td>
                                 </tr>
-                                <tr onclick="window.location='/cert/hospice'" class="clickable-row">
+                                <tr onclick="window.location='{{ route('certification.show', 'hospice-and-palliative-care') }}'"
+                                    class="clickable-row">
                                     <td class="col-id">3</td>
                                     <td>
                                         <div class="cert-flex-badge">
@@ -360,14 +366,17 @@
                                         <span class="diff-badge diff-advanced">Advanced</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
+                                        <a href="{{ route('certification.show', 'hospice-and-palliative-care') }}"
+                                            class="table-link-btn" style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
                                     </td>
                                 </tr>
-                                <tr onclick="window.location='/cert/cen'" class="clickable-row">
+                                <tr onclick="window.location='{{ route('certification.show', 'cen') }}'"
+                                    class="clickable-row">
                                     <td class="col-id">4</td>
                                     <td>
                                         <div class="cert-flex-badge">
@@ -397,25 +406,28 @@
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-advanced">Advanced</span>
+                                        <span class="diff-badge diff-advanced">Very High</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
+                                        <a href="{{ route('certification.show', 'cen') }}" class="table-link-btn"
+                                            style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
                                     </td>
                                 </tr>
-                                <tr onclick="window.location='/cert/fmp'" class="clickable-row">
+                                <tr onclick="window.location='{{ route('certification.show', 'fnp') }}'"
+                                    class="clickable-row">
                                     <td class="col-id">5</td>
                                     <td>
                                         <div class="cert-flex-badge">
                                             <span class="indicator-dot dot-orange"></span>
-                                            <span class="cert-code code-orange">FMP</span>
+                                            <span class="cert-code code-orange">FNP</span>
                                         </div>
                                     </td>
-                                    <td class="col-fullname text-muted">Family Medicine Practice</td>
+                                    <td class="col-fullname text-muted">Family Nurse Practitioner</td>
                                     <td class="col-topics">
                                         <div class="pill-badge-stack">
                                             <span class="pill-badge">Primary Care</span>
@@ -437,14 +449,16 @@
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-intermediate">Intermediate</span>
+                                        <span class="diff-badge diff-advanced">Advanced</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
+                                        <a href="{{ route('certification.show', 'fnp') }}" class="table-link-btn"
+                                            style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -471,7 +485,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr onclick="window.location='/cert/ccma'" class="clickable-row">
+                                <tr onclick="window.location='{{ route('certification.show', 'medical-assistant') }}'"
+                                    class="clickable-row">
                                     <td class="col-id">1</td>
                                     <td>
                                         <div class="cert-flex-badge">
@@ -501,17 +516,20 @@
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-intermediate">Intermediate</span>
+                                        <span class="diff-badge diff-intermediate">Mod-High</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
+                                        <a href="{{ route('certification.show', 'medical-assistant') }}"
+                                            class="table-link-btn" style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
                                     </td>
                                 </tr>
-                                <tr onclick="window.location='/cert/aama'" class="clickable-row">
+                                <tr onclick="window.location='{{ route('certification.show', 'medical-assistant') }}'"
+                                    class="clickable-row">
                                     <td class="col-id">2</td>
                                     <td>
                                         <div class="cert-flex-badge">
@@ -519,11 +537,11 @@
                                             <span class="cert-code code-violet">AAMA</span>
                                         </div>
                                     </td>
-                                    <td class="col-fullname text-muted">American Association of Medical Assistants</td>
+                                    <td class="col-fullname text-muted">Certified Medical Assistant</td>
                                     <td class="col-topics">
                                         <div class="pill-badge-stack">
                                             <span class="pill-badge">General Knowledge</span>
-                                            <span class="pill-badge">Administrative Skills</span>
+                                            <span class="pill-badge">Administrative</span>
                                             <span class="pill-badge">+4</span>
                                         </div>
                                     </td>
@@ -537,178 +555,20 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            320+
+                                            380+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-intermediate">Intermediate</span>
+                                        <span class="diff-badge diff-intermediate">Mod-High</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
-                                    </td>
-                                </tr>
-                                <tr onclick="window.location='/cert/phlebotomy'" class="clickable-row">
-                                    <td class="col-id">3</td>
-                                    <td>
-                                        <div class="cert-flex-badge">
-                                            <span class="indicator-dot dot-rose"></span>
-                                            <span class="cert-code code-rose">Phlebotomy</span>
-                                        </div>
-                                    </td>
-                                    <td class="col-fullname text-muted">Phlebotomy Technician Certification</td>
-                                    <td class="col-topics">
-                                        <div class="pill-badge-stack">
-                                            <span class="pill-badge">Venipuncture</span>
-                                            <span class="pill-badge">Order of Draw</span>
-                                            <span class="pill-badge">+4</span>
-                                        </div>
-                                    </td>
-                                    <td class="col-questions text-center text-muted">
-                                        <span class="book-info-row">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        <a href="{{ route('certification.show', 'medical-assistant') }}"
+                                            class="table-link-btn" style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="book-mini-svg">
-                                                <path d="M12 7v14"></path>
-                                                <path
-                                                    d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
-                                                </path>
-                                            </svg>
-                                            250+
-                                        </span>
-                                    </td>
-                                    <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-beginner">Beginner</span>
-                                    </td>
-                                    <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
-                                    </td>
-                                </tr>
-                                <tr onclick="window.location='/cert/dental'" class="clickable-row">
-                                    <td class="col-id">4</td>
-                                    <td>
-                                        <div class="cert-flex-badge">
-                                            <span class="indicator-dot dot-sky"></span>
-                                            <span class="cert-code code-sky">Dental</span>
-                                        </div>
-                                    </td>
-                                    <td class="col-fullname text-muted">Dental Assistant Certification</td>
-                                    <td class="col-topics">
-                                        <div class="pill-badge-stack">
-                                            <span class="pill-badge">Dental Anatomy</span>
-                                            <span class="pill-badge">Radiography</span>
-                                            <span class="pill-badge">+4</span>
-                                        </div>
-                                    </td>
-                                    <td class="col-questions text-center text-muted">
-                                        <span class="book-info-row">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="book-mini-svg">
-                                                <path d="M12 7v14"></path>
-                                                <path
-                                                    d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
-                                                </path>
-                                            </svg>
-                                            270+
-                                        </span>
-                                    </td>
-                                    <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-intermediate">Intermediate</span>
-                                    </td>
-                                    <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
-                                    </td>
-                                </tr>
-                                <tr onclick="window.location='/cert/slp'" class="clickable-row">
-                                    <td class="col-id">5</td>
-                                    <td>
-                                        <div class="cert-flex-badge">
-                                            <span class="indicator-dot dot-pink"></span>
-                                            <span class="cert-code code-pink">SLP</span>
-                                        </div>
-                                    </td>
-                                    <td class="col-fullname text-muted">Speech-Language Pathology</td>
-                                    <td class="col-topics">
-                                        <div class="pill-badge-stack">
-                                            <span class="pill-badge">Speech Disorders</span>
-                                            <span class="pill-badge">Language Development</span>
-                                            <span class="pill-badge">+4</span>
-                                        </div>
-                                    </td>
-                                    <td class="col-questions text-center text-muted">
-                                        <span class="book-info-row">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="book-mini-svg">
-                                                <path d="M12 7v14"></path>
-                                                <path
-                                                    d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
-                                                </path>
-                                            </svg>
-                                            290+
-                                        </span>
-                                    </td>
-                                    <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-advanced">Advanced</span>
-                                    </td>
-                                    <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
-                                    </td>
-                                </tr>
-                                <tr onclick="window.location='/cert/counsellor'" class="clickable-row">
-                                    <td class="col-id">6</td>
-                                    <td>
-                                        <div class="cert-flex-badge">
-                                            <span class="indicator-dot dot-indigo"></span>
-                                            <span class="cert-code code-indigo">Counsellor</span>
-                                        </div>
-                                    </td>
-                                    <td class="col-fullname text-muted">Professional Counselling Certification</td>
-                                    <td class="col-topics">
-                                        <div class="pill-badge-stack">
-                                            <span class="pill-badge">Therapy Techniques</span>
-                                            <span class="pill-badge">Mental Health Assessment</span>
-                                            <span class="pill-badge">+4</span>
-                                        </div>
-                                    </td>
-                                    <td class="col-questions text-center text-muted">
-                                        <span class="book-info-row">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="book-mini-svg">
-                                                <path d="M12 7v14"></path>
-                                                <path
-                                                    d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
-                                                </path>
-                                            </svg>
-                                            310+
-                                        </span>
-                                    </td>
-                                    <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-advanced">Advanced</span>
-                                    </td>
-                                    <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -719,7 +579,7 @@
                 <div class="category-block">
                     <div class="category-header">
                         <div class="category-badge cat-green">P</div>
-                        <h3 class="category-title">Pharmacy Certification</h3>
+                        <h3 class="category-title">Pharmacy</h3>
                     </div>
                     <div class="responsive-table-container">
                         <table class="data-table">
@@ -735,7 +595,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr onclick="window.location='/cert/ptce'" class="clickable-row">
+                                <tr onclick="window.location='{{ route('certification.show', 'pharmacy-technician') }}'"
+                                    class="clickable-row">
                                     <td class="col-id">1</td>
                                     <td>
                                         <div class="cert-flex-badge">
@@ -765,14 +626,194 @@
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
-                                        <span class="diff-badge diff-intermediate">Intermediate</span>
+                                        <span class="diff-badge diff-advanced">High</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="row-arrow-svg">
-                                            <path d="m9 18 6-6-6-6"></path>
-                                        </svg>
+                                        <a href="{{ route('certification.show', 'pharmacy-technician') }}"
+                                            class="table-link-btn" style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
+                                    </td>
+                                </tr>
+                                <tr onclick="window.location='{{ route('certification.show', 'pharmacy-technician') }}'"
+                                    class="clickable-row">
+                                    <td class="col-id">2</td>
+                                    <td>
+                                        <div class="cert-flex-badge">
+                                            <span class="indicator-dot dot-green"></span>
+                                            <span class="cert-code code-green">ExCPT</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-fullname text-muted">Exam for the Certification of Pharmacy
+                                        Technicians</td>
+                                    <td class="col-topics">
+                                        <div class="pill-badge-stack">
+                                            <span class="pill-badge">Medications</span>
+                                            <span class="pill-badge">Compounding</span>
+                                            <span class="pill-badge">+5</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-questions text-center text-muted">
+                                        <span class="book-info-row">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="book-mini-svg">
+                                                <path d="M12 7v14"></path>
+                                                <path
+                                                    d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                                                </path>
+                                            </svg>
+                                            360+
+                                        </span>
+                                    </td>
+                                    <td class="col-difficulty text-center">
+                                        <span class="diff-badge diff-advanced">High</span>
+                                    </td>
+                                    <td class="col-arrow">
+                                        <a href="{{ route('certification.show', 'pharmacy-technician') }}"
+                                            class="table-link-btn" style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="category-block">
+                    <div class="category-header">
+                        <div class="category-badge cat-rose">P</div>
+                        <h3 class="category-title">Phlebotomy</h3>
+                    </div>
+                    <div class="responsive-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-id">#</th>
+                                    <th>Certification</th>
+                                    <th class="col-fullname">Full Name</th>
+                                    <th class="col-topics">Topics</th>
+                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-difficulty text-center">Difficulty</th>
+                                    <th class="col-arrow"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr onclick="window.location='{{ route('certification.show', 'phlebotomy') }}'"
+                                    class="clickable-row">
+                                    <td class="col-id">1</td>
+                                    <td>
+                                        <div class="cert-flex-badge">
+                                            <span class="indicator-dot dot-rose"></span>
+                                            <span class="cert-code code-rose">Phlebotomy</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-fullname text-muted">Phlebotomy Technician Certification</td>
+                                    <td class="col-topics">
+                                        <div class="pill-badge-stack">
+                                            <span class="pill-badge">Venipuncture</span>
+                                            <span class="pill-badge">Order of Draw</span>
+                                            <span class="pill-badge">+4</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-questions text-center text-muted">
+                                        <span class="book-info-row">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="book-mini-svg">
+                                                <path d="M12 7v14"></path>
+                                                <path
+                                                    d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                                                </path>
+                                            </svg>
+                                            250+
+                                        </span>
+                                    </td>
+                                    <td class="col-difficulty text-center">
+                                        <span class="diff-badge diff-intermediate">Moderate</span>
+                                    </td>
+                                    <td class="col-arrow">
+                                        <a href="{{ route('certification.show', 'phlebotomy') }}" class="table-link-btn"
+                                            style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="category-block">
+                    <div class="category-header">
+                        <div class="category-badge cat-indigo">C</div>
+                        <h3 class="category-title">Counselling</h3>
+                    </div>
+                    <div class="responsive-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-id">#</th>
+                                    <th>Certification</th>
+                                    <th class="col-fullname">Full Name</th>
+                                    <th class="col-topics">Topics</th>
+                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-difficulty text-center">Difficulty</th>
+                                    <th class="col-arrow"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr onclick="window.location='{{ route('certification.show', 'counsellor') }}'"
+                                    class="clickable-row">
+                                    <td class="col-id">1</td>
+                                    <td>
+                                        <div class="cert-flex-badge">
+                                            <span class="indicator-dot dot-indigo"></span>
+                                            <span class="cert-code code-indigo">Counsellor</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-fullname text-muted">Professional Counselling Certification</td>
+                                    <td class="col-topics">
+                                        <div class="pill-badge-stack">
+                                            <span class="pill-badge">Therapy Techniques</span>
+                                            <span class="pill-badge">Assessment</span>
+                                            <span class="pill-badge">+4</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-questions text-center text-muted">
+                                        <span class="book-info-row">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="book-mini-svg">
+                                                <path d="M12 7v14"></path>
+                                                <path
+                                                    d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+                                                </path>
+                                            </svg>
+                                            310+
+                                        </span>
+                                    </td>
+                                    <td class="col-difficulty text-center">
+                                        <span class="diff-badge diff-advanced">High</span>
+                                    </td>
+                                    <td class="col-arrow">
+                                        <a href="{{ route('certification.show', 'counsellor') }}" class="table-link-btn"
+                                            style="padding: 0; background: none;"><svg
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="row-arrow-svg">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -802,23 +843,23 @@
                                 <div class="roadmap-item">
                                     <div>
                                         <p class="item-name">CNA</p>
-                                        <p class="item-meta">4-10 wks</p>
+                                        <p class="item-meta">4 wks</p>
                                     </div>
-                                    <span class="item-salary">$35K</span>
+                                    <span class="item-salary">$38K</span>
                                 </div>
                                 <div class="roadmap-item">
                                     <div>
                                         <p class="item-name">Nurse Aide</p>
-                                        <p class="item-meta">4-8 wks</p>
+                                        <p class="item-meta">3 wks</p>
                                     </div>
-                                    <span class="item-salary">$30K</span>
+                                    <span class="item-salary">$38K</span>
                                 </div>
                                 <div class="roadmap-item">
                                     <div>
                                         <p class="item-name">Phlebotomy</p>
-                                        <p class="item-meta">4-8 wks</p>
+                                        <p class="item-meta">4 wks</p>
                                     </div>
-                                    <span class="item-salary">$36K</span>
+                                    <span class="item-salary">$41K</span>
                                 </div>
                             </div>
                         </div>
@@ -844,23 +885,23 @@
                                 <div class="roadmap-item">
                                     <div>
                                         <p class="item-name">CCMA</p>
-                                        <p class="item-meta">8-20 wks</p>
+                                        <p class="item-meta">6-8 wks</p>
                                     </div>
                                     <span class="item-salary">$42K</span>
                                 </div>
                                 <div class="roadmap-item">
                                     <div>
-                                        <p class="item-name">PTCE</p>
-                                        <p class="item-meta">8-12 wks</p>
+                                        <p class="item-name">AAMA</p>
+                                        <p class="item-meta">6-8 wks</p>
                                     </div>
-                                    <span class="item-salary">$38K</span>
+                                    <span class="item-salary">$42K</span>
                                 </div>
                                 <div class="roadmap-item">
                                     <div>
-                                        <p class="item-name">Dental Asst.</p>
-                                        <p class="item-meta">8-12 wks</p>
+                                        <p class="item-name">PTCE / ExCPT</p>
+                                        <p class="item-meta">6 wks</p>
                                     </div>
-                                    <span class="item-salary">$44K</span>
+                                    <span class="item-salary">$40K</span>
                                 </div>
                             </div>
                         </div>
@@ -885,24 +926,24 @@
                             <div class="roadmap-card-body theme-dark-card">
                                 <div class="roadmap-item dark-item">
                                     <div>
-                                        <p class="item-name text-white">FPM Nursing</p>
-                                        <p class="item-meta text-emerald">Varies</p>
+                                        <p class="item-name text-white">FNP Nursing</p>
+                                        <p class="item-meta text-emerald">8 wks</p>
                                     </div>
-                                    <span class="item-salary text-emerald">$75K</span>
+                                    <span class="item-salary text-emerald">$125K</span>
                                 </div>
                                 <div class="roadmap-item dark-item">
                                     <div>
                                         <p class="item-name text-white">CEN</p>
-                                        <p class="item-meta text-emerald">Varies</p>
+                                        <p class="item-meta text-emerald">12 wks</p>
                                     </div>
-                                    <span class="item-salary text-emerald">$95K</span>
+                                    <span class="item-salary text-emerald">$85K</span>
                                 </div>
                                 <div class="roadmap-item dark-item">
                                     <div>
                                         <p class="item-name text-white">Hospice</p>
-                                        <p class="item-meta text-emerald">Varies</p>
+                                        <p class="item-meta text-emerald">8 wks</p>
                                     </div>
-                                    <span class="item-salary text-emerald">$70K</span>
+                                    <span class="item-salary text-emerald">$89K</span>
                                 </div>
                             </div>
                         </div>
@@ -996,201 +1037,16 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center font-med">60</td>
-                                    <td class="text-center text-muted">90 minutes</td>
-                                    <td class="text-center font-med">70%</td>
+                                    <td class="text-center font-med">60-70</td>
+                                    <td class="text-center text-muted">120 mins</td>
+                                    <td class="text-center font-med">70-80%</td>
                                     <td class="text-center"><span class="comp-diff diff-intermediate">Moderate</span>
                                     </td>
-                                    <td class="text-center text-salary">$33,250</td>
-                                    <td class="text-center text-muted">5% (2022-2032)</td>
+                                    <td class="text-center text-salary">$38,130</td>
+                                    <td class="text-center text-muted">4%</td>
                                     <td class="text-center">
-                                        <a href="/cert/cna" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="arrow-link-svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="m12 5 7 7-7 7"></path>
-                                            </svg></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="comp-cert-info">
-                                            <span class="comp-emoji">❤️</span>
-                                            <div>
-                                                <p class="comp-name">CCMA</p>
-                                                <p class="comp-fullname">Certified Clinical Medical Assistant</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center font-med">150</td>
-                                    <td class="text-center text-muted">180 minutes</td>
-                                    <td class="text-center font-med">390/500</td>
-                                    <td class="text-center"><span class="comp-diff diff-orange">Moderate-High</span>
-                                    </td>
-                                    <td class="text-center text-salary">$38,270</td>
-                                    <td class="text-center text-muted">14% (2022-2032)</td>
-                                    <td class="text-center">
-                                        <a href="/cert/ccma" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="arrow-link-svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="m12 5 7 7-7 7"></path>
-                                            </svg></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="comp-cert-info">
-                                            <span class="comp-emoji">💊</span>
-                                            <div>
-                                                <p class="comp-name">PTCE</p>
-                                                <p class="comp-fullname">Pharmacy Technician Certification Exam</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center font-med">90</td>
-                                    <td class="text-center text-muted">120 minutes</td>
-                                    <td class="text-center font-med">1400/1600</td>
-                                    <td class="text-center"><span class="comp-diff diff-advanced">High</span></td>
-                                    <td class="text-center text-salary">$37,790</td>
-                                    <td class="text-center text-muted">6% (2022-2032)</td>
-                                    <td class="text-center">
-                                        <a href="/cert/ptce" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="arrow-link-svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="m12 5 7 7-7 7"></path>
-                                            </svg></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="comp-cert-info">
-                                            <span class="comp-emoji">🔬</span>
-                                            <div>
-                                                <p class="comp-name">Phlebotomy</p>
-                                                <p class="comp-fullname">Phlebotomy Technician Certification</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center font-med">80</td>
-                                    <td class="text-center text-muted">120 minutes</td>
-                                    <td class="text-center font-med">70%</td>
-                                    <td class="text-center"><span class="comp-diff diff-intermediate">Moderate</span>
-                                    </td>
-                                    <td class="text-center text-salary">$38,530</td>
-                                    <td class="text-center text-muted">8% (2022-2032)</td>
-                                    <td class="text-center">
-                                        <a href="/cert/phlebotomy" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="arrow-link-svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="m12 5 7 7-7 7"></path>
-                                            </svg></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="comp-cert-info">
-                                            <span class="comp-emoji">🦷</span>
-                                            <div>
-                                                <p class="comp-name">Dental Assistant</p>
-                                                <p class="comp-fullname">Dental Assistant Certification</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center font-med">320</td>
-                                    <td class="text-center text-muted">255 minutes</td>
-                                    <td class="text-center font-med">400/500</td>
-                                    <td class="text-center"><span class="comp-diff diff-orange">Moderate-High</span>
-                                    </td>
-                                    <td class="text-center text-salary">$41,180</td>
-                                    <td class="text-center text-muted">7% (2022-2032)</td>
-                                    <td class="text-center">
-                                        <a href="/cert/dental" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="arrow-link-svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="m12 5 7 7-7 7"></path>
-                                            </svg></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="comp-cert-info">
-                                            <span class="comp-emoji">🌿</span>
-                                            <div>
-                                                <p class="comp-name">Hospice</p>
-                                                <p class="comp-fullname">Hospice &amp; Palliative Care</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center font-med">110</td>
-                                    <td class="text-center text-muted">150 minutes</td>
-                                    <td class="text-center font-med">70%</td>
-                                    <td class="text-center"><span class="comp-diff diff-advanced">High</span></td>
-                                    <td class="text-center text-salary">$52,000</td>
-                                    <td class="text-center text-muted">10% (2022-2032)</td>
-                                    <td class="text-center">
-                                        <a href="/cert/hospice" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="arrow-link-svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="m12 5 7 7-7 7"></path>
-                                            </svg></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="comp-cert-info">
-                                            <span class="comp-emoji">🚨</span>
-                                            <div>
-                                                <p class="comp-name">CEN</p>
-                                                <p class="comp-fullname">Certified Emergency Nurse</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center font-med">175</td>
-                                    <td class="text-center text-muted">180 minutes</td>
-                                    <td class="text-center font-med">Pass/Fail</td>
-                                    <td class="text-center"><span class="comp-diff diff-red">Very High</span></td>
-                                    <td class="text-center text-salary">$78,000</td>
-                                    <td class="text-center text-muted">6% (2022-2032)</td>
-                                    <td class="text-center">
-                                        <a href="/cert/cen" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="arrow-link-svg">
-                                                <path d="M5 12h14"></path>
-                                                <path d="m12 5 7 7-7 7"></path>
-                                            </svg></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="comp-cert-info">
-                                            <span class="comp-emoji">🗣️</span>
-                                            <div>
-                                                <p class="comp-name">SLP</p>
-                                                <p class="comp-fullname">Speech-Language Pathology</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-center font-med">132</td>
-                                    <td class="text-center text-muted">150 minutes</td>
-                                    <td class="text-center font-med">162/200</td>
-                                    <td class="text-center"><span class="comp-diff diff-advanced">High</span></td>
-                                    <td class="text-center text-salary">$84,140</td>
-                                    <td class="text-center text-muted">19% (2022-2032)</td>
-                                    <td class="text-center">
-                                        <a href="/cert/slp" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        <a href="{{ route('certification.show', 'cna') }}" class="table-link-btn">Start
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="arrow-link-svg">
                                                 <path d="M5 12h14"></path>
@@ -1209,14 +1065,16 @@
                                         </div>
                                     </td>
                                     <td class="text-center font-med">70</td>
-                                    <td class="text-center text-muted">90 minutes</td>
-                                    <td class="text-center font-med">70%</td>
-                                    <td class="text-center"><span class="comp-diff diff-beginner">Beginner</span></td>
-                                    <td class="text-center text-salary">$30,290</td>
-                                    <td class="text-center text-muted">5% (2022-2032)</td>
+                                    <td class="text-center text-muted">120 mins</td>
+                                    <td class="text-center font-med">Varies</td>
+                                    <td class="text-center"><span class="comp-diff diff-intermediate">Moderate</span>
+                                    </td>
+                                    <td class="text-center text-salary">$38,130</td>
+                                    <td class="text-center text-muted">4%</td>
                                     <td class="text-center">
-                                        <a href="/cert/nurse-aide" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        <a href="{{ route('certification.show', 'nurse-aide') }}"
+                                            class="table-link-btn">Start
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="arrow-link-svg">
                                                 <path d="M5 12h14"></path>
@@ -1227,23 +1085,48 @@
                                 <tr>
                                     <td>
                                         <div class="comp-cert-info">
-                                            <span class="comp-emoji">📋</span>
+                                            <span class="comp-emoji">🌿</span>
                                             <div>
-                                                <p class="comp-name">AAMA</p>
-                                                <p class="comp-fullname">American Assoc. of Medical Assistants</p>
+                                                <p class="comp-name">Hospice</p>
+                                                <p class="comp-fullname">Hospice &amp; Palliative Care</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center font-med">200</td>
-                                    <td class="text-center text-muted">160 minutes</td>
-                                    <td class="text-center font-med">Pass/Fail</td>
-                                    <td class="text-center"><span
-                                            class="comp-diff diff-intermediate">Intermediate</span></td>
-                                    <td class="text-center text-salary">$38,980</td>
-                                    <td class="text-center text-muted">14% (2022-2032)</td>
+                                    <td class="text-center font-med">150</td>
+                                    <td class="text-center text-muted">180 mins</td>
+                                    <td class="text-center font-med">75 (Scaled)</td>
+                                    <td class="text-center"><span class="comp-diff diff-advanced">Advanced</span></td>
+                                    <td class="text-center text-salary">$89,000</td>
+                                    <td class="text-center text-muted">6%</td>
                                     <td class="text-center">
-                                        <a href="/cert/aama" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        <a href="{{ route('certification.show', 'hospice-and-palliative-care') }}"
+                                            class="table-link-btn">Start <svg xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" class="arrow-link-svg">
+                                                <path d="M5 12h14"></path>
+                                                <path d="m12 5 7 7-7 7"></path>
+                                            </svg></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="comp-cert-info">
+                                            <span class="comp-emoji">🚨</span>
+                                            <div>
+                                                <p class="comp-name">CEN</p>
+                                                <p class="comp-fullname">Certified Emergency Nurse</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center font-med">175</td>
+                                    <td class="text-center text-muted">180 mins</td>
+                                    <td class="text-center font-med">106/150</td>
+                                    <td class="text-center"><span class="comp-diff diff-red">Very High</span></td>
+                                    <td class="text-center text-salary">$85,000</td>
+                                    <td class="text-center text-muted">6%</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('certification.show', 'cen') }}" class="table-link-btn">Start
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="arrow-link-svg">
                                                 <path d="M5 12h14"></path>
@@ -1256,21 +1139,152 @@
                                         <div class="comp-cert-info">
                                             <span class="comp-emoji">🏥</span>
                                             <div>
-                                                <p class="comp-name">FMP</p>
-                                                <p class="comp-fullname">Family Medicine Practice</p>
+                                                <p class="comp-name">FNP</p>
+                                                <p class="comp-fullname">Family Nurse Practitioner</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center font-med">120</td>
-                                    <td class="text-center text-muted">120 minutes</td>
-                                    <td class="text-center font-med">70%</td>
-                                    <td class="text-center"><span
-                                            class="comp-diff diff-intermediate">Intermediate</span></td>
-                                    <td class="text-center text-salary">$57,000</td>
-                                    <td class="text-center text-muted">8% (2022-2032)</td>
+                                    <td class="text-center font-med">150-175</td>
+                                    <td class="text-center text-muted">180 mins</td>
+                                    <td class="text-center font-med">350/500</td>
+                                    <td class="text-center"><span class="comp-diff diff-advanced">Advanced</span></td>
+                                    <td class="text-center text-salary">$125,000</td>
+                                    <td class="text-center text-muted">38%</td>
                                     <td class="text-center">
-                                        <a href="/cert/fmp" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        <a href="{{ route('certification.show', 'fnp') }}" class="table-link-btn">Start
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="arrow-link-svg">
+                                                <path d="M5 12h14"></path>
+                                                <path d="m12 5 7 7-7 7"></path>
+                                            </svg></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="comp-cert-info">
+                                            <span class="comp-emoji">❤️</span>
+                                            <div>
+                                                <p class="comp-name">CCMA</p>
+                                                <p class="comp-fullname">Clinical Medical Assistant</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center font-med">180-200</td>
+                                    <td class="text-center text-muted">160 mins</td>
+                                    <td class="text-center font-med">390/500</td>
+                                    <td class="text-center"><span class="comp-diff diff-orange">Mod-High</span></td>
+                                    <td class="text-center text-salary">$42,000</td>
+                                    <td class="text-center text-muted">14%</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('certification.show', 'medical-assistant') }}"
+                                            class="table-link-btn">Start <svg xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" class="arrow-link-svg">
+                                                <path d="M5 12h14"></path>
+                                                <path d="m12 5 7 7-7 7"></path>
+                                            </svg></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="comp-cert-info">
+                                            <span class="comp-emoji">📋</span>
+                                            <div>
+                                                <p class="comp-name">AAMA</p>
+                                                <p class="comp-fullname">Certified Medical Assistant</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center font-med">200</td>
+                                    <td class="text-center text-muted">160 mins</td>
+                                    <td class="text-center font-med">430/800</td>
+                                    <td class="text-center"><span class="comp-diff diff-orange">Mod-High</span></td>
+                                    <td class="text-center text-salary">$42,000</td>
+                                    <td class="text-center text-muted">14%</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('certification.show', 'medical-assistant') }}"
+                                            class="table-link-btn">Start <svg xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" class="arrow-link-svg">
+                                                <path d="M5 12h14"></path>
+                                                <path d="m12 5 7 7-7 7"></path>
+                                            </svg></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="comp-cert-info">
+                                            <span class="comp-emoji">💊</span>
+                                            <div>
+                                                <p class="comp-name">PTCE</p>
+                                                <p class="comp-fullname">Pharmacy Technician Exam</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center font-med">90</td>
+                                    <td class="text-center text-muted">110 mins</td>
+                                    <td class="text-center font-med">1400/1600</td>
+                                    <td class="text-center"><span class="comp-diff diff-advanced">High</span></td>
+                                    <td class="text-center text-salary">$40,300</td>
+                                    <td class="text-center text-muted">6%</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('certification.show', 'pharmacy-technician') }}"
+                                            class="table-link-btn">Start <svg xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" class="arrow-link-svg">
+                                                <path d="M5 12h14"></path>
+                                                <path d="m12 5 7 7-7 7"></path>
+                                            </svg></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="comp-cert-info">
+                                            <span class="comp-emoji">🧪</span>
+                                            <div>
+                                                <p class="comp-name">ExCPT</p>
+                                                <p class="comp-fullname">Exam for the Cert of Pharmacy Techs</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center font-med">100</td>
+                                    <td class="text-center text-muted">120 mins</td>
+                                    <td class="text-center font-med">360/500</td>
+                                    <td class="text-center"><span class="comp-diff diff-advanced">High</span></td>
+                                    <td class="text-center text-salary">$40,300</td>
+                                    <td class="text-center text-muted">6%</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('certification.show', 'pharmacy-technician') }}"
+                                            class="table-link-btn">Start <svg xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" class="arrow-link-svg">
+                                                <path d="M5 12h14"></path>
+                                                <path d="m12 5 7 7-7 7"></path>
+                                            </svg></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="comp-cert-info">
+                                            <span class="comp-emoji">🔬</span>
+                                            <div>
+                                                <p class="comp-name">Phlebotomy</p>
+                                                <p class="comp-fullname">Phlebotomy Technician</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center font-med">100-120</td>
+                                    <td class="text-center text-muted">120 mins</td>
+                                    <td class="text-center font-med">390/500</td>
+                                    <td class="text-center"><span class="comp-diff diff-intermediate">Moderate</span>
+                                    </td>
+                                    <td class="text-center text-salary">$41,810</td>
+                                    <td class="text-center text-muted">8%</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('certification.show', 'phlebotomy') }}"
+                                            class="table-link-btn">Start
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="arrow-link-svg">
                                                 <path d="M5 12h14"></path>
@@ -1284,19 +1298,20 @@
                                             <span class="comp-emoji">🧠</span>
                                             <div>
                                                 <p class="comp-name">Counsellor</p>
-                                                <p class="comp-fullname">Professional Counselling Certification</p>
+                                                <p class="comp-fullname">Professional Counselling</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center font-med">160</td>
-                                    <td class="text-center text-muted">180 minutes</td>
-                                    <td class="text-center font-med">Pass/Fail</td>
+                                    <td class="text-center font-med">200</td>
+                                    <td class="text-center text-muted">225 mins</td>
+                                    <td class="text-center font-med">60-65%</td>
                                     <td class="text-center"><span class="comp-diff diff-advanced">High</span></td>
-                                    <td class="text-center text-salary">$49,710</td>
-                                    <td class="text-center text-muted">11% (2022-2032)</td>
+                                    <td class="text-center text-salary">$53,710</td>
+                                    <td class="text-center text-muted">18%</td>
                                     <td class="text-center">
-                                        <a href="/cert/counsellor" class="table-link-btn">Start <svg
-                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                        <a href="{{ route('certification.show', 'counsellor') }}"
+                                            class="table-link-btn">Start
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                 stroke-linejoin="round" class="arrow-link-svg">
                                                 <path d="M5 12h14"></path>
