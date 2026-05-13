@@ -23,7 +23,7 @@ Route::prefix('study-notes')
         Route::get('/{school:slug}', 'index')
             ->name('outline');
 
-        Route::get('/{school:slug}/{section:slug}/{topic:slug}', 'show')
+        Route::get('/{school:slug}/{exam:slug}/{topic:slug}', 'show')
             ->name('content');
 
     });
