@@ -65,11 +65,11 @@
 
                                 $groupedExams = [];
 
-                                ['CCMA', 'AAMA'])
                                 $rawGroups = preg_split('/[&\/]/', $certification['title_abbr']);
                                 $expectedGroups = array_filter(array_map('trim', $rawGroups));
 
                                 foreach($pageExams as $exam) {
+
                                 $exam->q_count = \App\Models\Question::where('exam_id', $exam->id)->count();
 
                                 $assignedGroup = 'General';
