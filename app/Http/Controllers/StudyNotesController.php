@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Exam;
 use App\Models\Notes;
 use App\Models\School;
 use App\Models\Section;
@@ -13,35 +14,31 @@ class StudyNotesController extends Controller
     //
     /**
      * Gets the outline
-     *
-     * @param School $school
-     * @return View
      */
     public function index(School $school): View
     {
         if (! $school) {
             abort(404, 'School Not found!!');
         }
-        $sections = $school->sections()->with('topics')->get();
-        return view('study-notes.index', compact('sections','school'));
+        $sections = $school->exams()->with('topics')->get();
+
+        return view('study-notes.index', compact('sections', 'school'));
     }
 
     /**
      * Display the notes content
      *
-     * @param School $school
-     * @param Section $section
-     * @param Topic $topic
-     * @return View
+     * @param  Section  $section
      */
-    public function show(School $school, Section $section, Topic $topic): View
+    public function show(School $school, Exam $exam, Topic $topic): View
     {
-      
-        $notes = Notes::where('topic_id',$topic->id)->first();
-        if(!$notes){
-            abort(404,'No notes found');
+        //   dd($topic->name,$exam->name,$school->name);
+        $notes = Notes::where('topic_id', $topic->id)->first();
+        if (! $notes) {
+            abort(404, 'No notes found');
         }
-        $sections = $school->sections()->with('topics')->get();
-        return view('study-notes.chapter',compact('notes','sections','topic','section','school'));
+        $exams = $school->exams()->with('topics')->get();
+
+        return view('study-notes.chapter', compact('notes', 'exams', 'topic', 'exam', 'school'));
     }
 }
