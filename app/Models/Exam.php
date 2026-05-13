@@ -19,4 +19,9 @@ class Exam extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    public function topics():HasMany
+    {
+        return $this->hasMany(Topic::class);
+    }
 }
