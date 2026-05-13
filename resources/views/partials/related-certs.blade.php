@@ -1,64 +1,152 @@
-<section class="py-16 bg-muted/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10">
-            <h2 class="font-heading text-2xl font-bold">Related Certifications</h2>
+<section class="srv-section srv-bg-muted">
+    <div class="max-width-wrapper">
+        <div class="section-title-wrapper mb-lg">
+            <h2 class="section-heading">Other Certifications</h2>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="srv-related-grid">
 
-            @if($current !== 'nurse-aide')
-            <a class="block h-full" href="{{ route('cert.show', 'nurse-aide') }}">
-                <div
-                    class="h-full rounded-2xl border border-emerald-200 bg-emerald-50 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 group">
-                    <div class="flex items-start justify-between mb-4">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-600 flex items-center justify-center shadow-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-user-check w-6 h-6 text-white">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <polyline points="16 11 18 13 22 9"></polyline>
-                            </svg>
-                        </div>
-                        <div
-                            class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold border-transparent bg-emerald-100 text-emerald-700">
-                            Beginner</div>
+            @foreach($otherCerts as $other)
+            <a href="{{ route('certification.show', $other['id']) }}"
+                class="related-card {{ $other['colors']['theme_class'] }}">
+                <div class="rc-header">
+                    <div class="rc-icon">
+                        @switch($other['id'])
+                        @case('cna')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                            </path>
+                        </svg>
+                        @break
+                        @case('nurse-aide')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <polyline points="16 11 18 13 22 9"></polyline>
+                        </svg>
+                        @break
+                        @case('hospice')
+                        @case('hospice-and-palliative-care')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M12 5a3 3 0 1 1 3 3m-3-3a3 3 0 1 0-3 3m3-3v1M9 8a3 3 0 1 0 3 3M9 8h1m5 0a3 3 0 1 1-3 3m3-3h-1m-2 3v-1">
+                            </path>
+                            <circle cx="12" cy="8" r="2"></circle>
+                            <path d="M12 10v12"></path>
+                            <path d="M12 22c4.2 0 7-1.667 7-5-4.2 0-7 1.667-7 5Z"></path>
+                        </svg>
+                        @break
+                        @case('cen')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 18v-6a5 5 0 1 1 10 0v6"></path>
+                            <path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"></path>
+                            <path d="M21 12h1"></path>
+                            <path d="M18.5 4.5 18 5"></path>
+                            <path d="M2 12h1"></path>
+                            <path d="M12 2v1"></path>
+                            <path d="m4.929 4.929.707.707"></path>
+                            <path d="M12 12v6"></path>
+                        </svg>
+                        @break
+                        @case('fnp')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        @break
+                        @case('ptce')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path>
+                            <path d="m8.5 8.5 7 7"></path>
+                        </svg>
+                        @break
+                        @case('ccma')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 2v2"></path>
+                            <path d="M5 2v2"></path>
+                            <path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"></path>
+                            <path d="M8 15a6 6 0 0 0 12 0v-3"></path>
+                            <circle cx="20" cy="10" r="2"></circle>
+                        </svg>
+                        @break
+                        @case('phlebotomy')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z">
+                            </path>
+                            <path
+                                d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97">
+                            </path>
+                        </svg>
+                        @break
+                        @case('dental-assistant')
+                        @case('dental')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                            <line x1="9" x2="9.01" y1="9" y2="9"></line>
+                            <line x1="15" x2="15.01" y1="9" y2="9"></line>
+                        </svg>
+                        @break
+                        @case('slp')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                        </svg>
+                        @break
+                        @case('counsellor')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z">
+                            </path>
+                            <path
+                                d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z">
+                            </path>
+                            <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path>
+                            <path d="M17.599 6.5a3 3 0 0 0 .399-1.375"></path>
+                            <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"></path>
+                            <path d="M3.477 10.896a4 4 0 0 1 .585-.396"></path>
+                            <path d="M19.938 10.5a4 4 0 0 1 .585.396"></path>
+                            <path d="M6 18a4 4 0 0 1-1.967-.516"></path>
+                        </svg>
+                        @break
+                        @case('aama')
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <path d="M12 11h4"></path>
+                            <path d="M12 16h4"></path>
+                            <path d="M8 11h.01"></path>
+                            <path d="M8 16h.01"></path>
+                        </svg>
+                        @break
+                        @default
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                        @endswitch
                     </div>
-                    <h3 class="font-heading font-bold text-lg text-emerald-700 mb-1">Nurse Aide</h3>
-                    <p class="text-xs text-muted-foreground mb-2">Nurse Aide Certification</p>
-                    <p class="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-2">Master nurse aide skills
-                        with practice tests on resident care, safety procedures, and healthcare communication.</p>
+                    <div class="rc-badge">{{ $other['stats']['difficulty'] }}</div>
                 </div>
+                <h3 class="rc-title">{{ $other['title_abbr'] }}</h3>
+                <p class="rc-subtitle">{{ $other['title_full'] }}</p>
+                <p class="rc-desc">{{ \Illuminate\Support\Str::limit($other['description'], 110) }}</p>
             </a>
-            @endif
-
-            @if($current !== 'cna')
-            <a class="block h-full" href="{{ route('cert.show', 'cna') }}">
-                <div
-                    class="h-full rounded-2xl border border-teal-200 bg-teal-50 p-6 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 group">
-                    <div class="flex items-start justify-between mb-4">
-                        <div
-                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center shadow-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-heart w-6 h-6 text-white">
-                                <path
-                                    d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
-                                </path>
-                            </svg>
-                        </div>
-                        <div
-                            class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold border-transparent bg-teal-100 text-teal-700">
-                            Intermediate</div>
-                    </div>
-                    <h3 class="font-heading font-bold text-lg text-teal-700 mb-1">CNA</h3>
-                    <p class="text-xs text-muted-foreground mb-2">Certified Nursing Assistant</p>
-                    <p class="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-2">Prepare for the CNA exam
-                        with comprehensive practice questions covering patient care, infection control, and daily living
-                        activities.</p>
-                </div>
-            </a>
-            @endif
+            @endforeach
 
         </div>
     </div>
