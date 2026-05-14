@@ -15,6 +15,11 @@ class Topic extends Model
           return $this->hasOne(NotesPointer::class);
      }
 
+     public function notes():HasOne
+     {
+          return $this->hasOne(Notes::class);
+     }
+
      public function section():BelongsTo
      {
           return $this->belongsTo(Section::class);

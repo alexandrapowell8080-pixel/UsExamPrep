@@ -1599,20 +1599,19 @@
                     <span class="section-badge text-teal">Video Lessons</span>
                     <h2 class="section-heading">Learn From Expert Video Lessons</h2>
                     <p class="section-subheading">Watch concise, exam-focused video lessons taught by certified
-                        healthcare professionals.</p>
+                        healthcare
+                        professionals.</p>
                 </div>
 
                 <div class="videos-grid">
+
                     <div class="video-card">
                         <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
-                            </div>
-                            <span class="video-duration">12:30</span>
+                            <iframe src="https://www.youtube-nocookie.com/embed/wYvlo-EhKD0"
+                                title="CNA Patient Care Fundamentals"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy">
+                            </iframe>
                         </div>
                         <div class="video-info">
                             <span class="video-category">CNA</span>
@@ -1622,14 +1621,11 @@
 
                     <div class="video-card">
                         <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
-                            </div>
-                            <span class="video-duration">8:45</span>
+                            <iframe src="https://www.youtube-nocookie.com/embed/Tdl9rXZswlw"
+                                title="Phlebotomy Order of Draw"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy">
+                            </iframe>
                         </div>
                         <div class="video-info">
                             <span class="video-category">Phlebotomy</span>
@@ -1639,15 +1635,11 @@
 
                     <div class="video-card">
                         <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
-                            </div>
-                            <div class="lock-premium-badge">🔒 Premium</div>
-                            <span class="video-duration">18:20</span>
+                            <iframe src="https://www.youtube-nocookie.com/embed/r5SZ-snMVNU"
+                                title="PTCE Top 200 Medications"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy">
+                            </iframe>
                         </div>
                         <div class="video-info">
                             <span class="video-category">PTCE</span>
@@ -1657,15 +1649,11 @@
 
                     <div class="video-card">
                         <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
-                            </div>
-                            <div class="lock-premium-badge">🔒 Premium</div>
-                            <span class="video-duration">10:15</span>
+                            <iframe src="https://www.youtube-nocookie.com/embed/AbEF7QMfGHo"
+                                title="EKG Lead Placement Guide"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy">
+                            </iframe>
                         </div>
                         <div class="video-info">
                             <span class="video-category">CCMA</span>
@@ -1675,15 +1663,10 @@
 
                     <div class="video-card">
                         <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
-                            </div>
-                            <div class="lock-premium-badge">🔒 Premium</div>
-                            <span class="video-duration">14:50</span>
+                            <iframe src="https://www.youtube-nocookie.com/embed/Pn6y-6QdrZ4" title="Triage & ESI Levels"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy">
+                            </iframe>
                         </div>
                         <div class="video-info">
                             <span class="video-category">CEN</span>
@@ -1693,20 +1676,18 @@
 
                     <div class="video-card">
                         <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
-                            </div>
-                            <span class="video-duration">11:00</span>
+                            <iframe src="https://www.youtube-nocookie.com/embed/pgu78CoZ-4Y"
+                                title="CBT Therapy Techniques"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen loading="lazy">
+                            </iframe>
                         </div>
                         <div class="video-info">
                             <span class="video-category">Counsellor</span>
                             <h4 class="video-title">CBT Therapy Techniques</h4>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -1834,7 +1815,7 @@
     </main>
     @include('partials.footer')
 
-    <div class="floating-widget" id="floating-cta">
+    <div class="floating-widget" id="floating-cta" data-nosnippet>
         <div class="widget-inner">
             <button class="widget-close-btn" onclick="document.getElementById('floating-cta').style.display='none'"
                 aria-label="Close widget">
@@ -1858,9 +1839,11 @@
                 <span class="widget-title">Free Practice Quiz!</span>
             </div>
             <p class="widget-desc">Try 5 free practice questions and see how you score.</p>
-            <a href="/certifications"><button class="widget-action-btn">Start Free Quiz &rarr;</button></a>
+            <a href="{{ route('home') }}#certifications"><button class="widget-action-btn">Start Free Quiz
+                    &rarr;</button></a>
         </div>
     </div>
+
 </body>
 
 </html>

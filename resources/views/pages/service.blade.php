@@ -415,7 +415,7 @@
 
             @include('partials.footer')
 
-            <div class="srv-floating-widget" id="floating-widget">
+            <div class="srv-floating-widget" id="floating-widget" data-nosnippet>
                 <div class="widget-inner srv-gradient-bg shadow-xl">
                     <button class="widget-close-btn"
                         onclick="document.getElementById('floating-widget').style.display='none'">
@@ -436,8 +436,7 @@
                     </div>
                     <p class="widget-desc">Try {{ $certification['stats']['free_q'] }} and see how you score.</p>
 
-                    <a
-                        href="{{ route('questions.index', ['schoolSlug' => $certification['classification_slug'], 'examSlug' => $certification['id']]) }}">
+                    <a href="#service-hero">
                         <button class="btn btn-white w-full shadow-sm widget-action-text">Start Free Quiz
                             &rarr;</button>
                     </a>

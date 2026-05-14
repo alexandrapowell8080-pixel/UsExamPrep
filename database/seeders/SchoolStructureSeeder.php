@@ -659,6 +659,21 @@ class SchoolStructureSeeder extends Seeder
                 ],
             ],
 
+            [
+                'name' => 'Nurse Aide',
+                'sections' => []
+            ],
+
+            [
+                'name' => 'Medical Assistant',
+                'sections' => []
+            ],
+
+            [
+                'name' => 'Pharmacy Technician',
+                'sections' => []
+            ],
+
         ];
 
         foreach ($data as $schoolData) {
@@ -705,7 +720,7 @@ class SchoolStructureSeeder extends Seeder
         $count = 1;
 
         while (Exam::where('slug', $slug)->exists()) {
-            $slug = $originalSlug.'-'.$count;
+            $slug = $originalSlug . '-' . $count;
             $count++;
         }
 

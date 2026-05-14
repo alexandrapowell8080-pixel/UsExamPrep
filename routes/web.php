@@ -9,10 +9,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/certifications', function () {
-    return view('certifications');
-})->name('certifications');
-
 Route::get('/certification/{slug}', [CertificationController::class, 'show'])->name('certification.show');
 
 Route::prefix('study-notes')

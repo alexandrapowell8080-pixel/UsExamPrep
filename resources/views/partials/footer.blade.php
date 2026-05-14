@@ -171,13 +171,12 @@
                     <li><a href="/certification/medical-assistant">CCMA Prep</a></li>
                     <li><a href="/certification/pharmacy-technician">PTCE Prep</a></li>
                     <li><a href="/certification/phlebotomy-technician-certification">Phlebotomy Prep</a></li>
-                    <li><a href="/certifications">All Certifications</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="footer-list-heading">Resources</h3>
                 <ul class="footer-links-list">
-                    <li><a href="/certifications">Practice Questions</a></li>
+                    <li><a href="{{route('home')}}#certifications">Practice Questions</a></li>
                     <li><a href="/study-notes">Study Notes</a></li>
                     {{-- <li><a href="/blog">Blog &amp; Tips</a></li> --}}
                 </ul>

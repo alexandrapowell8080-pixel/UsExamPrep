@@ -4,12 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class ExamDataSeeder extends Seeder
 {
-    protected string $csvBasePath = 'database/csv/questions/';
+    protected string $directoryPath;
 
     protected array $schoolCache = [];
 
@@ -19,145 +18,136 @@ class ExamDataSeeder extends Seeder
 
     protected int $batchSize = 500;
 
+    public function __construct()
+    {
+        $this->directoryPath = database_path('csv/questions');
+    }
+
     public function run(): void
     {
-        $certifications = [
-            ['name' => 'Certified Nursing Assistant', 'slug' => 'certified-nursing-assistant', 'type' => 'nursing'],
-            ['name' => 'Nurse Aide', 'slug' => 'nurse-aide', 'type' => 'nursing'],
-            ['name' => 'Hospice & Palliative Care', 'slug' => 'hospice-palliative-care', 'type' => 'nursing'],
-            ['name' => 'Certified Emergency Nurse', 'slug' => 'certified-emergency-nurse', 'type' => 'nursing'],
-            ['name' => 'Family Nurse Practitioner', 'slug' => 'family-nurse-practitioner', 'type' => 'nursing'],
-            ['name' => 'Medical Assistant', 'slug' => 'medical-assistant', 'type' => 'ma', 'groups' => ['CCMA', 'AAMA']],
-            ['name' => 'Pharmacy Technician', 'slug' => 'pharmacy-technician', 'type' => 'pharmacy', 'groups' => ['PTCE', 'ExCPT']],
-            ['name' => 'Phlebotomy Technician Certification', 'slug' => 'phlebotomy-technician-certification', 'type' => 'ma'],
-            ['name' => 'National Counselor Examination', 'slug' => 'national-counselor-examination', 'type' => 'counselling'],
-        ];
+        $csvFiles = glob($this->directoryPath . '/*.csv');
+
+        if (empty($csvFiles)) {
+            $this->command->error("No CSV files found in: {$this->directoryPath}");
+
+            return;
+        }
+
+        $this->command->info('Starting stable CSV import for ' . count($csvFiles) . ' file(s).');
 
         DB::disableQueryLog();
 
-        foreach ($certifications as $cert) {
-            $this->processCertification($cert);
+        foreach ($csvFiles as $filePath) {
+            $this->processFile($filePath);
         }
 
-        $this->command->info('✓ Import completely finished for all certifications.');
+        $this->command->info('✓ Import completely finished for all files.');
     }
 
-    protected function processCertification(array $cert): void
+    protected function processFile(string $filePath): void
     {
-        $schoolId = $this->getOrCreateSchool($cert['name'], $cert['slug']);
-
-        $examNamesToProcess = [];
-        if (isset($cert['groups'])) {
-            foreach ($cert['groups'] as $group) {
-                $examNamesToProcess[] = $group.' Practice Exam';
-            }
-        } else {
-            $examNamesToProcess[] = $cert['name'].' Practice Exam';
-        }
-
-        foreach ($examNamesToProcess as $examName) {
-            // CSV filename is based on SCHOOL SLUG, not type
-            // e.g., certified-nursing-assistant_questions.csv
-            $csvFileName = $cert['slug'].'_questions.csv';
-            $csvFilePath = base_path($this->csvBasePath.$csvFileName);
-
-            if (! File::exists($csvFilePath)) {
-                $this->command->warn("CSV file not found: {$csvFileName}. Skipping exam: {$examName}");
-
-                continue;
-            }
-
-            $this->processExamCsv($csvFilePath, $schoolId, $examName);
-        }
-    }
-
-    protected function processExamCsv(string $filePath, int $schoolId, string $examName): void
-    {
-        $this->command->info('Processing: '.basename($filePath)." → {$examName}");
+        $this->command->info('Processing: ' . basename($filePath));
 
         DB::beginTransaction();
 
         try {
             $handle = fopen($filePath, 'r');
 
-            if (! $handle) {
-                throw new \Exception('Could not open file: '.basename($filePath));
-            }
-
             $headers = fgetcsv($handle);
-            if (! $headers) {
-                throw new \Exception('Failed to read CSV headers in '.basename($filePath));
+            if (!$headers) {
+                throw new \Exception('Failed to read CSV headers in ' . basename($filePath));
             }
 
+            $headers[0] = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $headers[0]);
             $headers = array_map('trim', $headers);
-            $expectedHeaders = [
-                'extract', 'question', 'choiceA', 'choiceB', 'choiceC', 'choiceD',
-                'choiceE', 'choiceF', 'choiceG', 'correct_answer', 'rationale',
-                'question_type', 'image', 'url', 'wrong_answer',
-            ];
 
-            $examId = $this->getOrCreateExam($schoolId, $examName);
+            $rowCount = 0;
             $importedCount = 0;
+            $skippedCount = 0;
 
             while (($row = fgetcsv($handle)) !== false) {
+                $rowCount++;
+
                 if (empty(array_filter($row))) {
                     continue;
                 }
 
-                if (count($row) < count($expectedHeaders)) {
-                    $row = array_pad($row, count($expectedHeaders), '');
-                } elseif (count($row) > count($expectedHeaders)) {
-                    $row = array_slice($row, 0, count($expectedHeaders));
+                if (count($headers) !== count($row)) {
+                    $row = array_pad($row, count($headers), null);
                 }
-
-                $data = array_combine($expectedHeaders, $row);
-
-                if (empty(trim($data['question'] ?? '')) || empty(trim($data['correct_answer'] ?? ''))) {
-                    continue;
-                }
-
-                $choices = [];
-                foreach (range('A', 'G') as $letter) {
-                    $val = trim($data["choice{$letter}"] ?? '');
-                    if ($val !== '') {
-                        $choices[$letter] = $val;
+                $cleanRow = array_map(function ($value) {
+                    $value = trim((string) $value);
+                    if ($value === '') {
+                        return null;
                     }
+
+                    if (mb_check_encoding($value, 'UTF-8')) {
+                        return $value;
+                    }
+
+                    $encoding = mb_detect_encoding($value, 'UTF-8, ISO-8859-1, Windows-1252', true) ?: 'UTF-8';
+
+                    return mb_convert_encoding($value, 'UTF-8', $encoding);
+                }, $row);
+
+                $data = array_combine($headers, $cleanRow);
+
+                try {
+                    if ($this->processRow($data)) {
+                        $importedCount++;
+                    } else {
+                        $skippedCount++;
+                    }
+                } catch (\Exception $e) {
+                    $skippedCount++;
+                    $this->command->warn("Row {$rowCount} skipped in " . basename($filePath) . ': ' . $e->getMessage());
                 }
 
-                if (count($choices) < 4) {
-                    continue;
+                if ($rowCount % 500 === 0) {
+                    $this->command->info("Processed {$rowCount} rows from " . basename($filePath) . '...');
                 }
-
-                $this->queueQuestion($examId, [
-                    'extract' => trim($data['extract'] ?? ''),
-                    'question' => trim($data['question']),
-                    'choices' => $choices,
-                    'correct_answer' => strtoupper(trim($data['correct_answer'])),
-                    'rationale' => trim($data['rationale'] ?? ''),
-                    'question_type' => trim($data['question_type'] ?? 'General'),
-                    'image' => trim($data['image'] ?? ''),
-                    'url' => trim($data['url'] ?? ''),
-                    'wrong_answer' => trim($data['wrong_answer'] ?? ''),
-                ]);
-
-                $importedCount++;
             }
 
-            fclose($handle);
             $this->insertQuestionsBatch();
-            DB::commit();
 
-            $this->command->info("✓ Finished: {$examName} ({$importedCount} questions imported).");
+            fclose($handle);
+
+            DB::commit();
+            $this->command->info('✓ Finished file: ' . basename($filePath) . " ({$importedCount} queued, {$skippedCount} skipped).");
 
         } catch (\Exception $e) {
             DB::rollBack();
             $this->questionsBatch = [];
-            $this->command->error('Failed processing '.basename($filePath).': '.$e->getMessage());
+            $this->command->error('Failed processing ' . basename($filePath) . ': ' . $e->getMessage());
         }
     }
 
-    protected function getOrCreateSchool(string $name, string $slug): int
+    protected function processRow(array $data): bool
     {
+        if (empty($data['question'])) {
+            return false;
+        }
+
+        $schoolName = $data['school'] ?? '';
+        $examName = $data['exam'] ?? '';
+
+        if (empty($schoolName) || empty($examName)) {
+            return false;
+        }
+
+        $schoolId = $this->getOrCreateSchool($schoolName);
+
+        $examId = $this->getOrCreateExam($schoolId, $examName);
+
+        $this->queueQuestion($examId, $data);
+
+        return true;
+    }
+
+    protected function getOrCreateSchool(string $name): int
+    {
+        $slug = Str::slug($name);
+
         if (isset($this->schoolCache[$slug])) {
             return $this->schoolCache[$slug];
         }
@@ -214,23 +204,39 @@ class ExamDataSeeder extends Seeder
 
     protected function queueQuestion(int $examId, array $data): void
     {
+
+        $baseUrl = 'https://usexamprep.com/questions/';
+        $baseText = $data['question'] ?? 'question';
+        $cleanSlug = Str::slug(substr($baseText, 0, 60));
+
+        $randomSuffix = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+
+        $urlPath = $cleanSlug . '-' . $randomSuffix;
+        $fullUrl = $baseUrl . $urlPath;
+
+        if (strlen($fullUrl) > 105) {
+            $maxSlugLength = 105 - strlen($baseUrl) - 7;
+            $truncatedSlug = substr($cleanSlug, 0, $maxSlugLength);
+            $fullUrl = $baseUrl . $truncatedSlug . '-' . $randomSuffix;
+        }
+
         $this->questionsBatch[] = [
             'exam_id' => $examId,
-            'extract' => $data['extract'],
+            'extract' => $data['extract'] ?? '',
             'question' => $data['question'],
-            'choiceA' => $data['choices']['A'] ?? null,
-            'choiceB' => $data['choices']['B'] ?? null,
-            'choiceC' => $data['choices']['C'] ?? null,
-            'choiceD' => $data['choices']['D'] ?? null,
-            'choiceE' => $data['choices']['E'] ?? null,
-            'choiceF' => $data['choices']['F'] ?? null,
-            'choiceG' => $data['choices']['G'] ?? null,
-            'correct_answer' => $data['correct_answer'],
-            'rationale' => $data['rationale'],
-            'question_type' => $data['question_type'],
-            'image' => $data['image'],
-            'url' => $data['url'],
-            'wrong_answer' => $data['wrong_answer'],
+            'choiceA' => $data['choiceA'] ?? '',
+            'choiceB' => $data['choiceB'] ?? '',
+            'choiceC' => $data['choiceC'] ?? '',
+            'choiceD' => $data['choiceD'] ?? '',
+            'choiceE' => $data['choiceE'] ?? null,
+            'choiceF' => $data['choiceF'] ?? null,
+            'choiceG' => $data['choiceG'] ?? null,
+            'correct_answer' => $data['correct_answer'] ?? '',
+            'rationale' => $data['rationale'] ?? '',
+            'question_type' => $data['question_type'] ?? 'multiple_choice',
+            'image' => $data['image'] ?? '',
+            'url' => $fullUrl,
+            'wrong_answer' => null,
             'created_at' => now(),
             'updated_at' => now(),
         ];
