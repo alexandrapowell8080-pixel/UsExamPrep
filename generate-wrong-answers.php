@@ -11,7 +11,7 @@ preg_match_all('/^DEEPSEEK_API_KEY=(.*)$/m', $envContent, $matches);
 $DEEPSEEK_API_KEY = trim($matches[1][0] ?? '');
 
 $DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
-$BATCH_SIZE = 100;
+$BATCH_SIZE = 1000;
 $API_DELAY = 2;
 
 $dbConfig = [

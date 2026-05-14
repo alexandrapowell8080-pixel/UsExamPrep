@@ -11,7 +11,7 @@
                 <div class="rc-header">
                     <div class="rc-icon">
                         @switch($other['id'])
-                        @case('cna')
+                        @case('certified-nursing-assistant')
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
@@ -27,8 +27,7 @@
                             <polyline points="16 11 18 13 22 9"></polyline>
                         </svg>
                         @break
-                        @case('hospice')
-                        @case('hospice-and-palliative-care')
+                        @case('hospice-palliative-care')
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
@@ -39,7 +38,7 @@
                             <path d="M12 22c4.2 0 7-1.667 7-5-4.2 0-7 1.667-7 5Z"></path>
                         </svg>
                         @break
-                        @case('cen')
+                        @case('certified-emergency-nurse')
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M7 18v-6a5 5 0 1 1 10 0v6"></path>
@@ -52,7 +51,7 @@
                             <path d="M12 12v6"></path>
                         </svg>
                         @break
-                        @case('fnp')
+                        @case('family-nurse-practitioner')
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
@@ -61,14 +60,14 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                         @break
-                        @case('ptce')
+                        @case('pharmacy-technician')
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path>
                             <path d="m8.5 8.5 7 7"></path>
                         </svg>
                         @break
-                        @case('ccma')
+                        @case('medical-assistant')
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M11 2v2"></path>
@@ -78,7 +77,7 @@
                             <circle cx="20" cy="10" r="2"></circle>
                         </svg>
                         @break
-                        @case('phlebotomy')
+                        @case('phlebotomy-technician-certification')
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
@@ -89,23 +88,7 @@
                             </path>
                         </svg>
                         @break
-                        @case('dental-assistant')
-                        @case('dental')
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                            <line x1="9" x2="9.01" y1="9" y2="9"></line>
-                            <line x1="15" x2="15.01" y1="9" y2="9"></line>
-                        </svg>
-                        @break
-                        @case('slp')
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
-                        </svg>
-                        @break
-                        @case('counsellor')
+                        @case('national-counselor-examination')
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path
@@ -120,17 +103,6 @@
                             <path d="M3.477 10.896a4 4 0 0 1 .585-.396"></path>
                             <path d="M19.938 10.5a4 4 0 0 1 .585.396"></path>
                             <path d="M6 18a4 4 0 0 1-1.967-.516"></path>
-                        </svg>
-                        @break
-                        @case('aama')
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
-                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                            <path d="M12 11h4"></path>
-                            <path d="M12 16h4"></path>
-                            <path d="M8 11h.01"></path>
-                            <path d="M8 16h.01"></path>
                         </svg>
                         @break
                         @default

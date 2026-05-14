@@ -672,44 +672,43 @@ class SchoolStructureSeeder extends Seeder
             foreach ($schoolData['sections'] as $sectionData) {
 
                 // Create Section
-                $section = Exam::create([
+                $section = Section::create([
                     'school_id' => $school->id,
                     'name' => $sectionData['name'],
-                    'slug' => $this->generateUniqueSlug($sectionData['name']) ,
+                    'slug' => $this->generateUniqueSlug($sectionData['name']),
                 ]);
 
                 foreach ($sectionData['children'] as $topicName) {
 
                     // Create Topic
                     $topic = Topic::create([
-                        'exam_id' => $section->id,
+                        'section_id' => $section->id,
                         'name' => $topicName,
                         'slug' => Str::slug($topicName),
                     ]);
 
-                    Notes::create([
-                        'topic_id' => $topic->id,
-                        'content' => "This is the note content for Topic $topic->name in Section $section->name",
-                    ]);
+                    // Notes::create([
+                    //     'topic_id' => $topic->id,
+                    //     'content' => "This is the note content for Topic $topic->name in Section $section->name",
+                    // ]);
 
                 }
             }
         }
 
-        
     }
 
     private function generateUniqueSlug($name)
-{
-    $slug = Str::slug($name);
-    $originalSlug = $slug;
-    $count = 1;
+    {
+        $slug = Str::slug($name);
+        $originalSlug = $slug;
+        $count = 1;
 
-    while (Exam::where('slug', $slug)->exists()) {
-        $slug = $originalSlug . '-' . $count;
-        $count++;
+        while (Exam::where('slug', $slug)->exists()) {
+            $slug = $originalSlug.'-'.$count;
+            $count++;
+        }
+
+        return $slug;
     }
-
-    return $slug;
-}
 }

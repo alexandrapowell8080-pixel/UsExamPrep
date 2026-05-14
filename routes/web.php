@@ -23,13 +23,13 @@ Route::prefix('study-notes')
         Route::get('/{school:slug}', 'index')
             ->name('outline');
 
-        Route::get('/{school:slug}/{exam:slug}/{topic:slug}', 'show')
+        Route::get('/{school:slug}/{section:slug}/{topic:slug}', 'show')
             ->name('content');
 
     });
 
-Route::get('/{schoolSlug}/{examSlug}/questions', [QuestionController::class, 'index'])
+Route::get('questions/{schoolSlug}/{examSlug}/', [QuestionController::class, 'index'])
     ->name('questions.index');
 
-Route::get('/{schoolSlug}/{examSlug}/question/{id}', [QuestionController::class, 'show'])
+Route::get('questions/{schoolSlug}/{examSlug}/question/{id}', [QuestionController::class, 'show'])
     ->name('questions.show');

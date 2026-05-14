@@ -19,7 +19,7 @@
 
             <main class="main-content">
 
-                <section class="srv-hero">
+                <section class="srv-hero" id="service-hero">
                     <div class="srv-hero-bg"></div>
                     <div class="max-width-wrapper relative-z">
                         <div class="srv-hero-grid">
@@ -60,16 +60,17 @@
                                 @php
                                 $pageExams = \App\Models\Exam::whereHas('school', function ($query) use ($certification)
                                 {
-                                $query->where('slug', $certification['classification_slug']);
+                                // Changed classification_slug to id to match the new database alignment
+                                $query->where('slug', $certification['id']);
                                 })->get();
 
                                 $groupedExams = [];
 
-                                ['CCMA', 'AAMA'])
                                 $rawGroups = preg_split('/[&\/]/', $certification['title_abbr']);
                                 $expectedGroups = array_filter(array_map('trim', $rawGroups));
 
                                 foreach($pageExams as $exam) {
+
                                 $exam->q_count = \App\Models\Question::where('exam_id', $exam->id)->count();
 
                                 $assignedGroup = 'General';
@@ -101,7 +102,9 @@
 
                                         <div class="library-grid">
                                             @foreach($exams as $pageExam)
-                                            <a href="{{ route('questions.index', ['schoolSlug' => $certification['classification_slug'], 'examSlug' => $pageExam->slug]) }}"
+                                            {{-- Also changed classification_slug to id here to fix the URL generation
+                                            --}}
+                                            <a href="{{ route('questions.index', ['schoolSlug' => $certification['id'], 'examSlug' => $pageExam->slug]) }}"
                                                 class="library-card">
                                                 <div class="lc-content">
                                                     <h4 class="lc-title">{{ $pageExam->name }}</h4>
@@ -338,7 +341,7 @@
                         <p class="cta-desc">Get unlimited access to {{ $certification['stats']['questions'] }} practice
                             questions, study notes, flashcards, and video lessons.</p>
                         <div class="srv-btn-group justify-center">
-                            <a href="{{ route('certifications') }}" class="btn btn-white btn-lg shadow-xl">
+                            <a href="#service-hero" class="btn btn-white btn-lg shadow-xl">
                                 Start Free Practice &rarr;
                             </a>
                         </div>

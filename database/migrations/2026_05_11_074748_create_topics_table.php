@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Exam::class,'exam_id')->constrained()->cascadeOnDelete();;
+            $table->foreignIdFor(Section::class,'section_id')->constrained()->cascadeOnDelete();;
             $table->string('name');
             $table->string('slug');
             $table->timestamps();

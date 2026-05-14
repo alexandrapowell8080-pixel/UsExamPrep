@@ -7,8 +7,8 @@ class CertificationController extends Controller
     public function show($slug)
     {
         $certifications = [
-            'cna' => [
-                'id' => 'cna',
+            'certified-nursing-assistant' => [
+                'id' => 'certified-nursing-assistant',
                 'school_slug' => 'nursing',
                 'classification_slug' => 'cna',
                 'badge' => 'Nursing',
@@ -77,8 +77,8 @@ class CertificationController extends Controller
                     ['tag' => 'Safety', 'title' => 'Fall Prevention & Post-Fall Response', 'desc' => 'Understand fall risk factors, prevention strategies, and the correct response protocol when a resident is found on the floor.'],
                 ]
             ],
-            'hospice-and-palliative-care' => [
-                'id' => 'hospice-and-palliative-care',
+            'hospice-palliative-care' => [
+                'id' => 'hospice-palliative-care',
                 'school_slug' => 'nursing',
                 'classification_slug' => 'hospice-and-palliative-care',
                 'badge' => 'Nursing',
@@ -112,8 +112,8 @@ class CertificationController extends Controller
                     ['tag' => 'Safety', 'title' => 'Fall Prevention & Post-Fall Response', 'desc' => 'Understand fall risk factors, prevention strategies, and the correct response protocol when a resident is found on the floor.'],
                 ]
             ],
-            'cen' => [
-                'id' => 'cen',
+            'certified-emergency-nurse' => [
+                'id' => 'certified-emergency-nurse',
                 'school_slug' => 'nursing',
                 'classification_slug' => 'cen',
                 'badge' => 'Nursing',
@@ -147,8 +147,8 @@ class CertificationController extends Controller
                     ['tag' => 'Safety', 'title' => 'Fall Prevention & Post-Fall Response', 'desc' => 'Understand fall risk factors, prevention strategies, and the correct response protocol when a resident is found on the floor.'],
                 ]
             ],
-            'fnp' => [
-                'id' => 'fnp',
+            'family-nurse-practitioner' => [
+                'id' => 'family-nurse-practitioner',
                 'school_slug' => 'nursing',
                 'classification_slug' => 'fnp',
                 'badge' => 'Nursing',
@@ -252,8 +252,8 @@ class CertificationController extends Controller
                     ['tag' => 'Sterile Compounding', 'title' => 'USP 797: Beyond-Use Dating', 'desc' => 'Beyond-use dates for compounded sterile preparations based on risk level.'],
                 ]
             ],
-            'phlebotomy' => [
-                'id' => 'phlebotomy',
+            'phlebotomy-technician-certification' => [
+                'id' => 'phlebotomy-technician-certification',
                 'school_slug' => 'medical-assistant',
                 'classification_slug' => 'phlebotomy',
                 'badge' => 'Medical Assistant',
@@ -286,8 +286,8 @@ class CertificationController extends Controller
                     ['tag' => 'Specimen Handling', 'title' => 'Specimen Collection & Processing', 'desc' => 'Proper techniques for specimen collection, labeling, handling, and transport.'],
                 ]
             ],
-            'counsellor' => [
-                'id' => 'counsellor',
+            'national-counselor-examination' => [
+                'id' => 'national-counselor-examination',
                 'school_slug' => 'medical-assistant',
                 'classification_slug' => 'counsellor',
                 'badge' => 'Counselling',
