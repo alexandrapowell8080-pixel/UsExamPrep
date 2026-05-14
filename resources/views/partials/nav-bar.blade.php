@@ -150,7 +150,7 @@
         </div>
 
         <div class="nav-actions-desktop">
-            <a href="/certifications"><button class="btn btn-gradient">Start Practicing</button></a>
+            <a href="{{ route('home') }}#certifications"><button class="btn btn-gradient">Start Practicing</button></a>
         </div>
 
         <button class="menu-mobile-toggle" aria-label="Toggle Menu" type="button" id="mobile-menu-btn">

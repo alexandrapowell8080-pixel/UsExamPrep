@@ -1815,7 +1815,7 @@
     </main>
     @include('partials.footer')
 
-    <div class="floating-widget" id="floating-cta">
+    <div class="floating-widget" id="floating-cta" data-nosnippet>
         <div class="widget-inner">
             <button class="widget-close-btn" onclick="document.getElementById('floating-cta').style.display='none'"
                 aria-label="Close widget">
@@ -1839,7 +1839,8 @@
                 <span class="widget-title">Free Practice Quiz!</span>
             </div>
             <p class="widget-desc">Try 5 free practice questions and see how you score.</p>
-            <a href="/certifications"><button class="widget-action-btn">Start Free Quiz &rarr;</button></a>
+            <a href="{{ route('home') }}#certifications"><button class="widget-action-btn">Start Free Quiz
+                    &rarr;</button></a>
         </div>
     </div>
 
