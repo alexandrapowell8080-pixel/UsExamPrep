@@ -9,6 +9,7 @@
     <meta content="{{ $certification['description'] }}" name="description">
     <link crossorigin="" href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <link crossorigin="" href="{{ asset('css/service-pages.css') }}" rel="stylesheet">
+    <meta name="robots" content="noindex, nofollow">
 </head>
 
 <body>

@@ -4,6 +4,7 @@
     @section('keywords', $school->name . ',' . $section->name . ',' . $topic->name)
     @section('canonical', config('app.url') . '/study-notes/' . $school->slug . '/' . $section->slug . '/' .
         $topic->slug)
+        <meta name="robots" content="noindex, nofollow">
 
         <div class="min-h-screen   px-2 md:px-8 pb-4  flex sm:flex-row flex-col-reverse">
 
