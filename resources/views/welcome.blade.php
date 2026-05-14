@@ -1598,21 +1598,30 @@
                 <div class="section-title-wrapper">
                     <span class="section-badge text-teal">Video Lessons</span>
                     <h2 class="section-heading">Learn From Expert Video Lessons</h2>
-                    <p class="section-subheading">Watch concise, exam-focused video lessons taught by certified
-                        healthcare professionals.</p>
+                    <p class="section-subheading">
+                        Watch concise, exam-focused video lessons taught by certified
+                        healthcare professionals.
+                    </p>
                 </div>
 
                 <div class="videos-grid">
+                    <!-- Video 1 -->
                     <div class="video-card">
-                        <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
+                        <div class="video-preview-box" data-videoid="wYvlo-EhKD0"
+                            data-title="CNA Patient Care Fundamentals">
+                            <div class="yt-thumb"
+                                style="background-image: url('https://i.ytimg.com/vi/wYvlo-EhKD0/hqdefault.jpg')">
+                                <div class="yt-logo"></div>
+                                <div class="yt-title">CNA Patient Care Fundamentals</div>
+                                <div class="yt-play-btn">
+                                    <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M66.52 7.74c-.78-2.93-3.07-5.24-6-6.02C55.79.13 34 0 34 0S12.21.13 7.48 1.72c-2.93.78-5.22 3.09-6 6.02C.13 12.47 0 24 0 24s.13 11.53 1.48 16.26c.78 2.93 3.07 5.24 6 6.02C12.21 48 34 48 34 48s21.79-.13 26.52-1.72c2.93-.78 5.22-3.09 6-6.02C67.87 35.53 68 24 68 24s-.13-11.53-1.48-16.26z"
+                                            fill="red"></path>
+                                        <path d="M45 24L27 14v20" fill="white"></path>
+                                    </svg>
+                                </div>
                             </div>
-                            <span class="video-duration">12:30</span>
                         </div>
                         <div class="video-info">
                             <span class="video-category">CNA</span>
@@ -1620,16 +1629,23 @@
                         </div>
                     </div>
 
+                    <!-- Video 2 -->
                     <div class="video-card">
-                        <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
+                        <div class="video-preview-box" data-videoid="wYvlo-EhKD0"
+                            data-title="Phlebotomy Order of Draw">
+                            <div class="yt-thumb"
+                                style="background-image: url('https://i.ytimg.com/vi/wYvlo-EhKD0/hqdefault.jpg')">
+                                <div class="yt-logo"></div>
+                                <div class="yt-title">Phlebotomy Order of Draw</div>
+                                <div class="yt-play-btn">
+                                    <svg viewBox="0 0 68 48">
+                                        <path
+                                            d="M66.52 7.74c-.78-2.93-3.07-5.24-6-6.02C55.79.13 34 0 34 0S12.21.13 7.48 1.72c-2.93.78-5.22 3.09-6 6.02C.13 12.47 0 24 0 24s.13 11.53 1.48 16.26c.78 2.93 3.07 5.24 6 6.02C12.21 48 34 48 34 48s21.79-.13 26.52-1.72c2.93-.78 5.22-3.09 6-6.02C67.87 35.53 68 24 68 24s-.13-11.53-1.48-16.26z"
+                                            fill="red" />
+                                        <path d="M45 24L27 14v20" fill="white" />
+                                    </svg>
+                                </div>
                             </div>
-                            <span class="video-duration">8:45</span>
                         </div>
                         <div class="video-info">
                             <span class="video-category">Phlebotomy</span>
@@ -1637,17 +1653,23 @@
                         </div>
                     </div>
 
+                    <!-- Video 3 -->
                     <div class="video-card">
-                        <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
+                        <div class="video-preview-box" data-videoid="wYvlo-EhKD0"
+                            data-title="PTCE Top 200 Medications">
+                            <div class="yt-thumb"
+                                style="background-image: url('https://i.ytimg.com/vi/wYvlo-EhKD0/hqdefault.jpg')">
+                                <div class="yt-logo"></div>
+                                <div class="yt-title">PTCE Top 200 Medications</div>
+                                <div class="yt-play-btn">
+                                    <svg viewBox="0 0 68 48">
+                                        <path
+                                            d="M66.52 7.74c-.78-2.93-3.07-5.24-6-6.02C55.79.13 34 0 34 0S12.21.13 7.48 1.72c-2.93.78-5.22 3.09-6 6.02C.13 12.47 0 24 0 24s.13 11.53 1.48 16.26c.78 2.93 3.07 5.24 6 6.02C12.21 48 34 48 34 48s21.79-.13 26.52-1.72c2.93-.78 5.22-3.09 6-6.02C67.87 35.53 68 24 68 24s-.13-11.53-1.48-16.26z"
+                                            fill="red" />
+                                        <path d="M45 24L27 14v20" fill="white" />
+                                    </svg>
+                                </div>
                             </div>
-                            <div class="lock-premium-badge">🔒 Premium</div>
-                            <span class="video-duration">18:20</span>
                         </div>
                         <div class="video-info">
                             <span class="video-category">PTCE</span>
@@ -1655,17 +1677,23 @@
                         </div>
                     </div>
 
+                    <!-- Video 4 -->
                     <div class="video-card">
-                        <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
+                        <div class="video-preview-box" data-videoid="wYvlo-EhKD0"
+                            data-title="EKG Lead Placement Guide">
+                            <div class="yt-thumb"
+                                style="background-image: url('https://i.ytimg.com/vi/wYvlo-EhKD0/hqdefault.jpg')">
+                                <div class="yt-logo"></div>
+                                <div class="yt-title">EKG Lead Placement Guide</div>
+                                <div class="yt-play-btn">
+                                    <svg viewBox="0 0 68 48">
+                                        <path
+                                            d="M66.52 7.74c-.78-2.93-3.07-5.24-6-6.02C55.79.13 34 0 34 0S12.21.13 7.48 1.72c-2.93.78-5.22 3.09-6 6.02C.13 12.47 0 24 0 24s.13 11.53 1.48 16.26c.78 2.93 3.07 5.24 6 6.02C12.21 48 34 48 34 48s21.79-.13 26.52-1.72c2.93-.78 5.22-3.09 6-6.02C67.87 35.53 68 24 68 24s-.13-11.53-1.48-16.26z"
+                                            fill="red" />
+                                        <path d="M45 24L27 14v20" fill="white" />
+                                    </svg>
+                                </div>
                             </div>
-                            <div class="lock-premium-badge">🔒 Premium</div>
-                            <span class="video-duration">10:15</span>
                         </div>
                         <div class="video-info">
                             <span class="video-category">CCMA</span>
@@ -1673,17 +1701,23 @@
                         </div>
                     </div>
 
+                    <!-- Video 5 -->
                     <div class="video-card">
-                        <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
+                        <div class="video-preview-box" data-videoid="wYvlo-EhKD0"
+                            data-title="Triage &amp; ESI Levels">
+                            <div class="yt-thumb"
+                                style="background-image: url('https://i.ytimg.com/vi/wYvlo-EhKD0/hqdefault.jpg')">
+                                <div class="yt-logo"></div>
+                                <div class="yt-title">Triage &amp; ESI Levels</div>
+                                <div class="yt-play-btn">
+                                    <svg viewBox="0 0 68 48">
+                                        <path
+                                            d="M66.52 7.74c-.78-2.93-3.07-5.24-6-6.02C55.79.13 34 0 34 0S12.21.13 7.48 1.72c-2.93.78-5.22 3.09-6 6.02C.13 12.47 0 24 0 24s.13 11.53 1.48 16.26c.78 2.93 3.07 5.24 6 6.02C12.21 48 34 48 34 48s21.79-.13 26.52-1.72c2.93-.78 5.22-3.09 6-6.02C67.87 35.53 68 24 68 24s-.13-11.53-1.48-16.26z"
+                                            fill="red" />
+                                        <path d="M45 24L27 14v20" fill="white" />
+                                    </svg>
+                                </div>
                             </div>
-                            <div class="lock-premium-badge">🔒 Premium</div>
-                            <span class="video-duration">14:50</span>
                         </div>
                         <div class="video-info">
                             <span class="video-category">CEN</span>
@@ -1691,16 +1725,23 @@
                         </div>
                     </div>
 
+                    <!-- Video 6 -->
                     <div class="video-card">
-                        <div class="video-preview-box">
-                            <div class="play-btn-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="play-arrow-svg">
-                                    <polygon points="6 3 20 12 6 21 6 3"></polygon>
-                                </svg>
+                        <div class="video-preview-box" data-videoid="wYvlo-EhKD0"
+                            data-title="CBT Therapy Techniques">
+                            <div class="yt-thumb"
+                                style="background-image: url('https://i.ytimg.com/vi/wYvlo-EhKD0/hqdefault.jpg')">
+                                <div class="yt-logo"></div>
+                                <div class="yt-title">CBT Therapy Techniques</div>
+                                <div class="yt-play-btn">
+                                    <svg viewBox="0 0 68 48">
+                                        <path
+                                            d="M66.52 7.74c-.78-2.93-3.07-5.24-6-6.02C55.79.13 34 0 34 0S12.21.13 7.48 1.72c-2.93.78-5.22 3.09-6 6.02C.13 12.47 0 24 0 24s.13 11.53 1.48 16.26c.78 2.93 3.07 5.24 6 6.02C12.21 48 34 48 34 48s21.79-.13 26.52-1.72c2.93-.78 5.22-3.09 6-6.02C67.87 35.53 68 24 68 24s-.13-11.53-1.48-16.26z"
+                                            fill="red" />
+                                        <path d="M45 24L27 14v20" fill="white" />
+                                    </svg>
+                                </div>
                             </div>
-                            <span class="video-duration">11:00</span>
                         </div>
                         <div class="video-info">
                             <span class="video-category">Counsellor</span>
@@ -1861,6 +1902,7 @@
             <a href="/certifications"><button class="widget-action-btn">Start Free Quiz &rarr;</button></a>
         </div>
     </div>
+    <script src="{{ asset('js/vid.js') }}"></script>
 </body>
 
 </html>
