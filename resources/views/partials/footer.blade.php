@@ -37,53 +37,125 @@
             <div class="footer-cards-column">
                 <h3 class="footer-column-heading">All Certifications</h3>
                 <div class="footer-cert-quick-grid">
-                    <a href="/cert/cna" class="quick-cert-box">
-                        <span class="box-emoji">🩺</span>
+                    <a href="/certification/certified-nursing-assistant" class="quick-cert-box">
+                        <div class="box-emoji">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="width:1.5rem; height:1.5rem; color:var(--cna-teal);">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
                         <span class="box-name">CNA</span>
                         <span class="box-count">850+ Q's</span>
                     </a>
-                    <a href="/cert/ccma" class="quick-cert-box">
-                        <span class="box-emoji">❤️</span>
+                    <a href="/certification/medical-assistant" class="quick-cert-box">
+                        <div class="box-emoji">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="width:1.5rem; height:1.5rem; color:var(--ccma-blue);">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                        </div>
                         <span class="box-name">CCMA</span>
                         <span class="box-count">1200+ Q's</span>
                     </a>
-                    <a href="/cert/ptce" class="quick-cert-box">
-                        <span class="box-emoji">💊</span>
+                    <a href="/certification/pharmacy-technician" class="quick-cert-box">
+                        <div class="box-emoji">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="width:1.5rem; height:1.5rem; color:var(--hosp-purple);">
+                                <path d="m2 22 1-1h3l9-9 3 3-9 9V22H2Z"></path>
+                                <path d="M22 2a4.5 4.5 0 0 0-6.4 0l-5.1 5.2 6.4 6.4 5.1-5.2A4.5 4.5 0 0 0 22 2Z"></path>
+                            </svg>
+                        </div>
                         <span class="box-name">PTCE</span>
                         <span class="box-count">1050+ Q's</span>
                     </a>
-                    <a href="/cert/phlebotomy" class="quick-cert-box">
-                        <span class="box-emoji">🔬</span>
+                    <a href="/certification/pharmacy-technician" class="quick-cert-box">
+                        <div class="box-emoji">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="width:1.5rem; height:1.5rem; color:var(--aide-emerald);">
+                                <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path>
+                                <path d="m8.5 8.5 7 7"></path>
+                            </svg>
+                        </div>
+                        <span class="box-name">ExCPT</span>
+                        <span class="box-count">1050+ Q's</span>
+                    </a>
+                    <a href="/certification/phlebotomy-technician-certification" class="quick-cert-box">
+                        <div class="box-emoji">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="width:1.5rem; height:1.5rem; color:var(--slp-pink);">
+                                <path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5h20c0-2.31-1-4.24-2.5-5.5"></path>
+                                <path d="M12 2v14.5"></path>
+                                <path d="m16 6-4-4-4 4"></path>
+                            </svg>
+                        </div>
                         <span class="box-name">Phlebotomy</span>
                         <span class="box-count">760+ Q's</span>
                     </a>
-                    <a href="/cert/dental" class="quick-cert-box">
-                        <span class="box-emoji">🦷</span>
-                        <span class="box-name">Dental Assistant</span>
-                        <span class="box-count">1600+ Q's</span>
+                    <a href="/certification/medical-assistant" class="quick-cert-box">
+                        <div class="box-emoji">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="width:1.5rem; height:1.5rem; color:var(--dental-sky);">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 16v-4"></path>
+                                <path d="M12 8h.01"></path>
+                            </svg>
+                        </div>
+                        <span class="box-name">AAMA</span>
+                        <span class="box-count">1100+ Q's</span>
                     </a>
-                    <a href="/cert/nurse-aide" class="quick-cert-box">
-                        <span class="box-emoji">👨‍⚕️</span>
-                        <span class="box-name">Nurse Aide</span>
-                        <span class="box-count">800+ Q's</span>
-                    </a>
-                    <a href="/cert/slp" class="quick-cert-box">
-                        <span class="box-emoji">🗣️</span>
-                        <span class="box-name">SLP (Praxis)</span>
-                        <span class="box-count">1200+ Q's</span>
-                    </a>
-                    <a href="/cert/fmp" class="quick-cert-box">
-                        <span class="box-emoji">🏥</span>
+                    <a href="/certification/family-nurse-practitioner" class="quick-cert-box">
+                        <div class="box-emoji">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="width:1.5rem; height:1.5rem; color:var(--fnp-orange);">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            </svg>
+                        </div>
                         <span class="box-name">FNP</span>
                         <span class="box-count">2050+ Q's</span>
                     </a>
-                    <a href="/cert/cen" class="quick-cert-box">
-                        <span class="box-emoji">🚨</span>
+                    <a href="/certification/hospice-palliative-care" class="quick-cert-box">
+                        <div class="box-emoji">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="width:1.5rem; height:1.5rem; color:var(--hosp-purple);">
+                                <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path>
+                                <path d="M8 11h8"></path>
+                            </svg>
+                        </div>
+                        <span class="box-name">Hospice</span>
+                        <span class="box-count">950+ Q's</span>
+                    </a>
+                    <a href="/certification/certified-emergency-nurse" class="quick-cert-box">
+                        <div class="box-emoji">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="width:1.5rem; height:1.5rem; color:var(--cen-red);">
+                                <path
+                                    d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                                </path>
+                            </svg>
+                        </div>
                         <span class="box-name">CEN</span>
                         <span class="box-count">1800+ Q's</span>
                     </a>
-                    <a href="/cert/counsellor" class="quick-cert-box">
-                        <span class="box-emoji">🧠</span>
+                    <a href="/certification/national-counselor-examination" class="quick-cert-box">
+                        <div class="box-emoji">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="width:1.5rem; height:1.5rem; color:var(--coun-indigo);">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
                         <span class="box-name">NCE</span>
                         <span class="box-count">1400+ Q's</span>
                     </a>
@@ -95,10 +167,10 @@
             <div>
                 <h3 class="footer-list-heading">Certifications</h3>
                 <ul class="footer-links-list">
-                    <li><a href="/cert/cna">CNA Prep</a></li>
-                    <li><a href="/cert/ccma">CCMA Prep</a></li>
-                    <li><a href="/cert/ptce">PTCE Prep</a></li>
-                    <li><a href="/cert/phlebotomy">Phlebotomy Prep</a></li>
+                    <li><a href="/certification/nurse-aide">NA Prep</a></li>
+                    <li><a href="/certification/medical-assistant">CCMA Prep</a></li>
+                    <li><a href="/certification/pharmacy-technician">PTCE Prep</a></li>
+                    <li><a href="/certification/phlebotomy-technician-certification">Phlebotomy Prep</a></li>
                     <li><a href="/certifications">All Certifications</a></li>
                 </ul>
             </div>
@@ -106,19 +178,17 @@
                 <h3 class="footer-list-heading">Resources</h3>
                 <ul class="footer-links-list">
                     <li><a href="/certifications">Practice Questions</a></li>
-                    <li><a href="/certifications">Study Notes</a></li>
-                    <li><a href="/certifications">Flashcards</a></li>
-                    <li><a href="/certifications">Video Lessons</a></li>
-                    <li><a href="/blog">Blog &amp; Tips</a></li>
+                    <li><a href="/study-notes">Study Notes</a></li>
+                    {{-- <li><a href="/blog">Blog &amp; Tips</a></li> --}}
                 </ul>
             </div>
             <div>
                 <h3 class="footer-list-heading">Company</h3>
                 <ul class="footer-links-list">
                     <li><a href="/about">About Us</a></li>
-                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms-of-service">Terms of Service</a></li>
                     <li><a href="/contact">Contact</a></li>
-                    <li><a href="/dashboard">Dashboard</a></li>
                 </ul>
             </div>
         </div>
@@ -126,7 +196,7 @@
 
     <div class="footer-copyright-bar">
         <div class="max-width-wrapper copyright-inner">
-            <p>&copy; 2026 UsExamPrep. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} UsExamPrep. All rights reserved.</p>
             <p class="love-notice">
                 Made with
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
