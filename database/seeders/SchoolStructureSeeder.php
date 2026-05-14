@@ -659,6 +659,21 @@ class SchoolStructureSeeder extends Seeder
                 ],
             ],
 
+            [
+                 'name' => 'Nurse Aide',
+                'sections' => []
+            ],
+
+            [
+                 'name' => 'Medical Assistant',
+                'sections' => []
+            ],
+
+            [
+                 'name' => 'Pharmacy Technician',
+                'sections' => []
+            ],
+
         ];
 
         foreach ($data as $schoolData) {

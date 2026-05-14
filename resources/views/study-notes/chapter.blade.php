@@ -111,26 +111,127 @@
             </div>
         </div>
         <style type="text/tailwindcss">
+            /*.ai-content h2 {
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        margin-top: 1.5rem;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .ai-content h3 {
+                        font-size: 1.25rem;
+                        font-weight: bold;
+                        margin-top: 1.25rem;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .ai-content ul {
+                        list-style-type: disc;
+                        padding-left: 1.5rem;
+                    }
+
+                     Add more tags as needed */
+
+            .ai-content {
+                line-height: 1.6;
+                color: #374151;
+                /* gray-700 */
+            }
+
             .ai-content h2 {
-                font-size: 1.5rem;
-                font-weight: bold;
+                font-size: 1.75rem;
+                /* Slightly larger */
+                font-weight: 700;
+                color: #111827;
+                /* gray-900 */
+                margin-top: 2rem;
+                margin-bottom: 0.75rem;
+                border-bottom: 2px solid #f3f4f6;
+                /* Subtle underline for separation */
+                padding-bottom: 0.5rem;
+            }
+
+            .ai-content h3 {
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: #1f2937;
+                /* gray-800 */
                 margin-top: 1.5rem;
                 margin-bottom: 0.5rem;
             }
 
-            .ai-content h3 {
-                font-size: 1.25rem;
-                font-weight: bold;
-                margin-top: 1.25rem;
-                margin-bottom: 0.5rem;
+            .ai-content ul,
+            .ai-content ol {
+                margin-bottom: 1.25rem;
+                padding-left: 1.5rem;
             }
 
             .ai-content ul {
                 list-style-type: disc;
-                padding-left: 1.5rem;
             }
 
-            /* Add more tags as needed */
+            .ai-content ol {
+                list-style-type: decimal;
+            }
+
+            .ai-content li {
+                margin-bottom: 0.25rem;
+            }
+
+            /* --- Enhanced Table Styling --- */
+
+            /* 1. Responsiveness: Wrap tables in markdown if possible,
+           otherwise this ensures they don't overflow */
+            .ai-content table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 1.5rem 0;
+                font-size: 0.95rem;
+                text-align: left;
+                border-radius: 0.5rem;
+                overflow: hidden;
+                /* Clips corners of the border */
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+                border: 1px solid #e5e7eb;
+            }
+
+            /* Header Styling */
+            .ai-content table thead {
+                background-color: #f9fafb;
+                border-bottom: 2px solid #e5e7eb;
+            }
+
+            .ai-content table th {
+                padding: 0.75rem 1rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 0.8rem;
+                letter-spacing: 0.05em;
+                color: #4b5563;
+            }
+
+            /* Body Styling */
+            .ai-content table td {
+                padding: 0.75rem 1rem;
+                border-bottom: 1px solid #f3f4f6;
+                vertical-align: top;
+            }
+
+            /* Zebra Striping for readability */
+            .ai-content table tbody tr:nth-child(even) {
+                background-color: #fcfcfd;
+            }
+
+            /* Hover effect */
+            .ai-content table tbody tr:hover {
+                background-color: #f3f4f6;
+                transition: background-color 0.2s ease;
+            }
+
+            /* Handle Bold text inside tables */
+            .ai-content table td strong {
+                color: #111827;
+            }
         </style>
         <script>
             // Get all details elements inside our sidebar

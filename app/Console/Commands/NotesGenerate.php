@@ -26,17 +26,16 @@ class NotesGenerate extends Command
     public function handle()
     {
         $topics = Topic::with([
-            'pointers',
+            'notes',
             'section:id,name,school_id',
             'section.school:id,name',
         ])
-            ->whereHas('pointers', function ($query) {
-                $query->where('status', 'draft');
-            })
+        ->whereDoesntHave('notes')
             ->take(1)
             ->get(['id', 'name', 'section_id']);
 
         if (! $topics) {
+             $this->error("❌ FAILED: There are no topics avaliable.");
             return;
         }
 
@@ -56,12 +55,13 @@ class NotesGenerate extends Command
                     $topic->section->school->name,
                     $topic->section->name,
                     $topic->name,
-                    $topic->pointers->pointers
                 );
+
+
 
                 $this->comment('💾 Saving to database...');
                 DB::transaction(function () use($topic,$notes) {
-                    NotesPointer::where('id',$topic->pointers->id)->update(['status'=>'published']);
+                    // NotesPointer::where('id',$topic->pointers->id)->update(['status'=>'published']);
                     Notes::updateOrCreate(
                         ['topic_id' => $topic->id],
                         [
@@ -75,11 +75,16 @@ class NotesGenerate extends Command
             } catch (\Throwable $e) {
                 $this->error("❌ FAILED: {$topic->name}");
                 $this->error($e->getMessage());
-
+                logger('--------------------------------');
+                logger('-----NOTES GENERATION FAILED----');
                 logger()->error('Notes generation failed', [
                     'topic_id' => $topic->id,
+                    'topic_name' => $topic->name,
                     'error' => $e->getMessage(),
                 ]);
+                logger('--------------END---------------');
+
+                
             }
 
             $this->line("\n");
