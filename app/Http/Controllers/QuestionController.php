@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exam;
 use App\Models\Question;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -16,6 +17,14 @@ class QuestionController extends Controller
             })
             ->with('school')
             ->firstOrFail();
+        $sections = null;
+        if($exam){
+            $sections = Section::with(['topics'=> function($query){
+                $query->first();
+            }])->where('school_id',$exam->school_id)->take(3)->get(); 
+        }
+
+        // dd($sections);
         $questions = Question::where('exam_id', $exam->id)
             ->orderBy('id', 'asc')
             ->get();
@@ -71,7 +80,8 @@ class QuestionController extends Controller
             'metaTitle',
             'metaDescription',
             'canonicalUrl',
-            'breadcrumbs'
+            'breadcrumbs',
+            'sections'
         ));
     }
 
