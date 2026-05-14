@@ -16,15 +16,11 @@ class QuestionController extends Controller
             })
             ->with('school')
             ->firstOrFail();
-
-        // Get all questions for this exam with proper ordering
         $questions = Question::where('exam_id', $exam->id)
             ->orderBy('id', 'asc')
             ->get();
-
-        // Transform questions to include choices array and other computed fields
         $questions = $questions->map(function ($question) {
-            // Build choices array from choiceA through choiceG
+
             $choices = [];
             $letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
@@ -56,7 +52,6 @@ class QuestionController extends Controller
             ];
         });
 
-        // Get total count for the view
         $totalQuestions = $questions->count();
 
         $metaTitle = substr("{$exam->name} Practice Questions | UsExamPrep", 0, 60);
@@ -89,7 +84,6 @@ class QuestionController extends Controller
                 });
         })->findOrFail($id);
 
-        // Build choices array for single question view
         $choices = [];
         $letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
