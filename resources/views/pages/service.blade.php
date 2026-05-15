@@ -68,7 +68,6 @@
                                 $rawGroups = preg_split('/[&\/]/', $certification['title_abbr']);
                                 $expectedGroups = array_filter(array_map('trim', $rawGroups));
 
-
                                 $groupAliases = [
                                 'CCMA' => ['CCMA', 'Certified Medical Assistant'],
                                 'AAMA' => ['AAMA', 'American Association of Medical Assistants', 'CMA'],
