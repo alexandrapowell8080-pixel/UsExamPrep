@@ -61,7 +61,6 @@
                                 @php
                                 $pageExams = \App\Models\Exam::whereHas('school', function ($query) use ($certification)
                                 {
-                                // Changed classification_slug to id to match the new database alignment
                                 $query->where('slug', $certification['id']);
                                 })->get();
 
@@ -70,63 +69,82 @@
                                 $rawGroups = preg_split('/[&\/]/', $certification['title_abbr']);
                                 $expectedGroups = array_filter(array_map('trim', $rawGroups));
 
-                                foreach($pageExams as $exam) {
+                                $groupAliases = [
+                                'CCMA' => ['CCMA', 'Certified Medical Assistant'],
+                                'AAMA' => ['AAMA', 'American Association of Medical Assistants', 'CMA'],
+                                'PTCE' => ['PTCE', 'Pharmacy Technician Certification', 'Pharmacy Technician Exam',
+                                'Certification Exam Pharmacy
+                                Technician'],
+                                'ExCPT' => ['ExCPT']
+                                ];
 
+                                foreach($pageExams as $exam) {
                                 $exam->q_count = \App\Models\Question::where('exam_id', $exam->id)->count();
 
-                                $assignedGroup = 'General';
+                                // Skip rendering exams that have zero questions
+                                if ($exam->q_count <= 0) { continue; } $assignedGroup='General' ; if
+                                    (count($expectedGroups)> 1) {
+                                    $matched = false;
+                                    foreach ($expectedGroups as $group) {
+                                    // Use aliases if they exist for the group, otherwise default to the group name
+                                    $searchTerms = isset($groupAliases[$group]) ? $groupAliases[$group] : [$group];
 
-                                if (count($expectedGroups) > 1) {
-                                foreach ($expectedGroups as $group) {
-                                if (stripos($exam->name, $group) !== false) {
-                                $assignedGroup = $group;
-                                break;
-                                }
-                                }
-                                } else {
-                                $assignedGroup = $certification['title_abbr'];
-                                }
+                                    foreach ($searchTerms as $term) {
+                                    if (stripos($exam->name, $term) !== false) {
+                                    $assignedGroup = $group;
+                                    $matched = true;
+                                    break;
+                                    }
+                                    }
 
-                                $groupedExams[$assignedGroup][] = $exam;
-                                }
-                                @endphp
+                                    if ($matched) {
+                                    break;
+                                    }
+                                    }
+                                    } else {
+                                    $assignedGroup = $certification['title_abbr'];
+                                    }
 
-                                @if($pageExams->isNotEmpty())
-                                <div class="srv-exam-library">
-                                    @foreach($groupedExams as $groupName => $exams)
-                                    @if(count($exams) > 0)
-                                    <div class="library-section">
-                                        <div class="library-header">
-                                            <h3 class="library-group-title">{{ $groupName }} Practice Exams</h3>
-                                            <span class="library-group-count">{{ count($exams) }} Tests</span>
+                                    $groupedExams[$assignedGroup][] = $exam;
+                                    }
+                                    @endphp
+
+                                    @if(!empty($groupedExams))
+                                    <div class="srv-exam-library">
+                                        @foreach($groupedExams as $groupName => $exams)
+                                        @if(count($exams) > 0)
+                                        <div class="library-section">
+                                            <div class="library-header">
+                                                <h3 class="library-group-title">{{ $groupName }} Practice Exams</h3>
+                                                <span class="library-group-count">{{ count($exams) }} Tests</span>
+                                            </div>
+
+                                            <div class="library-grid">
+                                                @foreach($exams as $pageExam)
+                                                {{-- Also changed classification_slug to id here to fix the URL
+                                                generation --}}
+                                                <a href="{{ route('questions.index', ['schoolSlug' => $certification['id'], 'examSlug' => $pageExam->slug]) }}"
+                                                    class="library-card">
+                                                    <div class="lc-content">
+                                                        <h4 class="lc-title">{{ $pageExam->name }}</h4>
+                                                        <span class="lc-meta">{{ $pageExam->q_count }} Questions</span>
+                                                    </div>
+                                                    <div class="lc-action">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                            fill="none" stroke="currentColor" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round">
+                                                            <circle cx="12" cy="12" r="10"></circle>
+                                                            <path d="m10 8 6 4-6 4Z"></path>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                                @endforeach
+                                            </div>
                                         </div>
-
-                                        <div class="library-grid">
-                                            @foreach($exams as $pageExam)
-                                            {{-- Also changed classification_slug to id here to fix the URL generation
-                                            --}}
-                                            <a href="{{ route('questions.index', ['schoolSlug' => $certification['id'], 'examSlug' => $pageExam->slug]) }}"
-                                                class="library-card">
-                                                <div class="lc-content">
-                                                    <h4 class="lc-title">{{ $pageExam->name }}</h4>
-                                                    <span class="lc-meta">{{ $pageExam->q_count }} Questions</span>
-                                                </div>
-                                                <div class="lc-action">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                        fill="none" stroke="currentColor" stroke-width="2"
-                                                        stroke-linecap="round" stroke-linejoin="round">
-                                                        <circle cx="12" cy="12" r="10"></circle>
-                                                        <path d="m10 8 6 4-6 4Z"></path>
-                                                    </svg>
-                                                </div>
-                                            </a>
-                                            @endforeach
-                                        </div>
+                                        @endif
+                                        @endforeach
                                     </div>
                                     @endif
-                                    @endforeach
-                                </div>
-                                @endif
                             </div>
 
                             <div class="srv-hero-visual">
