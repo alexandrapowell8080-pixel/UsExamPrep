@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Exam;
+use App\Models\Question;
+
 
 class CertificationController extends Controller
 {
@@ -16,7 +19,7 @@ class CertificationController extends Controller
                 'title_full' => 'Certified Nursing Assistant',
                 'description' => 'The Certified Nursing Assistant (CNA) examination tests your knowledge and skills in providing basic patient care in healthcare settings. Our prep course covers all domains tested on the state CNA exam.',
                 'colors' => [
-                    'theme_class' => 'theme-cna', 
+                    'theme_class' => 'theme-cna',
                 ],
                 'stats' => [
                     'questions' => '350+',
@@ -334,16 +337,97 @@ class CertificationController extends Controller
         $totalCerts = count($certifications);
 
         $otherCerts = [];
-        
+
         for ($i = 1; $i <= 3; $i++) {
             $nextIndex = ($currentIndex + $i) % $totalCerts;
             $nextKey = $keys[$nextIndex];
             $otherCerts[] = $certifications[$nextKey];
         }
 
+        // Fetch exams for the current certification
+        $pageExams = Exam::whereHas('school', function ($query) use ($currentCert) {
+            $query->where('slug', $currentCert['id']);
+        })->get();
+
+        $groupedExamsRaw = [];
+        $examNamesForKeywords = [];
+
+        foreach ($pageExams as $exam) {
+            $q_count = Question::where('exam_id', $exam->id)->count();
+
+            if ($q_count == 0) {
+                continue;
+            }
+
+            $exam->q_count = $q_count;
+            $nameLower = strtolower($exam->name);
+            $assignedGroup = $currentCert['title_full'];
+
+            if ($currentCert['id'] === 'medical-assistant') {
+                if (strpos($nameLower, 'aama') !== false || strpos($nameLower, 'american association') !== false) {
+                    $assignedGroup = 'AAMA';
+                } else {
+                    $assignedGroup = 'CCMA';
+                }
+            } elseif ($currentCert['id'] === 'pharmacy-technician') {
+                if (strpos($nameLower, 'excpt') !== false) {
+                    $assignedGroup = 'ExCPT';
+                } else {
+                    $assignedGroup = 'PTCE';
+                }
+            }
+
+            $groupedExamsRaw[$assignedGroup][] = $exam;
+            $examNamesForKeywords[] = $exam->name;
+        }
+
+        $groupedExams = [];
+        if ($currentCert['id'] === 'medical-assistant') {
+            if (isset($groupedExamsRaw['CCMA']))
+                $groupedExams['CCMA'] = $groupedExamsRaw['CCMA'];
+            if (isset($groupedExamsRaw['AAMA']))
+                $groupedExams['AAMA'] = $groupedExamsRaw['AAMA'];
+        } elseif ($currentCert['id'] === 'pharmacy-technician') {
+            if (isset($groupedExamsRaw['PTCE']))
+                $groupedExams['PTCE'] = $groupedExamsRaw['PTCE'];
+            if (isset($groupedExamsRaw['ExCPT']))
+                $groupedExams['ExCPT'] = $groupedExamsRaw['ExCPT'];
+        } else {
+            $groupedExams = $groupedExamsRaw;
+        }
+
+        $keywords = implode(', ', array_unique(array_merge([$currentCert['title_full'], $currentCert['title_abbr'], 'Exam Prep', 'Practice Questions', 'UsExamPrep'], $examNamesForKeywords)));
+
+        $uniqueExamNames = array_values(array_unique($examNamesForKeywords));
+        $examCount = count($uniqueExamNames);
+        $examNamesList = '';
+
+        if ($examCount === 0) {
+            $examNamesList = $currentCert['title_full'] . ' exams';
+        } elseif ($examCount === 1) {
+            $examNamesList = $uniqueExamNames[0];
+        } elseif ($examCount === 2) {
+            $examNamesList = $uniqueExamNames[0] . ' and ' . $uniqueExamNames[1];
+        } else {
+            if ($examCount > 3) {
+                $examNamesList = $uniqueExamNames[0] . ', ' . $uniqueExamNames[1] . ', ' . $uniqueExamNames[2] . ' and more';
+            } else {
+                $lastExam = array_pop($uniqueExamNames);
+                $examNamesList = implode(', ', $uniqueExamNames) . ' and ' . $lastExam;
+            }
+        }
+
+        $shortDescription = "Access " . $examNamesList . " practice questions on UsExamPrep!";
+
+        $cleanCanonicalUrl = url('certification/' . $currentCert['id']) . '/';
+
         return view('pages.service', [
             'certification' => $currentCert,
-            'otherCerts' => $otherCerts 
+            'otherCerts' => $otherCerts,
+            'groupedExams' => $groupedExams,
+            'keywords' => $keywords,
+            'shortDescription' => $shortDescription,
+            'cleanCanonicalUrl' => $cleanCanonicalUrl,
         ]);
     }
 }

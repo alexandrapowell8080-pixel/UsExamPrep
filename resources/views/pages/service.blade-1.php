@@ -8,28 +8,32 @@
 
     <title>{{ $certification['title_full'] }} Exam Prep | UsExamPrep</title>
 
-    <meta content="{{ $shortDescription }}" name="description">
-    <meta content="{{ $keywords }}" name="keywords">
+    <meta content="{{ \Illuminate\Support\Str::limit($certification['description'], 145) }}" name="description">
+    <meta
+        content="{{ $certification['title_full'] }}, {{ $certification['title_abbr'] }}, Exam Prep, Practice Questions, UsExamPrep"
+        name="keywords">
 
     <meta content="{{ $certification['title_full'] }} Exam Prep | UsExamPrep" property="og:title">
-    <meta content="{{ $shortDescription }}" property="og:description">
-    <meta content="{{ $keywords }}" property="og:keywords">
+    <meta content="{{ \Illuminate\Support\Str::limit($certification['description'], 145) }}" property="og:description">
+    <meta
+        content="{{ $certification['title_full'] }}, {{ $certification['title_abbr'] }}, Exam Prep, Practice Questions, UsExamPrep"
+        property="og:keywords">
     <meta content="{{ asset('images/logo.png') }}" property="og:image">
-    <meta content="{{ $cleanCanonicalUrl }}" property="og:url">
+    <meta content="{{ url('certification/' . $certification['id']) }}/" property="og:url">
     <meta content="website" property="og:type">
     <meta content="UsExamPrep" property="og:site_name">
 
     <meta content="{{ $certification['title_full'] }} Exam Prep | UsExamPrep" name="twitter:title">
-    <meta content="{{ $shortDescription }}" name="twitter:description">
+    <meta content="{{ \Illuminate\Support\Str::limit($certification['description'], 145) }}" name="twitter:description">
     <meta content="{{ asset('images/logo.png') }}" name="twitter:image">
     <meta content="summary_large_image" name="twitter:card">
-    <meta content="{{ $cleanCanonicalUrl }}" name="twitter:url">
+    <meta content="{{ url('certification/' . $certification['id']) }}/" name="twitter:url">
 
     <meta content="yes" name="mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="UsExamPrep" name="apple-mobile-web-app-title">
 
-    <link href="{{ $cleanCanonicalUrl }}" rel="canonical">
+    <link href="{{ url('certification/' . $certification['id']) }}/" rel="canonical">
 
     <link crossorigin="" href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <link crossorigin="" href="{{ asset('css/service-pages.css') }}" rel="stylesheet">
@@ -41,8 +45,8 @@
           {
              "@@type": "WebPage",
              "name": "{{ $certification['title_full'] }} Exam Prep | UsExamPrep",
-             "description": "{{ $shortDescription }}",
-             "url": "{{ $cleanCanonicalUrl }}"
+             "description": "{{ \Illuminate\Support\Str::limit($certification['description'], 145) }}",
+             "url": "{{ url('certification/' . $certification['id']) }}/"
           },
           {
              "@@type": "BreadcrumbList",
@@ -56,8 +60,14 @@
                 {
                    "@@type": "ListItem",
                    "position": 2,
+                   "name": "{{ $certification['badge'] }}",
+                   "item": "{{ url($certification['school_slug']) }}/"
+                },
+                {
+                   "@@type": "ListItem",
+                   "position": 3,
                    "name": "{{ $certification['title_full'] }} Exam Prep",
-                   "item": "{{ $cleanCanonicalUrl }}"
+                   "item": "{{ url('certification/' . $certification['id']) }}/"
                 }
              ]
           }
@@ -80,7 +90,7 @@
                         <div class="srv-hero-grid">
                             <div class="srv-hero-text">
                                 <div class="srv-badge">{{ $certification['badge'] }}</div>
-                                <h1 class="srv-title">{{ $certification['title_abbr'] }} <span>Exam Prep</span></h1>
+                                <h1 class="srv-title">{{ $certification['title_full'] }} <span>Exam Prep</span></h1>
                                 <p class="srv-subtitle">{{ $certification['title_full'] }}</p>
                                 <p class="srv-desc">{{ $certification['description'] }}</p>
 
@@ -112,6 +122,59 @@
                                     </div>
                                 </div>
 
+                                @php
+                                $pageExams = \App\Models\Exam::whereHas('school', function ($query) use ($certification)
+                                {
+                                $query->where('slug', $certification['id']);
+                                })->get();
+
+                                $groupedExamsRaw = [];
+
+                                foreach($pageExams as $exam) {
+                                $q_count = \App\Models\Question::where('exam_id', $exam->id)->count();
+
+                                if ($q_count == 0) {
+                                continue;
+                                }
+
+                                $exam->q_count = $q_count;
+
+                                $nameLower = strtolower($exam->name);
+
+                                $assignedGroup = $certification['title_full'];
+
+                                if ($certification['id'] === 'medical-assistant') {
+                                if (strpos($nameLower, 'aama') !== false || strpos($nameLower, 'american association')
+                                !== false) {
+                                $assignedGroup = 'AAMA';
+                                } else {
+                                $assignedGroup = 'CCMA';
+                                }
+                                }
+
+                                elseif ($certification['id'] === 'pharmacy-technician') {
+                                if (strpos($nameLower, 'excpt') !== false) {
+                                $assignedGroup = 'ExCPT';
+                                } else {
+                                $assignedGroup = 'PTCE';
+                                }
+                                }
+
+                                $groupedExamsRaw[$assignedGroup][] = $exam;
+                                }
+                                $groupedExams = [];
+                                if ($certification['id'] === 'medical-assistant') {
+                                if (isset($groupedExamsRaw['CCMA'])) $groupedExams['CCMA'] = $groupedExamsRaw['CCMA'];
+                                if (isset($groupedExamsRaw['AAMA'])) $groupedExams['AAMA'] = $groupedExamsRaw['AAMA'];
+                                } elseif ($certification['id'] === 'pharmacy-technician') {
+                                if (isset($groupedExamsRaw['PTCE'])) $groupedExams['PTCE'] = $groupedExamsRaw['PTCE'];
+                                if (isset($groupedExamsRaw['ExCPT'])) $groupedExams['ExCPT'] =
+                                $groupedExamsRaw['ExCPT'];
+                                } else {
+                                $groupedExams = $groupedExamsRaw;
+                                }
+                                @endphp
+
                                 @if(!empty($groupedExams))
                                 <div class="srv-exam-library">
                                     @foreach($groupedExams as $groupName => $exams)
@@ -124,6 +187,7 @@
 
                                         <div class="library-grid">
                                             @foreach($exams as $pageExam)
+
                                             <a href="{{ route('questions.index', ['schoolSlug' => $certification['id'], 'examSlug' => $pageExam->slug]) }}"
                                                 class="library-card">
                                                 <div class="lc-content">
