@@ -69,7 +69,6 @@
                                 foreach($pageExams as $exam) {
                                 $q_count = \App\Models\Question::where('exam_id', $exam->id)->count();
 
-                                // Condition to not render items with zero questions
                                 if ($q_count == 0) {
                                 continue;
                                 }
@@ -78,10 +77,8 @@
 
                                 $nameLower = strtolower($exam->name);
 
-                                // Default group assigned to the title abbreviation, eliminating "General"
                                 $assignedGroup = $certification['title_abbr'];
 
-                                // Specific mapping for Medical Assistant to handle missing short forms
                                 if ($certification['id'] === 'medical-assistant') {
                                 if (strpos($nameLower, 'aama') !== false || strpos($nameLower, 'american association')
                                 !== false) {
