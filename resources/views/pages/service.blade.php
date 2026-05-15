@@ -6,12 +6,12 @@
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ $certification['title_full'] }} Exam Prep | UsExamPrep</title>
+    <title>{{ $certification['title_full'] }} | UsExamPrep</title>
 
     <meta content="{{ $shortDescription }}" name="description">
     <meta content="{{ $keywords }}" name="keywords">
 
-    <meta content="{{ $certification['title_full'] }} Exam Prep | UsExamPrep" property="og:title">
+    <meta content="{{ $certification['title_full'] }} | UsExamPrep" property="og:title">
     <meta content="{{ $shortDescription }}" property="og:description">
     <meta content="{{ $keywords }}" property="og:keywords">
     <meta content="{{ asset('images/logo.png') }}" property="og:image">
@@ -19,7 +19,7 @@
     <meta content="website" property="og:type">
     <meta content="UsExamPrep" property="og:site_name">
 
-    <meta content="{{ $certification['title_full'] }} Exam Prep | UsExamPrep" name="twitter:title">
+    <meta content="{{ $certification['title_full'] }} | UsExamPrep" name="twitter:title">
     <meta content="{{ $shortDescription }}" name="twitter:description">
     <meta content="{{ asset('images/logo.png') }}" name="twitter:image">
     <meta content="summary_large_image" name="twitter:card">
@@ -40,7 +40,7 @@
        "@@graph": [
           {
              "@@type": "WebPage",
-             "name": "{{ $certification['title_full'] }} Exam Prep | UsExamPrep",
+             "name": "{{ $certification['title_full'] }} | UsExamPrep",
              "description": "{{ $shortDescription }}",
              "url": "{{ $cleanCanonicalUrl }}"
           },
