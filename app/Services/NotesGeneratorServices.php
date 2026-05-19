@@ -169,7 +169,10 @@ PROMPT;
             // Switched to deepseek config
             'Authorization' => 'Bearer '.config('services.deepseek.api_key'),
             'Content-Type' => 'application/json',
-        ])->post('https://api.deepseek.com/chat/completions', [
+            
+        ])
+        ->timeout(120) // Increase from 30s to 120s (2 minutes)
+        ->post('https://api.deepseek.com/chat/completions', [
             'model' => 'deepseek-v4-flash', // Updated Model
             'messages' => [
 
