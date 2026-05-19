@@ -79,7 +79,6 @@ function generateWrongAnswerContent($questionData, $apiKey, $apiUrl)
     ];
 
     try {
-        // 🔐 SSL FIX: Point directly to cacert.pem in your project folder
         $client = new Client([
             'timeout' => 30,
             'verify' => __DIR__.'/cacert.pem',
