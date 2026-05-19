@@ -7,10 +7,10 @@ use GuzzleHttp\Exception\GuzzleException;
 
 $envPath = __DIR__.'/.env';
 $envContent = file_exists($envPath) ? file_get_contents($envPath) : '';
-preg_match_all('/^DEEPSEEK_API_KEY=(.*)$/m', $envContent, $matches);
-$DEEPSEEK_API_KEY = trim($matches[1][0] ?? '');
+preg_match_all('/^OPENAI_API_KEY=(.*)$/m', $envContent, $matches);
+$OPENAI_API_KEY = trim($matches[1][0] ?? '');
 
-$DEEPSEEK_API_URL = 'https://api.deepseek.com/v1/chat/completions';
+$OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
 $BATCH_SIZE = 1000;
 $API_DELAY = 2;
 
@@ -69,7 +69,7 @@ function generateWrongAnswerContent($questionData, $apiKey, $apiUrl)
     $userPrompt = "Question: {$questionData['question']}\n\nAvailable Choices:\n{$choicesStr}\n\nCorrect Answer: {$questionData['correct_answer']}\n\nOfficial Rationale: {$questionData['rationale']}\n\nGenerating the 'Students Also Get This Wrong' paragraph now, focusing on why learners commonly select the wrong options despite knowing the rationale.";
 
     $payload = [
-        'model' => 'deepseek-chat',
+        'model' => 'gpt-4o-mini',
         'messages' => [
             ['role' => 'system', 'content' => $systemPrompt],
             ['role' => 'user', 'content' => $userPrompt],
@@ -79,10 +79,12 @@ function generateWrongAnswerContent($questionData, $apiKey, $apiUrl)
     ];
 
     try {
+        // 🔐 SSL FIX: Point directly to cacert.pem in your project folder
         $client = new Client([
             'timeout' => 30,
-            'verify' => false,
+            'verify' => __DIR__.'/cacert.pem',
         ]);
+
         $response = $client->post($apiUrl, [
             'headers' => [
                 'Authorization' => 'Bearer '.$apiKey,
@@ -97,8 +99,9 @@ function generateWrongAnswerContent($questionData, $apiKey, $apiUrl)
         }
 
         $content = trim($result['choices'][0]['message']['content']);
-        if (strpos($content, ':') !== false && strpos($content, ':') < 50) {
-            $content = trim(substr($content, strpos($content, ':') + 1));
+        // Optional: strip title prefix if model adds "Students Also Get This Wrong:"
+        if (preg_match('/^(Students Also Get This Wrong:?\s*)/i', $content, $m)) {
+            $content = trim(substr($content, strlen($m[1])));
         }
 
         return $content;
@@ -136,7 +139,7 @@ $processedCount = 0;
 foreach ($questions as $q) {
     echo "Processing Question ID: {$q['id']}".PHP_EOL;
 
-    $generatedText = generateWrongAnswerContent($q, $DEEPSEEK_API_KEY, $DEEPSEEK_API_URL);
+    $generatedText = generateWrongAnswerContent($q, $OPENAI_API_KEY, $OPENAI_API_URL);
 
     if ($generatedText) {
         updateQuestionWrongAnswer($conn, $q['id'], $generatedText);
