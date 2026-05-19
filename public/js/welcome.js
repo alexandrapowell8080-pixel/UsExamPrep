@@ -117,4 +117,28 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const navLinksDesktop = document.querySelector(".nav-links-desktop");
+    const navActionsDesktop = document.querySelector(".nav-actions-desktop");
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener("click", function () {
+            if (navLinksDesktop) navLinksDesktop.classList.toggle("active");
+            if (navActionsDesktop) navActionsDesktop.classList.toggle("active");
+            mobileMenuBtn.classList.toggle("active");
+        });
+    }
+
+    const dropdownBtns = document.querySelectorAll(".nav-dropdown-btn");
+    dropdownBtns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+            if (window.innerWidth <= 991) {
+                const dropdownContent = this.nextElementSibling;
+                if (dropdownContent) {
+                    dropdownContent.classList.toggle("show");
+                    this.classList.toggle("open");
+                }
+            }
+        });
+    });
 });

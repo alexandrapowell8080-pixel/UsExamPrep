@@ -11,6 +11,7 @@
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/404.css') }}" rel="stylesheet">
     <script src="{{ asset('js/welcome.js') }}" defer></script>
+    <meta name="robots" content="noindex, nofollow">
 </head>
 
 <body>
