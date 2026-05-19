@@ -7,6 +7,7 @@ use App\Models\Notes;
 use App\Models\School;
 use App\Models\Section;
 use App\Models\Topic;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class StudyNotesController extends Controller
@@ -40,5 +41,37 @@ class StudyNotesController extends Controller
         $sections = $school->sections()->with('topics')->get();
 
         return view('study-notes.chapter', compact('notes', 'sections', 'topic', 'section', 'school'));
+    }  
+
+     /**
+     * Edit the notes content
+     *
+     * @param  Section  $section
+     */
+    public function edit(School $school, Section $section, Topic $topic): View
+    {
+        //   dd($topic->name,$exam->name,$school->name);
+        $notes = Notes::where('topic_id', $topic->id)->first();
+        if (! $notes) {
+            abort(404, 'No notes found');
+        }
+        $sections = $school->sections()->with('topics')->get();
+
+        return view('study-notes.edit', compact('notes', 'sections', 'topic', 'section', 'school'));
+    }
+
+    /**
+     * Update the note
+     */
+    public function update(Request $request,Topic $topic){
+        // dd($request->content);
+        $request->validate([
+            'content' => 'required'
+        ]);
+        Notes::where('topic_id',$topic->id)->update([
+            'content' => $request->content
+        ]);
+
+        return redirect()->back()->with('success',$topic->name.' updated successfully');
     }
 }
