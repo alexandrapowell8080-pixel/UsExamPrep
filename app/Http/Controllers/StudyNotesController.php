@@ -57,6 +57,35 @@ class StudyNotesController extends Controller
         return view('study-notes.chapter', compact('notes', 'sections', 'topic', 'section', 'school', 'previousNoteUrl', 'nextNoteUrl'));
     }
 
+    public function sources(School $school, Section $section, Topic $topic): View
+    {
+        $notes = Notes::where('topic_id', $topic->id)->first();
+        if (! $notes) {
+            abort(404, 'No notes found');
+        }
+        $sections = $school->sections()->with('topics')->get();
+        $previousNoteUrl = null;
+        $nextNoteUrl = null;
+
+        if ($notes) {
+            // Get the note created immediately before this one
+            $previousNote = Notes::with('topic')->where('id', '<', $notes->id)
+                ->orderBy('id', 'desc')
+                ->first();
+
+            // Get the note created immediately after this one
+            $nextNote = Notes::with('topic')->where('id', '>', $notes->id)
+                ->orderBy('id', 'asc')
+                ->first();
+
+            // Generate your URLs safely if the records exist
+            $previousNoteUrl = $previousNote ? route('study-notes.content', ['school' => $school->slug, 'section' => $section->slug, 'topic' => $previousNote->topic->slug]) : null;
+            $nextNoteUrl = $nextNote ? route('study-notes.content', ['school' => $school->slug, 'section' => $section->slug, 'topic' => $nextNote->topic->slug]) : null;
+        }
+
+        return view('study-notes.sources', compact('notes', 'sections', 'topic', 'section', 'school', 'previousNoteUrl', 'nextNoteUrl'));
+    }
+
     /**
      * Edit the notes content
      */

@@ -3,22 +3,21 @@
 namespace App\Console\Commands;
 
 use App\Models\Notes;
-use App\Models\NotesPointer;
 use App\Models\Topic;
-use App\Services\NotesGeneratorServices;
+use App\Services\NotesSourcesGeneratorServices;
 use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
-#[Signature('notes:generate')]
-#[Description('Generate notes')]
-class NotesGenerate extends Command
+#[Signature('notes:generate_sources')]
+#[Description('Generate notes with sources')]
+class NotesSourceGenerate extends Command
 {
     /**
      * Execute the console command.
      */
-    public function __construct(protected NotesGeneratorServices $notes_generator_services)
+    public function __construct(protected NotesSourcesGeneratorServices $notes_generator_services)
     {
         parent::__construct();
     }
@@ -39,14 +38,10 @@ class NotesGenerate extends Command
             'section:id,name,school_id',
             'section.school:id,name',
         ])
-            ->where(function ($query) {
-                $query->whereDoesntHave('notes') // Case 1: No notes row exists at all
-                    ->orWhereHas('notes', function ($subQuery) {
-                        // Case 2: Notes row exists, but content is empty, null, or blank spaces
-                        $subQuery->whereNull('content')
-                            ->orWhere('content', '')
-                            ->orWhereRaw('TRIM(content) = ""');
-                    });
+            ->whereDoesntHave('notes', function ($query) {
+                // Find any notes that HAVE content
+                $query->whereNotNull('content_with_sources')
+                    ->where('content_with_sources', '<>', '');
             })
             ->take(1)
             ->get(['id', 'name', 'section_id']);
@@ -66,8 +61,10 @@ class NotesGenerate extends Command
             $this->line("School: {$topic->section->school->name}");
             $this->line('------------------------------------------------');
 
+            //  return;
+
             try {
-                $this->comment('⏳ Generating AI notes...');
+                $this->comment('⏳ Generating AI notes with sources...');
 
                 $notes = $this->notes_generator_services->generate(
                     $topic->section->school->name,
@@ -78,12 +75,18 @@ class NotesGenerate extends Command
                 $this->comment('💾 Saving to database...');
                 DB::transaction(function () use ($topic, $notes) {
                     // NotesPointer::where('id',$topic->pointers->id)->update(['status'=>'published']);
-                    Notes::updateOrCreate(
-                        ['topic_id' => $topic->id],
-                        [
-                            'content' => $notes['message'],
-                        ]
-                    );
+                    $note = Notes::where('topic_id', $topic->id)->first();
+                    if (! $note) {
+                        Notes::create([
+                            'content' => '',
+                            'content_with_sources' => $notes['message'],
+                            'topic_id' => $topic->id,
+                        ]);
+                    } else {
+                        $note->content_with_sources = $notes['message'];
+                        $note->save();
+                    }
+
                 });
 
                 $this->info("✅ DONE: {$topic->name}");

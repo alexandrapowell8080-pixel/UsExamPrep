@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Notes extends Model
 {
     //
-    protected $fillable = ['content','topic_id'];
+    protected $fillable = ['content','topic_id','content_with_sources'];
 
     public function topic():BelongsTo
     {
