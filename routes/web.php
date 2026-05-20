@@ -22,6 +22,13 @@ Route::prefix('study-notes')
         Route::get('/{school:slug}/{section:slug}/{topic:slug}', 'show')
             ->name('content');
 
+        Route::get('/{school:slug}/{section:slug}/{topic:slug}/edit', 'edit')
+            ->name('edit');
+
+        Route::put('/update/{topic:slug}', 'update')
+            ->name('update');
+        
+
     });
 
 Route::get('questions/{schoolSlug}/{examSlug}/', [QuestionController::class, 'index'])
