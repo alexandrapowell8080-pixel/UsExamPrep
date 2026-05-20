@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Exam;
 use App\Models\Notes;
 use App\Models\School;
 use App\Models\Section;
@@ -28,25 +27,38 @@ class StudyNotesController extends Controller
 
     /**
      * Display the notes content
-     *
-     * @param  Section  $section
      */
     public function show(School $school, Section $section, Topic $topic): View
     {
-        //   dd($topic->name,$exam->name,$school->name);
         $notes = Notes::where('topic_id', $topic->id)->first();
         if (! $notes) {
             abort(404, 'No notes found');
         }
         $sections = $school->sections()->with('topics')->get();
+        $previousNoteUrl = null;
+        $nextNoteUrl = null;
 
-        return view('study-notes.chapter', compact('notes', 'sections', 'topic', 'section', 'school'));
-    }  
+        if ($notes) {
+            // Get the note created immediately before this one
+            $previousNote = Notes::with('topic')->where('id', '<', $notes->id)
+                ->orderBy('id', 'desc')
+                ->first();
 
-     /**
+            // Get the note created immediately after this one
+            $nextNote = Notes::with('topic')->where('id', '>', $notes->id)
+                ->orderBy('id', 'asc')
+                ->first();
+
+            // Generate your URLs safely if the records exist
+            $previousNoteUrl = $previousNote ? route('study-notes.content', ['school' => $school->slug, 'section' => $section->slug, 'topic' => $previousNote->topic->slug]) : null;
+            $nextNoteUrl = $nextNote ? route('study-notes.content', ['school' => $school->slug, 'section' => $section->slug, 'topic' => $nextNote->topic->slug]) : null;
+        }
+
+        return view('study-notes.chapter', compact('notes', 'sections', 'topic', 'section', 'school', 'previousNoteUrl', 'nextNoteUrl'));
+    }
+
+    /**
      * Edit the notes content
-     *
-     * @param  Section  $section
      */
     public function edit(School $school, Section $section, Topic $topic): View
     {
@@ -63,15 +75,16 @@ class StudyNotesController extends Controller
     /**
      * Update the note
      */
-    public function update(Request $request,Topic $topic){
+    public function update(Request $request, Topic $topic)
+    {
         // dd($request->content);
         $request->validate([
-            'content' => 'required'
+            'content' => 'required',
         ]);
-        Notes::where('topic_id',$topic->id)->update([
-            'content' => $request->content
+        Notes::where('topic_id', $topic->id)->update([
+            'content' => $request->content,
         ]);
 
-        return redirect()->back()->with('success',$topic->name.' updated successfully');
+        return redirect()->back()->with('success', $topic->name.' updated successfully');
     }
 }
