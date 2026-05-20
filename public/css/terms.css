@@ -1,0 +1,112 @@
+.legal-section {
+    padding: 4rem 0;
+    background: var(--bg-muted);
+    min-height: 100vh;
+}
+
+.legal-container {
+    background: var(--white);
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.legal-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.025em;
+}
+
+.legal-updated {
+    font-size: var(--fs-sm);
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    display: block;
+    font-weight: 500;
+}
+
+.legal-content h2 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 2rem 0 1rem;
+}
+
+.legal-content h3 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 1.5rem 0 0.75rem;
+}
+
+.legal-content p {
+    font-size: var(--fs-base);
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.legal-content ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+    padding-left: 0;
+}
+
+.legal-content li {
+    font-size: var(--fs-base);
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.legal-content li::before {
+    content: "✔";
+    color: var(--primary-color);
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.legal-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-fast);
+}
+
+.legal-content a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+@media (max-width: 340px) {
+    .legal-section {
+        padding: 2rem 0;
+    }
+
+    .legal-container {
+        padding: 1.25rem 1rem;
+        border-radius: 0.5rem;
+    }
+
+    .legal-content h2 {
+        font-size: var(--fs-lg);
+        margin: 1.5rem 0 0.75rem;
+    }
+
+    .legal-content h3 {
+        font-size: var(--fs-base);
+    }
+
+    .legal-content li {
+        gap: 0.5rem;
+    }
+}

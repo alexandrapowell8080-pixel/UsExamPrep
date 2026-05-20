@@ -53,7 +53,7 @@
             <div class="sm:w-[80%] w-screen  mx-auto pt-5 max-h-screen overflow-scroll hide-scrollbar">
 
                 {{-- Breadcrumb & Back --}}
-                <nav class="mb-8 flex items-center justify-between">
+                <nav class="sm:mb-8 mb-2 flex items-center justify-between">
                     <a href="{{ route('study-notes.outline', ['school' => request('school')]) }}"
                         class="flex items-center text-sm font-bold text-teal-600 hover:text-teal-700 transition-colors">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,22 +62,25 @@
                         </svg>
                         <span class="sm:block hidden">BACK TO CURRICULUM</span>
                     </a>
-                    {{-- <span class="text-xs font-black tracking-widest text-slate-400 uppercase">Module 01: Healthcare
-                    Foundations</span> --}}
+                    <a href="{{ route('certification.show', ['slug' => $school->slug]) }}"
+                        class="inline-flex items-center justify-center px-6 py-2 text-base font-bold text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-200 rounded-xl shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+                        Practice Questions
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
                 </nav>
 
                 {{-- Hero Header --}}
                 <header
-                    class="bg-white rounded-t-[2rem] p-8 md:p-12 shadow-sm border border-slate-200/60 mb-5 relative overflow-hidden">
+                    class="bg-white sm:rounded-t-[2rem] p-8 md:p-12 shadow-sm border border-slate-200/60 sm:mb-5 mb-2 relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-32 h-32 bg-teal-50 rounded-bl-full opacity-50"></div>
-                    <div class="relative z-10">
+                    <div class="relative z-10 flex flex-col items-center">
                         <h1 class="text-3xl text-center md:text-5xl font-black text-slate-900 leading-tight mb-4">
                             {{ $topic->name }}
                         </h1>
-                        {{-- <p class="text-lg text-slate-500 max-w-3xl font-medium text-center">
-                            Exploring the critical scope of practice, ethical boundaries, and the essential nature of the
-                            Nursing Assistant within the interdisciplinary healthcare team.
-                        </p> --}}
                     </div>
                 </header>
 
@@ -93,45 +96,79 @@
                     @endif
                 </article>
 
+                <div
+                    class="w-full md:w-3/4 mx-auto bg-gradient-to-br from-teal-50/60 to-slate-50 border border-teal-100/80 p-6 md:p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 shadow-inner">
+                    <div class="text-center sm:text-left">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1">Ready to test your knowledge?</h3>
+                        <p class="text-sm text-slate-500 font-medium max-w-md">Challenge yourself with exam-style practice
+                            questions tailored for this topic.</p>
+                    </div>
+
+                    <a href="{{ route('certification.show', ['slug' => $school->slug]) }}"
+                        class="group inline-flex items-center justify-center w-full sm:w-auto whitespace-nowrap px-8 py-4 text-base font-bold text-white bg-teal-600 hover:bg-teal-700 active:bg-teal-800 transition-all duration-200 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+                        <span>Start Practice Questions</span>
+                        <svg class="w-5 h-5 ml-2.5 transform group-hover:translate-x-1 transition-transform duration-200"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+
                 {{-- Summary Sidebar/Bottom --}}
-                {{-- <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-3xl border border-slate-200">
-                    <h4 class="font-black text-slate-800 uppercase text-xs tracking-widest mb-4">Exam Highlight</h4>
-                    <p class="text-sm text-slate-600 italic">
-                        "The state exam frequently tests the 'Right to Refuse.' Remember: A resident can refuse any care. Your job is to stop, explain why the care is needed, and notify the nurse if they still refuse."
-                    </p>
+                <div
+                    class="mt-10 w-11/12 mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100 pt-6">
+                    <!-- Previous Button -->
+                    @if ($previousNoteUrl)
+                        <a href="{{ $previousNoteUrl }}"
+                            class="group inline-flex items-center justify-center w-full sm:w-auto px-6 py-3.5 text-sm font-bold text-slate-700 bg-white hover:bg-slate-50 active:bg-slate-100 border border-slate-200 rounded-2xl shadow-sm hover:shadow transition-all duration-200">
+                            <svg class="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform duration-200 text-slate-400 group-hover:text-slate-600"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            <span>Previous Topic</span>
+                        </a>
+                    @else
+                        <div></div> <!-- Empty placeholder container to keep the 'Next' button pushed right -->
+                    @endif
+
+                    <!-- Next Button -->
+                    @if ($nextNoteUrl)
+                        <a href="{{ $nextNoteUrl }}"
+                            class="group inline-flex items-center justify-center w-full sm:w-auto px-6 py-3.5 text-sm font-bold text-white bg-teal-600 hover:bg-teal-700 active:bg-teal-800 rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+                            <span>Next Topic</span>
+                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-200"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    @endif
                 </div>
-                <div class="bg-teal-600 p-6 rounded-3xl text-white">
-                    <h4 class="font-black uppercase text-xs tracking-widest mb-4 opacity-80">Quick Quiz Prep</h4>
-                    <p class="text-sm font-medium">
-                        Who is the most important member of the healthcare team? <br>
-                        <strong>Answer: The Resident/Patient.</strong>
-                    </p>
-                </div>
-            </div> --}}
             </div>
         </div>
         <style type="text/tailwindcss">
             /*.ai-content h2 {
-                        font-size: 1.5rem;
-                        font-weight: bold;
-                        margin-top: 1.5rem;
-                        margin-bottom: 0.5rem;
-                    }
+                                            font-size: 1.5rem;
+                                            font-weight: bold;
+                                            margin-top: 1.5rem;
+                                            margin-bottom: 0.5rem;
+                                        }
 
-                    .ai-content h3 {
-                        font-size: 1.25rem;
-                        font-weight: bold;
-                        margin-top: 1.25rem;
-                        margin-bottom: 0.5rem;
-                    }
+                                        .ai-content h3 {
+                                            font-size: 1.25rem;
+                                            font-weight: bold;
+                                            margin-top: 1.25rem;
+                                            margin-bottom: 0.5rem;
+                                        }
 
-                    .ai-content ul {
-                        list-style-type: disc;
-                        padding-left: 1.5rem;
-                    }
+                                        .ai-content ul {
+                                            list-style-type: disc;
+                                            padding-left: 1.5rem;
+                                        }
 
-                     Add more tags as needed */
+                                         Add more tags as needed */
 
             .ai-content {
                 line-height: 1.6;
@@ -182,7 +219,7 @@
             /* --- Enhanced Table Styling --- */
 
             /* 1. Responsiveness: Wrap tables in markdown if possible,
-           otherwise this ensures they don't overflow */
+                               otherwise this ensures they don't overflow */
             .ai-content table {
                 width: 100%;
                 border-collapse: collapse;
