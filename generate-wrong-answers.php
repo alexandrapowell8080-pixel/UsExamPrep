@@ -37,7 +37,7 @@ function getDbConnection($config)
 function fetchPendingQuestions($conn, $batchSize)
 {
     $query = 'SELECT id, question, choiceA, choiceB, choiceC, choiceD, choiceE, choiceF, choiceG, correct_answer, rationale 
-              FROM Questions 
+              FROM questions 
               WHERE wrong_answer IS NULL OR wrong_answer = \'\'
               LIMIT ?';
     $stmt = $conn->prepare($query);
@@ -115,7 +115,7 @@ function generateWrongAnswerContent($questionData, $apiKey, $apiUrl)
 
 function updateQuestionWrongAnswer($conn, $questionId, $wrongAnswerText)
 {
-    $query = 'UPDATE Questions SET wrong_answer = ?, updated_at = NOW() WHERE id = ?';
+    $query = 'UPDATE questions SET wrong_answer = ?, updated_at = NOW() WHERE id = ?';
     $stmt = $conn->prepare($query);
     $stmt->bind_param('si', $wrongAnswerText, $questionId);
     $stmt->execute();
