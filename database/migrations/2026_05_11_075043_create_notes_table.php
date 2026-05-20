@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Topic::class,'topic_id')->constrained()->cascadeOnDelete();;
             $table->text('content');
+            $table->text('content_with_sources');
             $table->timestamps();
         });
     }
