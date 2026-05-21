@@ -16,7 +16,7 @@
                 <div
                     class="inline-flex items-center gap-2 bg-white border border-teal-100 text-teal-700 px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-sm">
                     <span class="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse"></span>
-                    Certified Nursing Assistant Program
+                    {{ request('school')->name }}
                 </div>
 
                 <h1 class="sm:text-4xl text-2xl md:text-6xl font-black text-[#1e293b] tracking-tight leading-none mb-6">
