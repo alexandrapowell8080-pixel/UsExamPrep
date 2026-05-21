@@ -39,9 +39,14 @@ Route::prefix('study-notes')
 
         Route::get('/{school:slug}/{section:slug}/{topic:slug}/sources', 'sources')
             ->name('sources');
+        Route::get('/{school:slug}/{section:slug}/{topic:slug}/sources/edit', 'sourcesEdit')
+            ->name('sourcesEdit');
 
         Route::put('/update/{topic:slug}', 'update')
             ->name('update');
+
+        Route::put('/update-sources/{topic:slug}', 'updateSources')
+            ->name('update_sources');
 
 
     });
