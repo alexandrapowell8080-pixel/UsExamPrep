@@ -868,7 +868,13 @@ class SchoolStructureSeeder extends Seeder
                         'slug' => Str::slug($topicName),
                     ]);
 
-                   $this->command->info("School: {$school->name}. Section: {$section->name}.  Topic: {$topic->name}. ");
+                    if ($topic->wasRecentlyCreated) {
+                        // New record: Output in yellow
+                        $this->command->line("<fg=blue>School: {$school->name}. Section: {$section->name}. Topic: {$topic->name}.</>");
+                    } else {
+                        // Existing record: Output in green
+                        $this->command->info("School: {$school->name}. Section: {$section->name}. Topic: {$topic->name}.");
+                    }
 
                 }
             }
