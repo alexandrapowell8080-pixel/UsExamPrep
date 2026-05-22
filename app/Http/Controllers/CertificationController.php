@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Exam;
 use App\Models\Question;
 
-
 class CertificationController extends Controller
 {
     public function show($slug)
@@ -15,65 +14,30 @@ class CertificationController extends Controller
                 'school_slug' => 'nursing',
                 'classification_slug' => 'cna',
                 'badge' => 'Nursing',
-                'title_abbr' => 'CNA',
-                'title_full' => 'Certified Nursing Assistant',
-                'description' => 'The Certified Nursing Assistant (CNA) examination tests your knowledge and skills in providing basic patient care in healthcare settings. Our prep course covers all domains tested on the state CNA exam.',
+                'title_abbr' => 'CNA & Nurse Aide',
+                'title_full' => 'Certified Nursing Assistant (CNA) & Nurse Aide',
+                'description' => 'Whether you are taking the state CNA exam or the NNAAP Nurse Aide certification, our unified prep course covers all domains. It validates your knowledge and skills in providing top-quality basic patient care in healthcare settings and long-term care facilities.',
                 'colors' => [
                     'theme_class' => 'theme-cna',
                 ],
                 'stats' => [
-                    'questions' => '350+',
+                    'questions' => '630+',
                     'total_exam_q' => '60-70 questions + Clinical',
                     'duration' => '120 minutes (Total)',
                     'passing_score' => 'State-dependent (typically 70-80%)',
-                    'provider' => 'Prometric, Pearson VUE, Credentia, Headmaster',
+                    'provider' => 'Prometric, Pearson VUE, Credentia, NCSBN, Headmaster',
                     'difficulty' => 'Moderate',
-                    'failure_rate' => '28%',
+                    'failure_rate' => '25-28%',
                     'salary_range' => '$30,000 – $45,000',
                     'salary_avg' => '$38,130',
                     'job_growth' => '4% (2022-2032)',
-                    'study_duration' => '4 weeks',
-                    'bank_size' => '850+ questions',
-                    'free_q' => '25 questions',
+                    'study_duration' => '3-4 weeks',
+                    'bank_size' => '1650+ questions',
+                    'free_q' => '45 questions',
                 ],
-                'categories' => ['Activities of Daily Living', 'Basic Nursing Skills', 'Restorative Services', 'Psychosocial Care Skills', 'Role of the Nurse Aide'],
-                'topics' => ['Patient Care', 'Infection Control', 'Safety & Emergency', 'Communication', 'Basic Nursing Skills', 'Vital Signs', 'Personal Care', 'Nutrition'],
-                'learn_points' => ['Proper patient care techniques', 'Infection control protocols', 'Communication with patients and healthcare team', 'Emergency procedures', 'Vital signs measurement', 'Daily living assistance'],
-                'deep_dives' => [
-                    ['tag' => 'Patient Care', 'title' => 'Feeding Assistance & Aspiration Prevention', 'desc' => 'Learn the correct techniques for assisting residents with eating, including positioning, pace, and aspiration prevention.'],
-                    ['tag' => 'Infection Control', 'title' => 'Hand Hygiene & Standard Precautions', 'desc' => 'Master the fundamentals of infection control, the single most important skill for preventing healthcare-associated infections.'],
-                    ['tag' => 'Safety', 'title' => 'Fall Prevention & Post-Fall Response', 'desc' => 'Understand fall risk factors, prevention strategies, and the correct response protocol when a resident is found on the floor.'],
-                ]
-            ],
-            'nurse-aide' => [
-                'id' => 'nurse-aide',
-                'school_slug' => 'nursing',
-                'classification_slug' => 'nurse-aide',
-                'badge' => 'Nursing',
-                'title_abbr' => 'Nurse Aide',
-                'title_full' => 'Nurse Aide Certification',
-                'description' => 'The Nurse Aide certification validates your ability to provide quality care to residents in long-term care facilities. Our course prepares you with real exam-style questions.',
-                'colors' => [
-                    'theme_class' => 'theme-aide',
-                ],
-                'stats' => [
-                    'questions' => '280+',
-                    'total_exam_q' => '70 questions (NNAAP)',
-                    'duration' => '120 minutes',
-                    'passing_score' => 'State-dependent',
-                    'provider' => 'NCSBN, Credentia, Prometric',
-                    'difficulty' => 'Moderate',
-                    'failure_rate' => '25%',
-                    'salary_range' => '$30,000 – $45,000',
-                    'salary_avg' => '$38,130',
-                    'job_growth' => '4% (2022-2032)',
-                    'study_duration' => '3 weeks',
-                    'bank_size' => '800+ questions',
-                    'free_q' => '20 questions',
-                ],
-                'categories' => ['Resident Rights', 'Safety & Emergency', 'Personal Care', 'Basic Nursing Skills', 'Communication'],
-                'topics' => ['Resident Care', 'Safety Procedures', 'Communication', 'Infection Prevention', 'Personal Care Skills', 'Mental Health'],
-                'learn_points' => ['Resident rights and dignity', 'Safe transfer techniques', 'Hygiene and grooming assistance', 'Reporting changes in condition', 'Emotional support techniques', 'Documentation basics'],
+                'categories' => ['Activities of Daily Living', 'Basic Nursing Skills', 'Resident Rights', 'Safety & Emergency', 'Psychosocial Care Skills', 'Communication'],
+                'topics' => ['Patient & Resident Care', 'Infection Control', 'Safety Procedures', 'Communication', 'Basic Nursing Skills', 'Vital Signs', 'Personal Care', 'Mental Health'],
+                'learn_points' => ['Proper patient and resident care techniques', 'Infection control protocols', 'Resident rights and dignity', 'Safe transfer techniques and emergency procedures', 'Vital signs measurement', 'Daily living, hygiene, and grooming assistance'],
                 'deep_dives' => [
                     ['tag' => 'Patient Care', 'title' => 'Feeding Assistance & Aspiration Prevention', 'desc' => 'Learn the correct techniques for assisting residents with eating, including positioning, pace, and aspiration prevention.'],
                     ['tag' => 'Infection Control', 'title' => 'Hand Hygiene & Standard Precautions', 'desc' => 'Master the fundamentals of infection control, the single most important skill for preventing healthcare-associated infections.'],
@@ -344,9 +308,13 @@ class CertificationController extends Controller
             $otherCerts[] = $certifications[$nextKey];
         }
 
-        // Fetch exams for the current certification
-        $pageExams = Exam::whereHas('school', function ($query) use ($currentCert) {
-            $query->where('slug', $currentCert['id']);
+        // Fetch exams for the current certification (Added logic to fetch nurse-aide if CNA)
+        $pageExams = Exam::with('school')->whereHas('school', function ($query) use ($currentCert) {
+            if ($currentCert['id'] === 'certified-nursing-assistant') {
+                $query->whereIn('slug', [$currentCert['id'], 'nurse-aide']);
+            } else {
+                $query->where('slug', $currentCert['id']);
+            }
         })->get();
 
         $groupedExamsRaw = [];
@@ -363,7 +331,14 @@ class CertificationController extends Controller
             $nameLower = strtolower($exam->name);
             $assignedGroup = $currentCert['title_full'];
 
-            if ($currentCert['id'] === 'medical-assistant') {
+            if ($currentCert['id'] === 'certified-nursing-assistant') {
+                // Determine if it belongs to Nurse Aide by checking database school slug or string
+                if (($exam->school && $exam->school->slug === 'nurse-aide') || strpos($nameLower, 'aide') !== false || strpos($nameLower, 'nnaap') !== false) {
+                    $assignedGroup = 'Nurse Aide';
+                } else {
+                    $assignedGroup = 'CNA';
+                }
+            } elseif ($currentCert['id'] === 'medical-assistant') {
                 if (strpos($nameLower, 'aama') !== false || strpos($nameLower, 'american association') !== false) {
                     $assignedGroup = 'AAMA';
                 } else {
@@ -382,7 +357,12 @@ class CertificationController extends Controller
         }
 
         $groupedExams = [];
-        if ($currentCert['id'] === 'medical-assistant') {
+        if ($currentCert['id'] === 'certified-nursing-assistant') {
+            if (isset($groupedExamsRaw['CNA']))
+                $groupedExams['CNA'] = $groupedExamsRaw['CNA'];
+            if (isset($groupedExamsRaw['Nurse Aide']))
+                $groupedExams['Nurse Aide'] = $groupedExamsRaw['Nurse Aide'];
+        } elseif ($currentCert['id'] === 'medical-assistant') {
             if (isset($groupedExamsRaw['CCMA']))
                 $groupedExams['CCMA'] = $groupedExamsRaw['CCMA'];
             if (isset($groupedExamsRaw['AAMA']))

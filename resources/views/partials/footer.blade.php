@@ -167,7 +167,7 @@
             <div>
                 <h3 class="footer-list-heading">Certifications</h3>
                 <ul class="footer-links-list">
-                    <li><a href="/certification/nurse-aide">NA Prep</a></li>
+                    <li><a href="/certification/certified-nursing-assistant">CNA Prep</a></li>
                     <li><a href="/certification/medical-assistant">CCMA Prep</a></li>
                     <li><a href="/certification/pharmacy-technician">PTCE Prep</a></li>
                     <li><a href="/certification/phlebotomy-technician-certification">Phlebotomy Prep</a></li>
