@@ -28,8 +28,13 @@
                                 href="{{ route('certification.show', $exam->school->slug) }}">{{ $exam->name }}</a>
                         </div>
                         <div class="inline-flex h-9 items-center justify-center rounded-lg p-1 bg-gray-100">
-                            <a href="/study-notes/{{ $exam->school->slug }}"
+                            @if (request('schoolSlug') == 'nurse-aide')
+                            <a href="/study-notes/certified-nursing-assistant"
                                 class="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-md hover:bg-white transition-colors">
+                                @else
+                                 <a href="/study-notes/{{ $exam->school->slug }}"
+                                class="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-md hover:bg-white transition-colors">
+                                  @endif
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 7v14" />
@@ -38,6 +43,8 @@
                                 </svg>
                                 Study Notes
                             </a>
+                          
+                           
                             <button
                                 class="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-md bg-white text-gray-900 shadow-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
