@@ -139,11 +139,15 @@ class StudyNotesController extends Controller
         $request->validate([
             'content' => 'required',
         ]);
-        Notes::where('topic_id', $topic->id)->update([
-            'content' => $request->content,
-        ]);
+        $notes = Notes::where('topic_id', $topic->id)->first();
+        if (! $notes) {
+            abort(404, 'No notes found');
+        } else {
+            $notes->content = $request->content;
+            $notes->save();
 
-        return redirect()->back()->with('success', $topic->name.' updated successfully');
+            return redirect()->back()->with('success', $topic->name.' updated successfully');
+        }
     }
 
     /**
