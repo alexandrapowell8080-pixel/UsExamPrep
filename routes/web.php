@@ -31,7 +31,7 @@ Route::prefix('study-notes')
         Route::get('/{school:slug}', 'index')
             ->name('outline');
 
-        Route::get('/{school:slug}/{section:slug}/{topic:slug}', 'show')
+        Route::get('/{school:slug}/{section:slug}/{topic}', 'show')
             ->name('content');
 
         Route::get('/{school:slug}/{section:slug}/{topic:slug}/edit', 'edit')
@@ -42,7 +42,7 @@ Route::prefix('study-notes')
         Route::get('/{school:slug}/{section:slug}/{topic:slug}/sources/edit', 'sourcesEdit')
             ->name('sourcesEdit');
 
-        Route::put('/update/{topic:slug}', 'update')
+        Route::put('/update/{section:slug}/{topic:slug}', 'update')
             ->name('update');
 
         Route::put('/update-sources/{topic:slug}', 'updateSources')
