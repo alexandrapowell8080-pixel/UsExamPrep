@@ -99,6 +99,9 @@
 
                                 <textarea name="content" id="content" rows="12"
                                     class="w-full mt-1 border rounded-lg p-3 focus:ring focus:ring-blue-200">{{ old('content', $notes->content) }}</textarea>
+                                @error('content')
+                                    <div class="bg-red-100 text-red-700 p-3 rounded"">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
@@ -133,25 +136,25 @@
         </div>
         <style type="text/tailwindcss">
             /*.ai-content h2 {
-                                font-size: 1.5rem;
-                                font-weight: bold;
-                                margin-top: 1.5rem;
-                                margin-bottom: 0.5rem;
-                            }
+                                        font-size: 1.5rem;
+                                        font-weight: bold;
+                                        margin-top: 1.5rem;
+                                        margin-bottom: 0.5rem;
+                                    }
 
-                            .ai-content h3 {
-                                font-size: 1.25rem;
-                                font-weight: bold;
-                                margin-top: 1.25rem;
-                                margin-bottom: 0.5rem;
-                            }
+                                    .ai-content h3 {
+                                        font-size: 1.25rem;
+                                        font-weight: bold;
+                                        margin-top: 1.25rem;
+                                        margin-bottom: 0.5rem;
+                                    }
 
-                            .ai-content ul {
-                                list-style-type: disc;
-                                padding-left: 1.5rem;
-                            }
+                                    .ai-content ul {
+                                        list-style-type: disc;
+                                        padding-left: 1.5rem;
+                                    }
 
-                             Add more tags as needed */
+                                     Add more tags as needed */
 
             .ai-content {
                 line-height: 1.6;
@@ -202,7 +205,7 @@
             /* --- Enhanced Table Styling --- */
 
             /* 1. Responsiveness: Wrap tables in markdown if possible,
-                   otherwise this ensures they don't overflow */
+                           otherwise this ensures they don't overflow */
             .ai-content table {
                 width: 100%;
                 border-collapse: collapse;
