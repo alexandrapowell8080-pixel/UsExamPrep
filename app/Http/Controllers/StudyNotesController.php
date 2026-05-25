@@ -28,8 +28,12 @@ class StudyNotesController extends Controller
     /**
      * Display the notes content
      */
-    public function show(School $school, Section $section, Topic $topic): View
+    public function show(School $school, Section $section, string $topic): View
     {
+        $topic = $section->topics->where('slug', $topic)->first();
+        if (! $topic) {
+            abort(404);
+        }
         $notes = Notes::where('topic_id', $topic->id)->first();
         if (! $notes) {
             abort(404, 'No notes found');
@@ -120,7 +124,6 @@ class StudyNotesController extends Controller
      */
     public function edit(School $school, Section $section, Topic $topic): View
     {
-        //   dd($topic->name,$exam->name,$school->name);
         $notes = Notes::where('topic_id', $topic->id)->first();
         if (! $notes) {
             abort(404, 'No notes found');
@@ -133,21 +136,24 @@ class StudyNotesController extends Controller
     /**
      * Update the note
      */
-    public function update(Request $request, Topic $topic)
+    public function update(Request $request, Section $section, Topic $topic)
     {
-        // dd($request->content);
+
         $request->validate([
             'content' => 'required',
         ]);
-        $notes = Notes::where('topic_id', $topic->id)->first();
-        if (! $notes) {
-            abort(404, 'No notes found');
-        } else {
-            $notes->content = $request->content;
-            $notes->save();
-
-            return redirect()->back()->with('success', $topic->name.' updated successfully');
+        $topic = $section->topics->where('slug', $topic->slug)->first();
+        if (! $topic) {
+            abort(404);
         }
+        // findOrFail automatically throws a 404 if not found, eliminating the if/else
+        $notes = Notes::where('topic_id', $topic->id)->firstOrFail();
+
+        $notes->update([
+            'content' => $request->content,
+        ]);
+
+        return redirect()->back()->with('success', "{$topic->name} updated successfully");
     }
 
     /**
@@ -155,7 +161,7 @@ class StudyNotesController extends Controller
      */
     public function updateSources(Request $request, Topic $topic)
     {
-        // dd($request->content);
+
         $request->validate([
             'content' => 'required',
         ]);
