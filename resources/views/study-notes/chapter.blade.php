@@ -62,15 +62,15 @@
                         </svg>
                         <span class="sm:block hidden">BACK TO CURRICULUM</span>
                     </a>
-                    <a href="{{$topic->slug}}/sources"
+                    <button onclick="window.location.href='{{ $topic->slug }}/edit'"
                         class="inline-flex items-center justify-center px-6 py-2 text-base font-bold text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-200 rounded-xl shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                       Notes With Sources
+                       Edit
                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                         </svg>
-                    </a>
+                    </button>
                     <a href="{{ route('certification.show', ['slug' => $school->slug]) }}"
                         class="inline-flex items-center justify-center px-6 py-2 text-base font-bold text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-200 rounded-xl shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                         Practice Questions

@@ -175,14 +175,7 @@ PROMPT;
         if (! $content) {
             throw new \Exception('Empty response from AI.');
         }
-        // logger($content);
-        // $json = json_decode($content, true);
-
-        // if (json_last_error() !== JSON_ERROR_NONE) {
-        //     throw new \Exception('Invalid JSON from AI: '.json_last_error_msg());
-        // }
-        logger($content);
-
+        
         return [
             'message' => $content,
         ];
