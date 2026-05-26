@@ -1,5 +1,5 @@
 <x-study-notes>
-    @section('title', $topic->name)
+    @section('title', $topic->name. ' | Study Notes')
     @section('description', $topic->name . ' study notes')
     @section('keywords', $school->name . ',' . $section->name . ',' . $topic->name)
     @section('canonical', config('app.url') . '/study-notes/' . $school->slug . '/' . $section->slug . '/' .
