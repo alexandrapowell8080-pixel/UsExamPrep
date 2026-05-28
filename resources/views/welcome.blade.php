@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
-    <title>UsExamPrep</title>
+    <title>Master Your Medical Certification Exams | UsExamPrep</title>
     <meta
         content="An interactive, animated, and smart exam preparation platform designed to help healthcare students master their certification tests through gamified practice."
         name="description">
@@ -13,7 +13,7 @@
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <script src="{{ asset('js/welcome.js') }}" defer></script>
 
-    <meta content="UsExamPrep" property="og:title">
+    <meta content="Master Your Medical Certification Exams | UsExamPrep" property="og:title">
     <meta
         content="An interactive, animated, and smart exam preparation platform designed to help healthcare students master their certification tests through gamified practice."
         property="og:description">
@@ -22,7 +22,7 @@
     <meta content="website" property="og:type">
     <meta content="UsExamPrep" property="og:site_name">
 
-    <meta content="UsExamPrep" name="twitter:title">
+    <meta content="Master Your Medical Certification Exams | UsExamPrep" name="twitter:title">
     <meta
         content="An interactive, animated, and smart exam preparation platform designed to help healthcare students master their certification tests through gamified practice."
         name="twitter:description">
@@ -67,7 +67,6 @@
         "url": "https://usexamprep.com"
     }
     </script>
-    
 </head>
 
 <body>
@@ -106,7 +105,7 @@
                     <span>Trusted by 25,000+ Healthcare Students</span>
                 </div>
 
-                <h1 class="hero-headline animated fadeInUp delay-2">US’s Best Study Hub</h1>
+                <h1 class="hero-headline animated fadeInUp delay-2">The U.S. Best Study Hub</h1>
 
                 <h2 class="hero-dynamic-headline animated fadeInUp delay-3">
                     <span class="headline-static-wrapper">Built For&nbsp;</span>
