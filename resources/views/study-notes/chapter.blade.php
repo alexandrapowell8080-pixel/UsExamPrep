@@ -1,16 +1,45 @@
 <x-study-notes>
-    @section('title', $topic->name. ' | Study Notes')
+    @section('title', $topic->name . ' | Study Notes')
     @section('description', $topic->name . ' study notes')
     @section('keywords', $school->name . ',' . $section->name . ',' . $topic->name)
     @section('canonical', config('app.url') . '/study-notes/' . $school->slug . '/' . $section->slug . '/' .
         $topic->slug)
-        <meta name="robots" content="noindex, nofollow">
+
+        @push('schema')
+            <script type="application/ld+json">
+        {
+  "@@context": "https://schema.org/",
+  "@@type": "LearningResource",
+  "name": " {{ $section->name  }} : {{ $topic->name }}" ,
+  "description": "Comprehensive study notes covering {{ $school->name }} on {{ $section->name }} specifically on {{ $topic->name }}",
+  "learningResourceType": "Study Guide",
+  "educationalLevel": "Medical Student, Continuing Medical Education, Professional",
+  "url" : "{{ request()->url() }}",
+  "inLanguage": "en",
+  "dateCreated" : "{{ $topic->created_at?->toIso8601String() }}",
+    "dateModified" : "{{ $topic->updated_at?->toIso8601String() ?? $topic->created_at?->toIso8601String() }}",
+    
+  "audience": {
+    "@type": "EducationalAudience",
+    "educationalRole": "Medical Professional"
+},
+  "author": {
+    "@@type": "Person",
+    "name": "{{ config('app.name') }}"
+  },
+  "publisher" : {
+    "@@type" : "Organization",
+    "name": "{{ config('app.name') }}",
+    "url" : "{{ url('/') }}"
+  }
+}</script>
+        @endpush
 
         <div class="min-h-screen   px-2 md:px-8 pb-4  flex sm:flex-row flex-col-reverse">
 
 
             <div id="sidebar-accordion"
-                class="flex flex-col sm:w-[20%] h-screen bg-gray-50 border-r border-gray-200 overflow-y-auto">
+                class="flex flex-col sm:w-[25%] md:w-[20%] h-screen bg-gray-50 border-r border-gray-200 overflow-y-auto">
 
                 <nav class="flex flex-col py-4 px-3 space-y-1">
                     <p class="font-bold text-2xl">Context</p>
@@ -35,13 +64,14 @@
 
                             <nav class="mt-1.5 ml-4 flex flex-col border-l border-gray-200">
                                 @foreach ($section->topics as $nav_topic)
-                                    <a href="{{ route('study-notes.content', ['school' => request('school'), 'section' => $section->slug, 'topic' => $nav_topic->slug]) }}"
-                                        class="block px-4 py-2 text-sm font-medium rounded-md transition-colors
+                                    <button
+                                        onclick="window.location.href = '{{ route('study-notes.content', ['school' => request('school'), 'section' => $section->slug, 'topic' => $nav_topic->slug]) }}'"
+                                        class="block px-4 py-2 text-sm text-start font-medium rounded-md transition-colors
    {{ request()->routeIs('study-notes.content') && request()->segment(4) === $nav_topic->slug
        ? 'text-indigo-600 bg-indigo-50'
        : 'text-gray-900 hover:text-indigo-600 hover:bg-indigo-50' }}">
                                         {{ $nav_topic->name }}
-                                    </a>
+                                    </button>
                                 @endforeach
                             </nav>
                         </details>
@@ -53,7 +83,7 @@
             <div class="sm:w-[80%] w-screen  mx-auto pt-5 max-h-screen overflow-scroll hide-scrollbar">
 
                 {{-- Breadcrumb & Back --}}
-                <nav class="sm:mb-8 mb-2 flex items-center justify-between">
+                <nav class="sm:mb-8 mb-2 flex items-center justify-between px-6">
                     <a href="{{ route('study-notes.outline', ['school' => request('school')]) }}"
                         class="flex items-center text-sm font-bold text-teal-600 hover:text-teal-700 transition-colors">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,7 +94,7 @@
                     </a>
                     <a href="{{ route('certification.show', ['slug' => $school->slug]) }}#exams"
                         class="inline-flex items-center justify-center px-6 py-2 text-base font-bold text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-200 rounded-xl shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                        Practice Questions
+                        Questions
                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -87,7 +117,7 @@
                 <article
                     class="w-11/12 mx-auto prose max-w-none ai-content bg-white rounded-b-[2rem] pb-5 shadow-sm  overflow-hidden">
                     @if (filled($notes->content))
-                        {!! Str::markdown($notes->content) !!}
+                        {!! Str::markdown($notes->refined_content) !!}
                     @else
                         <div class="text-center py-10 text-gray-500">
                             <h3 class="text-lg font-semibold mb-2">No Notes Available</h3>
@@ -100,11 +130,17 @@
                     class="w-full md:w-3/4 mx-auto bg-gradient-to-br from-teal-50/60 to-slate-50 border border-teal-100/80 p-6 md:p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 shadow-inner">
                     <div class="text-center sm:text-left">
                         <h3 class="text-lg font-bold text-slate-800 mb-1">Ready to test your knowledge?</h3>
-                        <p class="text-sm text-slate-500 font-medium max-w-md">Challenge yourself with exam-style practice
-                            questions tailored for this topic.</p>
+                        <p class="text-sm text-slate-500 font-medium max-w-md">
+                            {{-- Challenge yourself with exam-style practice
+                            questions tailored for this topic. --}}
+
+                            Master the core responsibilities, scope of practice, and limitations for the {{ $school->name }}
+                            exam.
+
+                        </p>
                     </div>
 
-                    <a href="{{ route('certification.show', ['slug' => $school->slug]) }}"
+                    <a href="{{ route('study-notes.outline', ['school' => request('school')]) }}"
                         class="group inline-flex items-center justify-center w-full sm:w-auto whitespace-nowrap px-8 py-4 text-base font-bold text-white bg-teal-600 hover:bg-teal-700 active:bg-teal-800 transition-all duration-200 rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
                         <span>Start Practice Questions</span>
                         <svg class="w-5 h-5 ml-2.5 transform group-hover:translate-x-1 transition-transform duration-200"
@@ -150,25 +186,25 @@
         </div>
         <style type="text/tailwindcss">
             /*.ai-content h2 {
-                                            font-size: 1.5rem;
-                                            font-weight: bold;
-                                            margin-top: 1.5rem;
-                                            margin-bottom: 0.5rem;
-                                        }
+                                                        font-size: 1.5rem;
+                                                        font-weight: bold;
+                                                        margin-top: 1.5rem;
+                                                        margin-bottom: 0.5rem;
+                                                    }
 
-                                        .ai-content h3 {
-                                            font-size: 1.25rem;
-                                            font-weight: bold;
-                                            margin-top: 1.25rem;
-                                            margin-bottom: 0.5rem;
-                                        }
+                                                    .ai-content h3 {
+                                                        font-size: 1.25rem;
+                                                        font-weight: bold;
+                                                        margin-top: 1.25rem;
+                                                        margin-bottom: 0.5rem;
+                                                    }
 
-                                        .ai-content ul {
-                                            list-style-type: disc;
-                                            padding-left: 1.5rem;
-                                        }
+                                                    .ai-content ul {
+                                                        list-style-type: disc;
+                                                        padding-left: 1.5rem;
+                                                    }
 
-                                         Add more tags as needed */
+                                                     Add more tags as needed */
 
             .ai-content {
                 line-height: 1.6;
@@ -219,7 +255,7 @@
             /* --- Enhanced Table Styling --- */
 
             /* 1. Responsiveness: Wrap tables in markdown if possible,
-                               otherwise this ensures they don't overflow */
+                                           otherwise this ensures they don't overflow */
             .ai-content table {
                 width: 100%;
                 border-collapse: collapse;
