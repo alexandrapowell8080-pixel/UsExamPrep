@@ -1,5 +1,5 @@
 <x-study-notes>
-    @section('title', $topic->name. ' | Study Notes')
+    @section('title', $topic->name)
     @section('description', $topic->name . ' study notes')
     @section('keywords', $school->name . ',' . $section->name . ',' . $topic->name)
     @section('canonical', config('app.url') . '/study-notes/' . $school->slug . '/' . $section->slug . '/' .
@@ -62,9 +62,10 @@
                         </svg>
                         <span class="sm:block hidden">BACK TO CURRICULUM</span>
                     </a>
-                    <a href="{{ route('certification.show', ['slug' => $school->slug]) }}"
+                    
+                    <a href=" sources/edit"
                         class="inline-flex items-center justify-center px-6 py-2 text-base font-bold text-white bg-teal-600 hover:bg-teal-700 transition-colors duration-200 rounded-xl shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
-                        Practice Questions
+                        Edit
                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -86,10 +87,11 @@
 
                 <article
                     class="w-11/12 mx-auto prose max-w-none ai-content bg-white rounded-b-[2rem] pb-5 shadow-sm  overflow-hidden">
-                    @if (filled($notes->content))
-                        {!! Str::markdown($notes->content) !!}
+                    @if (filled($notes->content_with_sources))
+                        {!! Str::markdown($notes->content_with_sources) !!}
                     @else
                         <div class="text-center py-10 text-gray-500">
+                           
                             <h3 class="text-lg font-semibold mb-2">No Notes Available</h3>
                             <p>Content for this section has not been added yet.</p>
                         </div>
@@ -269,6 +271,9 @@
             /* Handle Bold text inside tables */
             .ai-content table td strong {
                 color: #111827;
+            }
+            .ai-conent a{
+                color: red;
             }
         </style>
         <script>

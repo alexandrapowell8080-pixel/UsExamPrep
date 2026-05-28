@@ -73,7 +73,7 @@
             @include('partials.nav-bar')
 
             <main class="main-content">
-
+            
                 <section class="srv-hero" id="service-hero">
                     <div class="srv-hero-bg"></div>
                     <div class="max-width-wrapper relative-z">
@@ -83,35 +83,34 @@
                                 <h1 class="srv-title">{{ $certification['title_abbr'] }} <span>Exam Prep</span></h1>
                                 <p class="srv-subtitle">{{ $certification['title_full'] }}</p>
                                 <p class="srv-desc">{{ $certification['description'] }}</p>
-
+            
                                 <div class="srv-meta-flex">
                                     <div class="srv-meta-item">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="srv-icon">
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="srv-icon">
                                             <rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect>
-                                            <path
-                                                d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+                                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
                                             </path>
                                             <path d="M12 11h4"></path>
                                             <path d="M12 16h4"></path>
                                         </svg>
                                         {{ $certification['stats']['questions'] }} Questions
                                     </div>
-
-                                    <div class="srv-meta-item">
+            
+                                    <a href="{{ route('study-notes.outline',['school' => request('slug') ])}}" style="text-decoration: none;" class="srv-meta-item">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" class="srv-icon">
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="srv-icon">
                                             <path d="M12 7v14"></path>
                                             <path
                                                 d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                             </path>
                                         </svg>
-                                        Study Notes
-                                    </div>
+                                        Study Notes  
+                                    </a>
                                 </div>
-
+            
                                 @if(!empty($groupedExams))
                                 <div class="srv-exam-library">
                                     @foreach($groupedExams as $groupName => $exams)
@@ -121,19 +120,19 @@
                                             <h3 class="library-group-title">{{ $groupName }} Practice Exams</h3>
                                             <span class="library-group-count">{{ count($exams) }} Tests</span>
                                         </div>
-
+            
                                         <div class="library-grid">
                                             @foreach($exams as $pageExam)
-                                            <a href="{{ route('questions.index', ['schoolSlug' => $certification['id'], 'examSlug' => $pageExam->slug]) }}"
+                                            <a href="{{ route('questions.index', ['schoolSlug' => $pageExam->school->slug ?? $certification['id'], 'examSlug' => $pageExam->slug]) }}"
                                                 class="library-card">
                                                 <div class="lc-content">
                                                     <h4 class="lc-title">{{ $pageExam->name }}</h4>
                                                     <span class="lc-meta">{{ $pageExam->q_count }} Questions</span>
                                                 </div>
                                                 <div class="lc-action">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                        fill="none" stroke="currentColor" stroke-width="2"
-                                                        stroke-linecap="round" stroke-linejoin="round">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round">
                                                         <circle cx="12" cy="12" r="10"></circle>
                                                         <path d="m10 8 6 4-6 4Z"></path>
                                                     </svg>
@@ -147,15 +146,15 @@
                                 </div>
                                 @endif
                             </div>
-
+            
                             <div class="srv-hero-visual">
                                 <div class="srv-visual-card">
-                                    <div class="srv-visual-text">{{ $certification['title_full'] }}</div>
+                                    <div class="srv-visual-text">{{ $certification['title_abbr'] }}</div>
                                     <p class="srv-visual-sub">Certification Prep</p>
                                     <div class="srv-stars">
-                                        @for ($i = 0; $i < 5; $i++) <svg xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round" class="srv-star">
+                                        @for ($i = 0; $i < 5; $i++) <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" class="srv-star">
                                             <path
                                                 d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526">
                                             </path>
@@ -167,7 +166,7 @@
                         </div>
                     </div>
                 </section>
-
+            
                 <section class="srv-section">
                     <div class="max-width-wrapper">
                         <div class="srv-format-layout">
@@ -175,7 +174,7 @@
                                 <span class="srv-label">Exam Format</span>
                                 <h2 class="section-heading">{{ $certification['title_full'] }} Exam Format &amp;
                                     Structure</h2>
-
+            
                                 <div class="srv-stat-grid">
                                     <div class="srv-stat-box">
                                         <div class="srv-stat-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg"
@@ -246,8 +245,7 @@
                                         <div class="srv-stat-icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                 stroke-linecap="round" stroke-linejoin="round">
-                                                <path
-                                                    d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3">
+                                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3">
                                                 </path>
                                             </svg></div>
                                         <div class="srv-stat-info">
@@ -256,7 +254,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+            
                                 <div class="srv-categories-wrap">
                                     <h3 class="srv-subheading">Exam Categories</h3>
                                     <div class="srv-pill-flex">
@@ -266,7 +264,7 @@
                                     </div>
                                 </div>
                             </div>
-
+            
                             <div class="srv-sidebar">
                                 <h3 class="srv-sidebar-title">Quick Stats</h3>
                                 <div class="srv-quick-stats">
@@ -298,7 +296,7 @@
                         </div>
                     </div>
                 </section>
-
+            
                 <section class="srv-section srv-bg-muted">
                     <div class="max-width-wrapper">
                         <div class="section-title-wrapper">
@@ -309,9 +307,8 @@
                         <div class="srv-topics-grid">
                             @foreach($certification['topics'] as $topic)
                             <div class="srv-topic-card">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="topic-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="topic-icon">
                                     <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
                                     <path d="m9 11 3 3L22 4"></path>
                                 </svg>
@@ -321,7 +318,7 @@
                         </div>
                     </div>
                 </section>
-
+            
                 <section class="srv-section">
                     <div class="max-width-wrapper">
                         <div class="srv-learn-layout">
@@ -348,7 +345,7 @@
                         </div>
                     </div>
                 </section>
-
+            
                 <section class="srv-cta-strip">
                     <div class="max-width-wrapper sm-container text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -367,7 +364,7 @@
                         </div>
                     </div>
                 </section>
-
+            
                 <section class="srv-section">
                     <div class="max-width-wrapper sm-container">
                         <div class="section-title-wrapper">
@@ -376,10 +373,9 @@
                         <div class="faq-accordion-group">
                             <div class="faq-item">
                                 <button class="faq-trigger" onclick="window.toggleFaq(this)">How many questions are in
-                                    the {{ $certification['title_full'] }} question bank?<svg
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="faq-chevron">
+                                    the {{ $certification['title_full'] }} question bank?<svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class="faq-chevron">
                                         <path d="m6 9 6 6 6-6"></path>
                                     </svg></button>
                                 <div class="faq-panel">
@@ -391,9 +387,8 @@
                             <div class="faq-item">
                                 <button class="faq-trigger" onclick="window.toggleFaq(this)">Is the {{
                                     $certification['title_full'] }} course enough to pass the exam?<svg
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="faq-chevron">
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-chevron">
                                         <path d="m6 9 6 6 6-6"></path>
                                     </svg></button>
                                 <div class="faq-panel">
@@ -403,9 +398,9 @@
                             </div>
                             <div class="faq-item">
                                 <button class="faq-trigger" onclick="window.toggleFaq(this)">Do I get detailed
-                                    explanations for each question?<svg xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="faq-chevron">
+                                    explanations for each question?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="faq-chevron">
                                         <path d="m6 9 6 6 6-6"></path>
                                     </svg></button>
                                 <div class="faq-panel">
@@ -417,8 +412,8 @@
                             <div class="faq-item">
                                 <button class="faq-trigger" onclick="window.toggleFaq(this)">Can I access the course on
                                     my phone?<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="faq-chevron">
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                        class="faq-chevron">
                                         <path d="m6 9 6 6 6-6"></path>
                                     </svg></button>
                                 <div class="faq-panel">
@@ -430,7 +425,7 @@
                     </div>
                 </section>
                 @include('partials.related-certs', ['otherCerts' => $otherCerts])
-
+            
             </main>
 
             @include('partials.footer')

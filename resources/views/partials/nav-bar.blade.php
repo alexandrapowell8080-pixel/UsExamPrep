@@ -15,7 +15,7 @@
 
             <div class="nav-dropdown-wrapper">
                 <button
-                    class="nav-dropdown-btn {{ request()->is('certification/certified-nursing-assistant', 'certification/nurse-aide', 'certification/family-nurse-practitioner', 'certification/hospice-palliative-care', 'certification/certified-emergency-nurse') ? 'active' : '' }}"
+                    class="nav-dropdown-btn {{ request()->is('certification/certified-nursing-assistant', 'certification/family-nurse-practitioner', 'certification/hospice-palliative-care', 'certification/certified-emergency-nurse') ? 'active' : '' }}"
                     type="button">
                     Nursing
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -33,7 +33,7 @@
                         </svg>
                         CNA Prep
                     </a>
-                    <a class="dropdown-link" href="/certification/nurse-aide">
+                    <a class="dropdown-link" href="/certification/certified-nursing-assistant">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                             style="width:1rem; height:1rem; color:var(--aide-emerald);">

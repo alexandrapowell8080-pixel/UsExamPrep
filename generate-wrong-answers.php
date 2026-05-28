@@ -17,9 +17,9 @@ $API_DELAY = 2;
 $dbConfig = [
     'host' => env('DB_HOST', '127.0.0.1'),
     'port' => env('DB_PORT', '3306'),
-    'database' => env('DB_DATABASE', 'usexamprep'),
-    'username' => env('DB_USERNAME', 'root'),
-    'password' => env('DB_PASSWORD', ''),
+    'database' => env('DB_DATABASE', 'usexamprep_db'),
+    'username' => env('DB_USERNAME', 'usexamprep_usexamprep'),
+    'password' => env('DB_PASSWORD', 'Fleekwebsites@2026'),
 ];
 
 function getDbConnection($config)
@@ -37,7 +37,7 @@ function getDbConnection($config)
 function fetchPendingQuestions($conn, $batchSize)
 {
     $query = 'SELECT id, question, choiceA, choiceB, choiceC, choiceD, choiceE, choiceF, choiceG, correct_answer, rationale 
-              FROM Questions 
+              FROM questions 
               WHERE wrong_answer IS NULL OR wrong_answer = \'\'
               LIMIT ?';
     $stmt = $conn->prepare($query);
@@ -64,9 +64,10 @@ function generateWrongAnswerContent($questionData, $apiKey, $apiUrl)
     }
     $choicesStr = implode("\n", $choices);
 
-    $systemPrompt = 'You are an expert educational psychologist and test-prep specialist. Your task is writing a concise, insightful paragraph (approximately 150 words) titled "Students Also Get This Wrong". Analyzing the provided question, all answer choices, correct answer, and rationale. Identifying common misconceptions, tricky distractors, or logical pitfalls that lead students to choose incorrect options. Explaining WHY those wrong answers seem plausible but are ultimately incorrect. Using a supportive, instructional tone. Not using bullet points; writing in a single cohesive paragraph.';
+    // Use plain ASCII quotes and remove special characters that can cause PHP parser issues
+    $systemPrompt = 'You are a supportive test-prep coach who explains mistakes in plain, encouraging language. Write one tight paragraph (~150 words) that helps a learner quickly understand why tempting wrong answers feel right and exactly how to spot the correct choice next time. Use "you" to speak directly to the learner. Keep language simple and conversational; avoid academic jargon like "conflate" or "semantic overlaps." Start by normalizing the confusion (It\'s easy to mix up X and Y because...), then give a crystal-clear distinction between the correct answer and the strongest distractor using a quick rule, keyword cue, or memorable phrase they can use under time pressure. End with a brief, empowering takeaway that builds confidence. No bullet points. Never use "students also get this wrong" or similar phrases. Every sentence must either clarify a misconception or provide an immediately usable test-taking tip. Tone: warm, direct, and pressure-relieving.';
 
-    $userPrompt = "Question: {$questionData['question']}\n\nAvailable Choices:\n{$choicesStr}\n\nCorrect Answer: {$questionData['correct_answer']}\n\nOfficial Rationale: {$questionData['rationale']}\n\nGenerating the 'Students Also Get This Wrong' paragraph now, focusing on why learners commonly select the wrong options despite knowing the rationale.";
+    $userPrompt = "Question: {$questionData['question']}\n\nAvailable Choices:\n{$choicesStr}\n\nCorrect Answer: {$questionData['correct_answer']}\n\nOfficial Rationale: {$questionData['rationale']}\n\nWrite the supportive, actionable paragraph now.";
 
     $payload = [
         'model' => 'gpt-4o-mini',
@@ -114,7 +115,7 @@ function generateWrongAnswerContent($questionData, $apiKey, $apiUrl)
 
 function updateQuestionWrongAnswer($conn, $questionId, $wrongAnswerText)
 {
-    $query = 'UPDATE Questions SET wrong_answer = ?, updated_at = NOW() WHERE id = ?';
+    $query = 'UPDATE questions SET wrong_answer = ?, updated_at = NOW() WHERE id = ?';
     $stmt = $conn->prepare($query);
     $stmt->bind_param('si', $wrongAnswerText, $questionId);
     $stmt->execute();

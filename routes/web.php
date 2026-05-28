@@ -3,11 +3,23 @@
 use App\Http\Controllers\StudyNotesController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CertificationController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/terms-of-service', function () {
+    return view('pages.terms');
+})->name('pages.terms');
+
+Route::get('/privacy-policy', function () {
+    return view('pages.privacy');
+})->name('pages.privacy');
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
 Route::get('/certification/{slug}', [CertificationController::class, 'show'])->name('certification.show');
 
@@ -19,15 +31,23 @@ Route::prefix('study-notes')
         Route::get('/{school:slug}', 'index')
             ->name('outline');
 
-        Route::get('/{school:slug}/{section:slug}/{topic:slug}', 'show')
+        Route::get('/{school:slug}/{section:slug}/{topic}', 'show')
             ->name('content');
 
-        Route::get('/{school:slug}/{section:slug}/{topic:slug}/edit', 'edit')
-            ->name('edit');
+        // Route::get('/{school:slug}/{section:slug}/{topic:slug}/edit', 'edit')
+        //     ->name('edit');
 
-        Route::put('/update/{topic:slug}', 'update')
-            ->name('update');
-        
+        Route::get('/{school:slug}/{section:slug}/{topic:slug}/sources', 'sources')
+            ->name('sources');
+        // Route::get('/{school:slug}/{section:slug}/{topic:slug}/sources/edit', 'sourcesEdit')
+        //     ->name('sourcesEdit');
+
+        // Route::put('/update/{section:slug}/{topic:slug}', 'update')
+        //     ->name('update');
+
+        // Route::put('/update-sources/{topic:slug}', 'updateSources')
+        //     ->name('update_sources');
+
 
     });
 

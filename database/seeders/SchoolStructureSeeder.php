@@ -661,51 +661,220 @@ class SchoolStructureSeeder extends Seeder
 
             [
                 'name' => 'Nurse Aide',
-                'sections' => []
+                'sections' => [],
             ],
 
             [
                 'name' => 'Medical Assistant',
-                'sections' => []
+                'sections' => [
+                    [
+                        'name' => 'Medical Assisting Foundations',
+                        'children' => [
+                            'Role of the Medical Assistant',
+                            'Professionalism & Ethics ',
+                            'HIPAA & Patient Confidentiality ',
+                            'Medical Terminology',
+                            'Anatomy & Physiology Basics',
+                            'Healthcare Communication ',
+                        ],
+                    ],
+                    [
+                        'name' => 'Infection Control & Safety',
+                        'children' => [
+                            'Standard Precautions',
+                            'PPE Usage',
+                            'Sterilization & Disinfection',
+                            'OSHA Guidelines ',
+                            'Biohazard Safety ',
+                            'CPR & Emergency Procedures ',
+                        ],
+                    ],
+                    [
+                        'name' => 'Patient Care & Clinical Procedures',
+                        'children' => [
+                            'Patient Intake & History ',
+                            'Vital Signs',
+                            'Physical Exam Assistance ',
+                            'Wound Care ',
+                            'Specimen Collection ',
+                            'Patient Education',
+                            'Documentation Basics ',
+                        ],
+                    ],
+                    [
+                        'name' => 'Phlebotomy & Diagnostic Procedures',
+                        'children' => [
+                            'Venipuncture',
+                            'Capillary Collection ',
+                            'Order of Draw',
+                            'Specimen Handling ',
+                            'Urinalysis & Basic Lab Tests',
+                            'EKG Procedures ',
+                            'Diagnostic Testing Basics ',
+                        ],
+                    ],
+                    [
+                        'name' => 'Pharmacology & Medication Administration',
+                        'children' => [
+                            'Drug Classifications',
+                            'Medication Safety',
+                            'Dosage Calculations ',
+                            'Routes of Administration',
+                            'Injections',
+                            'Medication Documentation ',
+                        ],
+                    ],
+                    [
+                        'name' => 'Administrative Medical Assisting',
+                        'children' => [
+                            'Appointment Scheduling',
+                            'Electronic Health Records (EHR)',
+                            'Insurance Verification',
+                            'Medical Billing & Coding',
+                            'Claims Processing',
+                            'Office Procedures',
+                        ],
+                    ],
+                    [
+                        'name' => 'Specialty Care & Professional Practice',
+                        'children' => [
+                            'Pediatrics',
+                            'Geriatrics',
+                            'OB/GYN Procedures ',
+                            'Cardiology Basics ',
+                            'Ethical & Legal Issues',
+                            'Professional Development',
+                        ],
+                    ],
+
+                ],
             ],
 
             [
                 'name' => 'Pharmacy Technician',
-                'sections' => []
-            ],
+                'sections' => [
+                    [
+                        'name' => 'Pharmacy Foundations',
+                        'children' => [
+                            'Pharmacy Roles ',
+                            'Pharmacy Workflow ',
+                            'Pharmacy Law ',
+                            'DEA Regulations',
+                        ],
+                    ],
+                    [
+                        'name' => 'Pharmacology',
+                        'children' => [
+                            'Drug Classifications',
+                            'Generic vs Brand Names',
+                            'Therapeutic Uses',
+                            'Side Effects',
+                            'Drug Interactions ',
 
+                        ],
+                    ],
+                    [
+                        'name' => 'Medication Safety',
+                        'children' => [
+                            'LASA Medications',
+                            'Error Prevention',
+                            'High-Alert Drugs',
+                            'REMS Programs',
+                        ],
+                    ],
+                    [
+                        'name' => 'Prescription Processing',
+                        'children' => [
+                            'Prescription Interpretation',
+                            'SIG Codes',
+                            'Insurance Claims',
+                            'Prior Authorization',
+                        ],
+                    ],
+                    [
+                        'name' => 'Pharmacy Calculations',
+                        'children' => [
+                            'Dosage Calculations',
+                            'IV Flow Rates',
+                            'Alligation',
+                            'Concentrations',
+                        ],
+                    ],
+                    [
+                        'name' => 'Sterile & Nonsterile Compounding',
+                        'children' => [
+                            'USP Standards',
+                            'Aseptic Technique',
+                            'Hazardous Drugs',
+                            'Compounding Equipment',
+                        ],
+                    ],
+                    [
+                        'name' => 'Inventory Management',
+                        'children' => [
+                            'Drug Storage',
+                            'Controlled Substances',
+                            'Expiration Handling',
+                            'Recall Procedures',
+
+                        ],
+                    ],
+                    [
+                        'name' => 'Billing & Insurance',
+                        'children' => [
+                            'Medicare',
+                            'Medicaid',
+                            'Third-Party Billing',
+                            'Fraud Prevention',
+
+                        ],
+                    ],
+                    [
+                        'name' => 'Communication & Professionalism',
+                        'children' => [
+                            'Customer Service',
+                            'HIPAA',
+                            'Conflict Resolution',
+                        ],
+                    ],
+                ],
+            ],
         ];
 
         foreach ($data as $schoolData) {
 
             // Create School
-            $school = School::create([
-                'name' => $schoolData['name'],
-                'slug' => Str::slug($schoolData['name']),
-            ]);
+            $school = School::firstOrCreate(
+                ['name' => $schoolData['name']],
+                ['slug' => Str::slug($schoolData['name'])]);
 
             foreach ($schoolData['sections'] as $sectionData) {
 
                 // Create Section
-                $section = Section::create([
+                $section = Section::firstOrCreate([
                     'school_id' => $school->id,
                     'name' => $sectionData['name'],
+                ], [
                     'slug' => $this->generateUniqueSlug($sectionData['name']),
                 ]);
 
                 foreach ($sectionData['children'] as $topicName) {
 
                     // Create Topic
-                    $topic = Topic::create([
+                    $topic = Topic::firstOrCreate([
                         'section_id' => $section->id,
                         'name' => $topicName,
+                    ], [
                         'slug' => Str::slug($topicName),
                     ]);
 
-                    // Notes::create([
-                    //     'topic_id' => $topic->id,
-                    //     'content' => "This is the note content for Topic $topic->name in Section $section->name",
-                    // ]);
+                    if ($topic->wasRecentlyCreated) {
+                        // New record: Output in yellow
+                        $this->command->line("<fg=blue>School: {$school->name}. Section: {$section->name}. Topic: {$topic->name}.</>");
+                    } else {
+                        // Existing record: Output in green
+                        $this->command->info("School: {$school->name}. Section: {$section->name}. Topic: {$topic->name}.");
+                    }
 
                 }
             }
@@ -720,7 +889,7 @@ class SchoolStructureSeeder extends Seeder
         $count = 1;
 
         while (Exam::where('slug', $slug)->exists()) {
-            $slug = $originalSlug . '-' . $count;
+            $slug = $originalSlug.'-'.$count;
             $count++;
         }
 

@@ -3,44 +3,14 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
 
-class NotesGeneratorServices
+class NotesSourcesGeneratorServices
 {
     public function generate(string $school, string $section, string $topic): array
     {
-//         $prompt = <<<PROMPT
-// You are an expert medical and nursing educator.
-
-// Convert the input study pointers into structured, exam-ready revision notes.
-
-// INPUT
-// Chapter: {$school}
-// Section: {$section}
-// Topic: {$topic}
-// Pointers: {$pointers}
-
-// OUTPUT RULES
-// - Return ONLY the notes (no intro, no explanations, no metadata)
-// - Use structured Markdown formatting with H2 (##) and H3 (###) headings.
-// - Under each heading, write short explanatory paragraphs (2–5 lines each)
-// - Use bullet points ONLY when necessary (e.g., symptoms, steps, classifications)
-// - Do NOT add any extra headings beyond the numbered ones
-// - Do NOT repeat chapter/section/topic in output
-
-// CONTENT STYLE
-// - Exam-focused and clinically accurate
-// - Clear, concise, and structured for revision
-// - Prioritize understanding over listing
-// - Use professional medical/nursing terminology
-// - Ensure logical flow within each section
-
-// STRICT RULE
-// Output must contain ONLY the formatted notes.
-// PROMPT;
-
-  $prompt = <<<PROMPT
-Your task is to generate a premium-quality study guide section for healthcare and medical certification exams.
+        
+$prompt = <<<PROMPT
+Your task is to generate a premium-quality study guide section for healthcare and medical certification exams, complete with professional academic/clinical citations.
 
 The content may cover:
 - CNA
@@ -93,6 +63,13 @@ CONTENT RULES:
 - Avoid giant walls of text
 - Avoid repetitive explanations
 
+CITATION REQUIREMENTS:
+- You must include professional, real-world clinical or academic citations for the guidelines and facts presented (e.g., CDC guidelines, AHA standards, major nursing textbooks like Saunders, Lewis, or specific certification body blueprints).
+- Use in-text citations where appropriate using superscript style format, like this: <sup>[1]</sup>.
+- Every in-text citation must link dynamically down to the corresponding anchor in the References list at the bottom of the page (e.g., <a href="#ref-1"><sup>[1]</sup></a>).
+- Every section must map to a formal reference list at the very end of the output. 
+- Every reference in the bibliography list MUST include a valid, live, hyperlinked URL to its official source (using stable academic link patterns such as [https://doi.org/](https://doi.org/) or [https://pubmed.ncbi.nlm.nih.gov/](https://pubmed.ncbi.nlm.nih.gov/)).
+
 CONTENT FLOW:
 1. Topic Overview
    - Brief explanation of the topic
@@ -129,6 +106,9 @@ CONTENT FLOW:
    - Add memory aids or quick review points when useful
    - Emphasize what students should remember most
 
+9. References & Sources
+   - Provide a structured, numbered list of the academic textbooks, journal articles, or clinical guidelines used to generate this section. Format them cleanly like a professional bibliography/research paper reference list.
+
 FORMATTING REQUIREMENTS:
 - Use headings and subheadings consistently
 - Use bullet points extensively for readability
@@ -156,32 +136,35 @@ HTML RULES:
 - Use <h2> for major sections
 - Use <h3> for subsections
 - Use <p>, <ul>, <ol>, <li>, <strong>, and <table> appropriately
+- Use <sup> tags for your in-text citation numbers (e.g., <sup>[1]</sup>)
+- For the References section, use an ordered list (<ol>). Each list item must contain an 'id' attribute corresponding to your in-text links (e.g., <li id="ref-1">).
+- Within the reference list items, use the <a> tag with an 'href' attribute to make the DOI or PubMed URL fully clickable.
 - Do NOT return markdown
 - Do NOT include code blocks
 - Do NOT include <html> or <body> tags
 - Do NOT include explanations outside the HTML
 
 FINAL OBJECTIVE:
-The final output should feel like a premium healthcare exam-prep study guide that is modern, highly organized, visually easy to follow, and optimized for fast learning and exam success.
+The final output should feel like a premium healthcare exam-prep study guide that is modern, highly organized, visually easy to follow, and optimized for fast learning, academic credibility, and exam success.
 PROMPT;
 
         $response = Http::withHeaders([
             // Switched to deepseek config
             'Authorization' => 'Bearer '.config('services.deepseek.api_key'),
             'Content-Type' => 'application/json',
-            
-        ])
-        ->timeout(120) // Increase from 30s to 120s (2 minutes)
-        ->post('https://api.deepseek.com/chat/completions', [
-            'model' => 'deepseek-v4-flash', // Updated Model
-            'messages' => [
 
-                ['role' => 'system', 'content' => 'You are an expert healthcare educator, exam-prep instructor, and professional study-guide writer.'],
-                ['role' => 'user', 'content' => $prompt],
-            ],
-            
-            'temperature' => 0.6,
-        ]);
+        ])
+            ->timeout(120) // Increase from 30s to 120s (2 minutes)
+            ->post('https://api.deepseek.com/chat/completions', [
+                'model' => 'deepseek-v4-flash', // Updated Model
+                'messages' => [
+
+                    ['role' => 'system', 'content' => 'You are an expert healthcare educator, exam-prep instructor, and professional study-guide writer.'],
+                    ['role' => 'user', 'content' => $prompt],
+                ],
+
+                'temperature' => 0.6,
+            ]);
 
         if ($response->failed()) {
             throw new \Exception('AI Generation failed: '.$response->body());
@@ -192,7 +175,6 @@ PROMPT;
         if (! $content) {
             throw new \Exception('Empty response from AI.');
         }
-         
         
         return [
             'message' => $content,

@@ -28,8 +28,13 @@
                                 href="{{ route('certification.show', $exam->school->slug) }}">{{ $exam->name }}</a>
                         </div>
                         <div class="inline-flex h-9 items-center justify-center rounded-lg p-1 bg-gray-100">
-                            <a href="/study-notes/{{ $exam->school->slug }}"
+                            @if (request('schoolSlug') == 'nurse-aide')
+                            <a href="/study-notes/certified-nursing-assistant"
                                 class="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-md hover:bg-white transition-colors">
+                                @else
+                                 <a href="/study-notes/{{ $exam->school->slug }}"
+                                class="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-md hover:bg-white transition-colors">
+                                  @endif
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 7v14" />
@@ -38,6 +43,8 @@
                                 </svg>
                                 Study Notes
                             </a>
+                          
+                           
                             <button
                                 class="inline-flex items-center gap-1.5 px-3 py-1 text-xs rounded-md bg-white text-gray-900 shadow-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
@@ -333,7 +340,8 @@
                                             <p class="text-xs text-gray-600">{{ $exam->school->name }}</p>
                                         </div>
                                     </div>
-                                    <a href="/cert/{{ $exam->school->slug }}">
+                                    {{-- <a href="/cert/{{ $exam->school->slug }}"> --}}
+                                        <a href="{{ route('certification.show',['slug' =>  $exam->school->slug]) }}">
                                         <button
                                             class="w-full text-xs rounded-md border border-gray-200 px-3 py-2 hover:bg-gray-50">View
                                             Full Course</button>
@@ -406,11 +414,11 @@
                                     <p class="text-xs text-white/80 mb-4">Unlock unlimited questions, video lessons,
                                         and
                                         exam simulations.</p>
-                                    <a href="/pricing">
+                                    <button>
                                         <button
                                             class="w-full text-xs rounded-md px-3 py-2 bg-white text-teal-600 hover:bg-white/90 font-semibold">View
                                             Plans →</button>
-                                    </a>
+                                    </button>
                                 </div>
 
                                 <div class="bg-white rounded-2xl border p-5">
