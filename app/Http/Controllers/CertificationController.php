@@ -21,7 +21,7 @@ class CertificationController extends Controller
                     'theme_class' => 'theme-cna',
                 ],
                 'stats' => [
-                    'questions' => '630+',
+                    'questions' => '850+',
                     'total_exam_q' => '60-70 questions + Clinical',
                     'duration' => '120 minutes (Total)',
                     'passing_score' => 'State-dependent (typically 70-80%)',
@@ -32,7 +32,7 @@ class CertificationController extends Controller
                     'salary_avg' => '$38,130',
                     'job_growth' => '4% (2022-2032)',
                     'study_duration' => '3-4 weeks',
-                    'bank_size' => '1650+ questions',
+                    'bank_size' => '850+ questions',
                     'free_q' => '45 questions',
                 ],
                 'categories' => ['Activities of Daily Living', 'Basic Nursing Skills', 'Resident Rights', 'Safety & Emergency', 'Psychosocial Care Skills', 'Communication'],
@@ -56,7 +56,7 @@ class CertificationController extends Controller
                     'theme_class' => 'theme-hospice',
                 ],
                 'stats' => [
-                    'questions' => '220+',
+                    'questions' => '950+',
                     'total_exam_q' => '150 questions',
                     'duration' => '180 minutes',
                     'passing_score' => 'Scaled Score of 75',
@@ -67,7 +67,7 @@ class CertificationController extends Controller
                     'salary_avg' => '$89,000',
                     'job_growth' => '6% (2022-2032)',
                     'study_duration' => '8 weeks',
-                    'bank_size' => '700+ questions',
+                    'bank_size' => '950+ questions',
                     'free_q' => '20 questions',
                 ],
                 'categories' => ['Pain Management', 'End-of-Life Care', 'Family Support', 'Symptom Control', 'Ethics & Grief'],
@@ -91,7 +91,7 @@ class CertificationController extends Controller
                     'theme_class' => 'theme-cen',
                 ],
                 'stats' => [
-                    'questions' => '400+',
+                    'questions' => '1800+',
                     'total_exam_q' => '175 questions',
                     'duration' => '180 minutes',
                     'passing_score' => '106/150 scored items',
@@ -126,7 +126,7 @@ class CertificationController extends Controller
                     'theme_class' => 'theme-fnp',
                 ],
                 'stats' => [
-                    'questions' => '300+',
+                    'questions' => '2050+',
                     'total_exam_q' => '150-175 questions',
                     'duration' => '180-210 minutes',
                     'passing_score' => '500/800 or 350/500',
@@ -137,7 +137,7 @@ class CertificationController extends Controller
                     'salary_avg' => '$125,000',
                     'job_growth' => '38% (2022-2032)',
                     'study_duration' => '8 weeks',
-                    'bank_size' => '800+ questions',
+                    'bank_size' => '2050+ questions',
                     'free_q' => '20 questions',
                 ],
                 'categories' => ['Primary Care', 'Preventive Medicine', 'Chronic Disease', 'Pediatrics', 'Women\'s Health'],
@@ -161,7 +161,7 @@ class CertificationController extends Controller
                     'theme_class' => 'theme-ccma',
                 ],
                 'stats' => [
-                    'questions' => '380+',
+                    'questions' => '1200+',
                     'total_exam_q' => '180-200 questions',
                     'duration' => '160-180 minutes',
                     'passing_score' => '390/500 or 430/800',
@@ -196,7 +196,7 @@ class CertificationController extends Controller
                     'theme_class' => 'theme-ptce',
                 ],
                 'stats' => [
-                    'questions' => '360+',
+                    'questions' => '1050+',
                     'total_exam_q' => '90 Qs (PTCE) / 100 Qs (ExCPT)',
                     'duration' => '110-120 minutes',
                     'passing_score' => '1400/1600 or 360/500',
@@ -231,7 +231,7 @@ class CertificationController extends Controller
                     'theme_class' => 'theme-phlebotomy',
                 ],
                 'stats' => [
-                    'questions' => '250+',
+                    'questions' => '760+',
                     'total_exam_q' => '100-120 questions',
                     'duration' => '120 minutes',
                     'passing_score' => '390/500 or 400/999',
@@ -265,7 +265,7 @@ class CertificationController extends Controller
                     'theme_class' => 'theme-counsellor',
                 ],
                 'stats' => [
-                    'questions' => '310+',
+                    'questions' => '1400+',
                     'total_exam_q' => '200 questions (160 scored)',
                     'duration' => '225 minutes',
                     'passing_score' => 'Varies (approx. 60-65%)',
@@ -308,7 +308,7 @@ class CertificationController extends Controller
             $otherCerts[] = $certifications[$nextKey];
         }
 
-        // Fetch exams for the current certification (Added logic to fetch nurse-aide if CNA)
+        // Fetch exams for the current certification 
         $pageExams = Exam::with('school')->whereHas('school', function ($query) use ($currentCert) {
             if ($currentCert['id'] === 'certified-nursing-assistant') {
                 $query->whereIn('slug', [$currentCert['id'], 'nurse-aide']);

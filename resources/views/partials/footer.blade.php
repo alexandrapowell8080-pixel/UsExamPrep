@@ -12,7 +12,7 @@
                     </span>
                 </a>
                 <p class="footer-tagline">The #1 medical certification exam preparation platform. Trusted by
-                    248,000+ healthcare students worldwide.</p>
+                    25,000+ healthcare students worldwide.</p>
                 <div class="footer-contacts">
                     <a href="mailto:support@usexamprep.com" class="contact-link-row">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -42,8 +42,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="width:1.5rem; height:1.5rem; color:var(--cna-teal);">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3A3 3 0 0 1 12 5v4c0 2-1.5 3.5-3.3 3.9a4.5 4.5 0 0 1-1.4 0C5.5 12.5 4 11 4 9V5a3 3 0 0 1 .8-2.7Z"></path><path d="M8 15v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-4"></path><circle cx="20" cy="10" r="2"></circle>
                             </svg>
                         </div>
                         <span class="box-name">CNA</span>
@@ -54,9 +53,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="width:1.5rem; height:1.5rem; color:var(--ccma-blue);">
-                                <path
-                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                                </path>
+                                <path d="M11 2a2 2 0 0 0-2 2v5H4a2 2 0 0 0-2 2v2c0 1.1.9 2 2 2h5v5c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2v-5h5a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-5V4a2 2 0 0 0-2-2h-2z"></path>
                             </svg>
                         </div>
                         <span class="box-name">CCMA</span>
@@ -67,8 +64,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="width:1.5rem; height:1.5rem; color:var(--hosp-purple);">
-                                <path d="m2 22 1-1h3l9-9 3 3-9 9V22H2Z"></path>
-                                <path d="M22 2a4.5 4.5 0 0 0-6.4 0l-5.1 5.2 6.4 6.4 5.1-5.2A4.5 4.5 0 0 0 22 2Z"></path>
+                                <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path><path d="M8.5 2h7"></path><path d="M14 9.5 10 14"></path>
                             </svg>
                         </div>
                         <span class="box-name">PTCE</span>
@@ -79,8 +75,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="width:1.5rem; height:1.5rem; color:var(--aide-emerald);">
-                                <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path>
-                                <path d="m8.5 8.5 7 7"></path>
+                                <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path><path d="m8.5 8.5 7 7"></path>
                             </svg>
                         </div>
                         <span class="box-name">ExCPT</span>
@@ -91,9 +86,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="width:1.5rem; height:1.5rem; color:var(--slp-pink);">
-                                <path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5h20c0-2.31-1-4.24-2.5-5.5"></path>
-                                <path d="M12 2v14.5"></path>
-                                <path d="m16 6-4-4-4 4"></path>
+                                <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"></path>
                             </svg>
                         </div>
                         <span class="box-name">Phlebotomy</span>
@@ -104,9 +97,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="width:1.5rem; height:1.5rem; color:var(--dental-sky);">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 16v-4"></path>
-                                <path d="M12 8h.01"></path>
+                                <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line>
                             </svg>
                         </div>
                         <span class="box-name">AAMA</span>
@@ -117,7 +108,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="width:1.5rem; height:1.5rem; color:var(--fnp-orange);">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
                         </div>
                         <span class="box-name">FNP</span>
@@ -128,8 +119,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="width:1.5rem; height:1.5rem; color:var(--hosp-purple);">
-                                <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path>
-                                <path d="M8 11h8"></path>
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="M8 11h8"></path><path d="M12 8v6"></path>
                             </svg>
                         </div>
                         <span class="box-name">Hospice</span>
@@ -140,9 +130,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="width:1.5rem; height:1.5rem; color:var(--cen-red);">
-                                <path
-                                    d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
-                                </path>
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                             </svg>
                         </div>
                         <span class="box-name">CEN</span>
@@ -153,7 +141,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 style="width:1.5rem; height:1.5rem; color:var(--coun-indigo);">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"></path><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"></path><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"></path><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"></path><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"></path><path d="M3.477 10.896a4 4 0 0 1 .585-.396"></path><path d="M19.937 10.5a4 4 0 0 1 .585.396"></path><path d="M6 18a4 4 0 0 1-1.967-.516"></path><path d="M19.967 17.484A4 4 0 0 1 18 18"></path>
                             </svg>
                         </div>
                         <span class="box-name">NCE</span>
@@ -175,10 +163,15 @@
             </div>
             <div>
                 <h3 class="footer-list-heading">Resources</h3>
-                <ul class="footer-links-list">
+                {{-- <ul class="footer-links-list">
                     <li><a href="{{route('home')}}#certifications">Practice Questions</a></li>
                     <li><a href="/study-notes">Study Notes</a></li>
-                    {{-- <li><a href="/blog">Blog &amp; Tips</a></li> --}}
+                    <li><a href="/blog">Blog &amp; Tips</a></li>
+                </ul> --}}
+                <ul class="footer-links-list">
+                    <li>Practice Questions</li>
+                    <li>Study Notes</li>
+                    {{-- <li>Blog &amp; Tips</li> --}}
                 </ul>
             </div>
             <div>

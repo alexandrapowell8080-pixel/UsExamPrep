@@ -5,13 +5,63 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
+    
     <meta name="robots" content="noindex, nofollow">
+    
     <title>Contact Us | UsExamPrep</title>
     <meta content="Get in touch with UsExamPrep support team." name="description">
+    
+    <meta content="https://usexamprep.com/contact/" property="og:url">
+    <meta content="https://usexamprep.com/contact/" name="twitter:url">
+    <link href="https://usexamprep.com/contact/" rel="canonical">
+
+    <meta content="Contact Us | UsExamPrep" property="og:title">
+    <meta content="Get in touch with UsExamPrep support team." property="og:description">
+    <meta content="{{ asset('images/logo.png') }}" property="og:image">
+    <meta content="website" property="og:type">
+    <meta content="UsExamPrep" property="og:site_name">
+    
+    <meta content="Contact Us | UsExamPrep" name="twitter:title">
+    <meta content="Get in touch with UsExamPrep support team." name="twitter:description">
+    <meta content="{{ asset('images/logo.png') }}" name="twitter:image">
+    <meta content="summary_large_image" name="twitter:card">
 
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/contact.css') }}" rel="stylesheet">
     <script src="{{ asset('js/welcome.js') }}" defer></script>
+
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "ContactPage",
+        "name": "Contact Us | UsExamPrep",
+        "description": "Get in touch with UsExamPrep support team.",
+        "author": "UsExamPrep",
+        "datePublished": "2026-05-28",
+        "dateModified": "2026-05-28",
+        "publisher": {
+            "@@type": "Organization", 
+            "name": "UsExamPrep",
+            "logo": {
+                "@@type": "ImageObject",
+                "url": "{{ asset('images/logo.png') }}",
+                "width": 100,
+                "height": 100
+            }
+        },
+        "url": "https://usexamprep.com/contact/"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "name": "UsExamPrep",
+        "logo": "{{ asset('images/logo.png') }}",
+        "url": "https://usexamprep.com/"
+    }
+    </script>
 
     <script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITE_KEY') }}"></script>
 

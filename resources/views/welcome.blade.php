@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
-    <title>UsExamPrep</title>
+    <title>Master Your Medical Certification Exams | UsExamPrep</title>
     <meta
         content="An interactive, animated, and smart exam preparation platform designed to help healthcare students master their certification tests through gamified practice."
         name="description">
@@ -13,27 +12,27 @@
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <script src="{{ asset('js/welcome.js') }}" defer></script>
 
-    <meta content="UsExamPrep" property="og:title">
+    <meta content="Master Your Medical Certification Exams | UsExamPrep" property="og:title">
     <meta
         content="An interactive, animated, and smart exam preparation platform designed to help healthcare students master their certification tests through gamified practice."
         property="og:description">
     <meta content="{{ asset('images/logo.png') }}" property="og:image">
-    <meta content="https://usexamprep.com" property="og:url">
+    <meta content="https://usexamprep.com/" property="og:url">
     <meta content="website" property="og:type">
     <meta content="UsExamPrep" property="og:site_name">
 
-    <meta content="UsExamPrep" name="twitter:title">
+    <meta content="Master Your Medical Certification Exams | UsExamPrep" name="twitter:title">
     <meta
         content="An interactive, animated, and smart exam preparation platform designed to help healthcare students master their certification tests through gamified practice."
         name="twitter:description">
     <meta content="{{ asset('images/logo.png') }}" name="twitter:image">
     <meta content="summary_large_image" name="twitter:card">
-    <meta content="https://usexamprep.com" name="twitter:url">
+    <meta content="https://usexamprep.com/" name="twitter:url">
 
     <meta content="yes" name="mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="UsExamPrep" name="apple-mobile-web-app-title">
-    <link href="https://usexamprep.com" rel="canonical">
+    <link href="https://usexamprep.com/" rel="canonical">
     <meta name="robots" content="noindex, nofollow">
 
     <script type="application/ld+json">
@@ -41,30 +40,39 @@
         "@@context": "https://schema.org",
         "@@type": "WebSite",
         "name": "UsExamPrep",
-        "url": "https://usexamprep.com"
+        "author": "UsExamPrep",
+        "datePublished": "2026-05-28",
+        "dateModified": "2026-05-28",
+        "publisher": {
+            "@@type": "Organization", 
+            "name": "UsExamPrep",
+            "logo": {
+                "@@type": "ImageObject",
+                "url": "{{ asset('images/logo.png') }}",
+                "width": 100,
+                "height": 100
+            }
+        },
+        "url": "https://usexamprep.com/"
     }
     </script>
+    
     <script type="application/ld+json">
         {
         "@@context": "https://schema.org",
         "@@type": "Organization",
         "name": "UsExamPrep",
         "logo": "{{ asset('images/logo.png') }}",
-        "url": "https://usexamprep.com"
+        "url": "https://usexamprep.com/"
     }
     </script>
 </head>
-
 <body>
     @include('partials.nav-bar')
-
     <main class="page-main">
-
         <section class="hero-section">
             <div class="hero-background-media bg-vector-img"></div>
-
             <div class="hero-container max-width-wrapper">
-
                 <div class="trust-badge-custom animated fadeInUp delay-1">
                     <div class="trust-stars-wrap">
                         <svg viewBox="0 0 24 24" fill="#00b67a" xmlns="http://www.w3.org/2000/svg" class="trust-star">
@@ -91,7 +99,7 @@
                     <span>Trusted by 25,000+ Healthcare Students</span>
                 </div>
 
-                <h1 class="hero-headline animated fadeInUp delay-2">US’s Best Study Hub</h1>
+                <h1 class="hero-headline animated fadeInUp delay-2">The U.S. Best Study Hub</h1>
 
                 <h2 class="hero-dynamic-headline animated fadeInUp delay-3">
                     <span class="headline-static-wrapper">Built For&nbsp;</span>
@@ -174,7 +182,7 @@
                                     </svg>
                                 </div>
                                 <div class="stat-copy">
-                                    <h3 class="stat-number-title">201k+</h3>
+                                    <h3 class="stat-number-title">25,000+</h3>
                                     <p class="stat-description-p">students improved <br>their results</p>
                                 </div>
                             </div>
@@ -241,7 +249,7 @@
                                     <th>Certification</th>
                                     <th class="col-fullname">Full Name</th>
                                     <th class="col-topics">Topics</th>
-                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-questions text-center">Practice Q's</th>
                                     <th class="col-difficulty text-center">Difficulty</th>
                                     <th class="col-arrow"></th>
                                 </tr>
@@ -274,7 +282,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            350+
+                                            850+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -317,7 +325,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            280+
+                                            850+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -360,7 +368,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            220+
+                                            950+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -403,7 +411,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            400+
+                                            1800+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -446,7 +454,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            300+
+                                            2050+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -480,7 +488,7 @@
                                     <th>Certification</th>
                                     <th class="col-fullname">Full Name</th>
                                     <th class="col-topics">Topics</th>
-                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-questions text-center">Practice Q's</th>
                                     <th class="col-difficulty text-center">Difficulty</th>
                                     <th class="col-arrow"></th>
                                 </tr>
@@ -513,7 +521,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            380+
+                                            1200+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -556,7 +564,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            380+
+                                            1100+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -590,7 +598,7 @@
                                     <th>Certification</th>
                                     <th class="col-fullname">Full Name</th>
                                     <th class="col-topics">Topics</th>
-                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-questions text-center">Practice Q's</th>
                                     <th class="col-difficulty text-center">Difficulty</th>
                                     <th class="col-arrow"></th>
                                 </tr>
@@ -623,7 +631,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            360+
+                                            1050+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -667,7 +675,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            360+
+                                            1050+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -701,7 +709,7 @@
                                     <th>Certification</th>
                                     <th class="col-fullname">Full Name</th>
                                     <th class="col-topics">Topics</th>
-                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-questions text-center">Practice Q's</th>
                                     <th class="col-difficulty text-center">Difficulty</th>
                                     <th class="col-arrow"></th>
                                 </tr>
@@ -734,7 +742,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            250+
+                                            760+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -768,7 +776,7 @@
                                     <th>Certification</th>
                                     <th class="col-fullname">Full Name</th>
                                     <th class="col-topics">Topics</th>
-                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-questions text-center">Practice Q's</th>
                                     <th class="col-difficulty text-center">Difficulty</th>
                                     <th class="col-arrow"></th>
                                 </tr>
@@ -801,7 +809,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            310+
+                                            1400+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -1018,7 +1026,7 @@
                             <thead>
                                 <tr>
                                     <th>Certification</th>
-                                    <th class="text-center">Questions</th>
+                                    <th class="text-center">Exam Q's</th>
                                     <th class="text-center">Duration</th>
                                     <th class="text-center">Pass Score</th>
                                     <th class="text-center">Difficulty</th>

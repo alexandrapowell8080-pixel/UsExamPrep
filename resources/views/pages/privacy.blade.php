@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
+    
+    <meta name="robots" content="noindex, nofollow">
+    
     <title>Privacy Policy | UsExamPrep</title>
     <meta content="Privacy Policy for UsExamPrep." name="description">
 
@@ -12,15 +15,59 @@
     <link href="{{ asset('css/privacy.css') }}" rel="stylesheet">
     <script src="{{ asset('js/welcome.js') }}" defer></script>
 
-    <meta name="robots" content="noindex, nofollow">
+    <meta content="https://usexamprep.com/privacy-policy/" property="og:url">
+    <meta content="https://usexamprep.com/privacy-policy/" name="twitter:url">
+    <link href="https://usexamprep.com/privacy-policy/" rel="canonical">
 
+    <meta content="Privacy Policy | UsExamPrep" property="og:title">
+    <meta content="Privacy Policy for UsExamPrep." property="og:description">
+    <meta content="{{ asset('images/logo.png') }}" property="og:image">
+    <meta content="website" property="og:type">
+    <meta content="UsExamPrep" property="og:site_name">
+
+    <meta content="Privacy Policy | UsExamPrep" name="twitter:title">
+    <meta content="Privacy Policy for UsExamPrep." name="twitter:description">
+    <meta content="{{ asset('images/logo.png') }}" name="twitter:image">
+    <meta content="summary_large_image" name="twitter:card">
+    
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "WebPage",
+        "name": "Privacy Policy | UsExamPrep",
+        "description": "Privacy Policy for UsExamPrep.",
+        "author": "UsExamPrep",
+        "datePublished": "2026-05-28",
+        "dateModified": "2026-05-28",
+        "publisher": {
+            "@@type": "Organization", 
+            "name": "UsExamPrep",
+            "logo": {
+                "@@type": "ImageObject",
+                "url": "{{ asset('images/logo.png') }}",
+                "width": 100,
+                "height": 100
+            }
+        },
+        "url": "https://usexamprep.com/privacy-policy/"
+    }
+    </script>
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "name": "UsExamPrep",
+        "logo": "{{ asset('images/logo.png') }}",
+        "url": "https://usexamprep.com/"
+    }
+    </script>
 </head>
 
 <body>
     @include('partials.nav-bar')
 
     <main class="page-main legal-section">
-        <div class="max-width-wrapper small-max-width">
+        <div class="max-width-wrapper">
             <div class="legal-container">
                 <h1 class="legal-title">Privacy Policy</h1>
                 <span class="legal-updated">Last Updated: May 19, 2026</span>
@@ -85,7 +132,7 @@
                         <li>Withdraw consent (where applicable).</li>
                         <li>Lodge complaints with a data protection authority.</li>
                     </ul>
-                    <p>Contact: <a href="mailto:admin@usexamprep.com">admin@usexamprep.com</a> for requests.</p>
+                    <p>Contact: <a href="mailto:support@usexamprep.com">support@usexamprep.com</a> for requests.</p>
 
                     <h2>7. Third-Party Links</h2>
                     <p>Usexamprep.com may link to external sites. We are not responsible for their privacy practices.
@@ -101,7 +148,7 @@
 
                     <h2>10. Contact Us</h2>
                     <p>For questions or requests regarding this policy, email: <a
-                            href="mailto:admin@usexamprep.com">admin@usexamprep.com</a>.</p>
+                            href="mailto:support@usexamprep.com">support@usexamprep.com</a>.</p>
 
                     <h2>Additional Notes for Usexamprep.com</h2>
                     <ul>

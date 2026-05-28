@@ -5,24 +5,71 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
-    <title>Terms and Conditions | UsExamPrep</title>
-    <meta content="Terms and Conditions for UsExamPrep." name="description">
+    
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>Terms of Service | UsExamPrep</title>
+    <meta content="Terms of Service for UsExamPrep." name="description">
 
+    <meta content="https://usexamprep.com/terms-of-service/" property="og:url">
+    <meta content="https://usexamprep.com/terms-of-service/" name="twitter:url">
+    <link href="https://usexamprep.com/terms-of-service/" rel="canonical">
+
+    <meta content="Terms of Service | UsExamPrep" property="og:title">
+    <meta content="Terms of Service for UsExamPrep." property="og:description">
+    <meta content="{{ asset('images/logo.png') }}" property="og:image">
+    <meta content="website" property="og:type">
+    <meta content="UsExamPrep" property="og:site_name">
+
+    <meta content="Terms of Service | UsExamPrep" name="twitter:title">
+    <meta content="Terms of Service for UsExamPrep." name="twitter:description">
+    <meta content="{{ asset('images/logo.png') }}" name="twitter:image">
+    <meta content="summary_large_image" name="twitter:card">
+    
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/terms.css') }}" rel="stylesheet">
     <script src="{{ asset('js/welcome.js') }}" defer></script>
 
-    <meta name="robots" content="noindex, nofollow">
-
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "WebPage",
+        "name": "Terms of Service | UsExamPrep",
+        "description": "Terms of Service for UsExamPrep.",
+        "author": "UsExamPrep",
+        "datePublished": "2026-05-28",
+        "dateModified": "2026-05-28",
+        "publisher": {
+            "@@type": "Organization", 
+            "name": "UsExamPrep",
+            "logo": {
+                "@@type": "ImageObject",
+                "url": "{{ asset('images/logo.png') }}",
+                "width": 100,
+                "height": 100
+            }
+        },
+        "url": "https://usexamprep.com/terms-of-service/"
+    }
+    </script>
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
+        "name": "UsExamPrep",
+        "logo": "{{ asset('images/logo.png') }}",
+        "url": "https://usexamprep.com/"
+    }
+    </script>
 </head>
 
 <body>
     @include('partials.nav-bar')
 
     <main class="page-main legal-section">
-        <div class="max-width-wrapper small-max-width">
+        <div class="max-width-wrapper">
             <div class="legal-container">
-                <h1 class="legal-title">Terms and Conditions</h1>
+                <h1 class="legal-title">Terms of Service</h1>
                 <span class="legal-updated">Last Updated: May 19, 2026</span>
 
                 <div class="legal-content">
@@ -108,7 +155,7 @@
                     <h3>6.4 Refund Policy</h3>
                     <p>We offer a 7-day money-back guarantee for new subscriptions. After this period, refunds are
                         provided at our sole discretion. To request a refund, contact us at <a
-                            href="mailto:admin@usexamprep.com">admin@usexamprep.com</a>.</p>
+                            href="mailto:support@usexamprep.com">support@usexamprep.com</a>.</p>
 
                     <h2>7. User Content and Conduct</h2>
                     <h3>7.1 User Responsibilities</h3>
@@ -165,7 +212,7 @@
                     <h2>12. Dispute Resolution</h2>
                     <h3>12.1 Informal Resolution</h3>
                     <p>Before initiating any formal legal proceeding, you agree to contact us at <a
-                            href="mailto:admin@usexamprep.com">admin@usexamprep.com</a> to attempt to resolve the
+                            href="mailto:support@usexamprep.com">support@usexamprep.com</a> to attempt to resolve the
                         dispute informally.</p>
 
                     <h3>12.2 Binding Arbitration</h3>
@@ -185,7 +232,7 @@
 
                     <h2>15. Contact Information</h2>
                     <p>If you have any questions about these Terms, please contact us at:<br>
-                        Email: <a href="mailto:admin@usexamprep.com">admin@usexamprep.com</a></p>
+                        Email: <a href="mailto:support@usexamprep.com">support@usexamprep.com</a></p>
 
                     <h2>Important Notes:</h2>
                     <ul>

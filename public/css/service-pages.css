@@ -737,3 +737,214 @@
     width: 1.2rem;
     height: 1.2rem;
 }
+
+.library-card:hover .lc-action {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* Mobile Optimization for Service Pages */
+@media (max-width: 767px) {
+    .srv-hero-visual {
+        display: none;
+    }
+
+    .srv-section {
+        padding: 2.5rem 0;
+    }
+    
+    .srv-hero {
+        padding: 2.5rem 0 2rem 0;
+    }
+    
+    .srv-cta-strip {
+        padding: 2.5rem 0;
+    }
+    
+    .srv-hero-grid {
+        gap: 1.5rem;
+    }
+    
+    .srv-stat-grid {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .srv-features-grid {
+        gap: 1rem;
+    }
+    
+    .srv-feature-card {
+        padding: 1.25rem;
+    }
+    
+    .srv-deep-dives-grid {
+        gap: 1rem;
+    }
+    
+    .srv-deep-dive-card {
+        padding: 1.25rem;
+    }
+    
+    .deep-dive-card {
+        padding: 1rem;
+    }
+    
+    .library-layout {
+        gap: 1.5rem;
+    }
+    
+    .library-grid {
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+    
+    .library-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .library-card {
+        padding: 0.5rem 0.65rem;
+    }
+    
+    .mb-md {
+        margin-bottom: 1rem;
+    }
+    
+    .mb-lg {
+        margin-bottom: 1.5rem;
+    }
+    
+    .srv-title {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .srv-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .srv-desc {
+        font-size: 0.95rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .srv-meta-flex {
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .srv-btn-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .srv-related-grid {
+        gap: 1rem;
+    }
+    
+    .related-card {
+        padding: 1.25rem;
+    }
+    
+    .srv-hero-title {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .srv-hero-desc {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .srv-section-title {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .srv-section-desc {
+        font-size: 0.95rem;
+    }
+
+    .srv-visual-card {
+        width: 14rem;
+        height: 14rem;
+        padding: 1rem;
+    }
+    
+    .srv-visual-text {
+        font-size: 1.8rem;
+    }
+
+    .srv-topics-grid {
+        gap: 1rem;
+    }
+    
+    .srv-topic-card {
+        padding: 1rem;
+    }
+    
+    .srv-learn-layout {
+        gap: 1.5rem;
+    }
+    
+    .srv-format-layout {
+        gap: 1.5rem;
+    }
+    
+    .srv-deep-dives {
+        gap: 1rem;
+    }
+    
+    .srv-sidebar {
+        padding: 1.25rem;
+    }
+    
+    .srv-categories-wrap {
+        margin-top: 1.5rem;
+    }
+    
+    .srv-pill-flex {
+        gap: 0.5rem;
+    }
+    
+    .srv-stat-box {
+        padding: 0.85rem;
+        gap: 0.75rem;
+    }
+    
+    .rc-header {
+        margin-bottom: 0.75rem;
+    }
+    
+    .rc-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .rc-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .srv-learn-list {
+        gap: 0.75rem;
+    }
+    
+    .learn-item {
+        gap: 0.5rem;
+    }
+    
+    .srv-stat-grid {
+        margin-bottom: 1.5rem;
+    }
+    
+    .srv-quick-stats {
+        gap: 0.75rem;
+    }
+    
+    .q-stat-row {
+        padding-bottom: 0.75rem;
+    }
+}

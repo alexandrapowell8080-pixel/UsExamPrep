@@ -15,7 +15,7 @@
     <meta content="{{ $shortDescription }}" property="og:description">
     <meta content="{{ $keywords }}" property="og:keywords">
     <meta content="{{ asset('images/logo.png') }}" property="og:image">
-    <meta content="{{ $cleanCanonicalUrl }}" property="og:url">
+    <meta content="{{ $cleanCanonicalUrl }}/" property="og:url">
     <meta content="website" property="og:type">
     <meta content="UsExamPrep" property="og:site_name">
 
@@ -23,13 +23,13 @@
     <meta content="{{ $shortDescription }}" name="twitter:description">
     <meta content="{{ asset('images/logo.png') }}" name="twitter:image">
     <meta content="summary_large_image" name="twitter:card">
-    <meta content="{{ $cleanCanonicalUrl }}" name="twitter:url">
+    <meta content="{{ $cleanCanonicalUrl }}/" name="twitter:url">
 
     <meta content="yes" name="mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="UsExamPrep" name="apple-mobile-web-app-title">
 
-    <link href="{{ $cleanCanonicalUrl }}" rel="canonical">
+    <link href="{{ $cleanCanonicalUrl }}/" rel="canonical">
 
     <link crossorigin="" href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <link crossorigin="" href="{{ asset('css/service-pages.css') }}" rel="stylesheet">
@@ -39,10 +39,34 @@
        "@@context": "https://schema.org",
        "@@graph": [
           {
+             "@@type": "Organization",
+             "name": "UsExamPrep",
+             "url": "https://usexamprep.com/",
+             "logo": "{{ asset('images/logo.png') }}"
+          },
+          {
+             "@@type": "WebSite",
+             "name": "UsExamPrep",
+             "url": "https://usexamprep.com/",
+             "author": "UsExamPrep",
+             "datePublished": "2026-05-28",
+             "dateModified": "2026-05-28",
+             "publisher": {
+                "@@type": "Organization",
+                "name": "UsExamPrep",
+                "logo": {
+                   "@@type": "ImageObject",
+                   "url": "{{ asset('images/logo.png') }}",
+                   "width": 100,
+                   "height": 100
+                }
+             }
+          },
+          {
              "@@type": "WebPage",
              "name": "{{ $certification['title_full'] }} | UsExamPrep",
              "description": "{{ $shortDescription }}",
-             "url": "{{ $cleanCanonicalUrl }}"
+             "url": "{{ $cleanCanonicalUrl }}/"
           },
           {
              "@@type": "BreadcrumbList",
@@ -51,13 +75,13 @@
                    "@@type": "ListItem",
                    "position": 1,
                    "name": "Home",
-                   "item": "{{ url('/') }}/"
+                   "item": "https://usexamprep.com/"
                 },
                 {
                    "@@type": "ListItem",
                    "position": 2,
                    "name": "{{ $certification['title_full'] }} Exam Prep",
-                   "item": "{{ $cleanCanonicalUrl }}"
+                   "item": "{{ $cleanCanonicalUrl }}/"
                 }
              ]
           }
@@ -74,7 +98,7 @@
 
             <main class="main-content">
             
-                <section class="srv-hero" id="service-hero">
+                <section class="srv-hero" id="exams">
                     <div class="srv-hero-bg"></div>
                     <div class="max-width-wrapper relative-z">
                         <div class="srv-hero-grid">
@@ -172,8 +196,12 @@
                         <div class="srv-format-layout">
                             <div class="srv-format-main">
                                 <span class="srv-label">Exam Format</span>
-                                <h2 class="section-heading">{{ $certification['title_full'] }} Exam Format &amp;
+                                @if(str_contains($certification['title_abbr'], '&'))
+                                <h2 class="section-heading">{{ $certification['title_abbr'] }} Exam Format</h2>
+                                @else
+                                <h2 class="section-heading">{{ $certification['title_abbr'] }} Exam Format and
                                     Structure</h2>
+                                @endif
             
                                 <div class="srv-stat-grid">
                                     <div class="srv-stat-box">
@@ -358,7 +386,7 @@
                         <p class="cta-desc">Get unlimited access to {{ $certification['stats']['questions'] }} practice
                             questions, study notes, flashcards, and video lessons.</p>
                         <div class="srv-btn-group justify-center">
-                            <a href="#service-hero" class="btn btn-white btn-lg shadow-xl">
+                            <a href="#exams" class="btn btn-white btn-lg shadow-xl">
                                 Start Free Practice &rarr;
                             </a>
                         </div>
@@ -451,7 +479,7 @@
                     </div>
                     <p class="widget-desc">Try {{ $certification['stats']['free_q'] }} and see how you score.</p>
 
-                    <a href="#service-hero">
+                    <a href="#exams">
                         <button class="btn btn-white w-full shadow-sm widget-action-text">Start Free Quiz
                             &rarr;</button>
                     </a>

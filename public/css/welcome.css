@@ -2510,3 +2510,179 @@ body {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+/* Mobile Optimization for Hero Section */
+@media (max-width: 767px) {
+    .hero-section .hero-dynamic-headline {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-section .headline-static-wrapper {
+        margin-bottom: 0.25rem;
+        margin-right: -0.25em; /* Offset the &nbsp; */
+    }
+    
+    .hero-section .hero-headline {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-section .hero-lead-paragraph {
+        font-size: 0.95rem;
+        margin-bottom: 1.25rem;
+        padding: 0 1rem;
+    }
+    
+    .hero-section .trust-badge-custom {
+        margin-bottom: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .hero-section .hero-cta-area {
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-section .hero-cta-group {
+        gap: 0.75rem;
+    }
+    
+    .hero-section {
+        padding-top: 2rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    /* Global Section Gaps Reduction for Mobile */
+    .certifications-section {
+        padding: 1.5rem 0 2.5rem 0;
+    }
+
+    .roadmap-section,
+    .comparison-section,
+    .stories-section,
+    .videos-section,
+    .faq-section {
+        padding: 2.5rem 0;
+    }
+    
+    .statistics-strip {
+        padding: 2.5rem 0;
+    }
+    
+    .page-footer {
+        padding: 2.5rem 0 0 0;
+    }
+
+    /* Reduce title margins and sizes */
+    .section-title-wrapper {
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-heading {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-subheading {
+        font-size: 0.95rem;
+    }
+
+    /* Reduce category and grid gaps */
+    .category-block {
+        margin-bottom: 1.5rem;
+    }
+    
+    .cert-cards-grid,
+    .roadmap-flex-layout,
+    .stories-cards-grid,
+    .videos-grid,
+    .faq-accordion-group {
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .stats-grid {
+        gap: 1.5rem;
+    }
+
+    .stories-header {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Footer gaps */
+    .footer-primary-grid {
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .footer-main-content {
+        padding-bottom: 2rem;
+    }
+
+    .footer-links-row-grid {
+        gap: 1.5rem;
+        padding-top: 1.5rem;
+    }
+
+    /* Reduce card paddings */
+    .cert-card,
+    .story-card {
+        padding: 1.25rem;
+    }
+
+    .faq-trigger {
+        padding: 0.85rem 1rem;
+    }
+    
+    .faq-content {
+        padding: 0 1rem 0.85rem 1rem;
+    }
+
+    /* Reduce table paddings */
+    .data-table th,
+    .comparison-table th {
+        padding: 0.75rem 1rem;
+    }
+
+    .data-table td,
+    .comparison-table td {
+        padding: 0.85rem 1rem;
+    }
+}
+
+/* --- About Us Page Specific Spacing Adjustments --- */
+.about-hero-spacing {
+    padding-bottom: 4rem !important;
+}
+.about-cert-spacing {
+    padding-top: 2rem !important;
+}
+.about-title-mb-2 {
+    margin-bottom: 2rem !important;
+}
+.about-title-mb-3 {
+    margin-bottom: 3rem !important;
+}
+.about-pill-stack-mb {
+    margin-bottom: 4rem !important;
+}
+
+/* Mobile scaling for About Us page gaps */
+@media (max-width: 767px) {
+    .about-hero-spacing {
+        padding-bottom: 1.5rem !important;
+    }
+    .about-cert-spacing {
+        padding-top: 1.5rem !important;
+    }
+    .about-title-mb-2,
+    .about-title-mb-3 {
+        margin-bottom: 1.5rem !important;
+    }
+    .about-pill-stack-mb {
+        margin-bottom: 2rem !important;
+    }
+}
