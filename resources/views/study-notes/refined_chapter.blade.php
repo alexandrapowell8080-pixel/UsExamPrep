@@ -116,8 +116,8 @@
 
                 <article
                     class="w-11/12 mx-auto prose max-w-none ai-content bg-white rounded-b-[2rem] pb-5 shadow-sm  overflow-hidden">
-                    @if (filled($notes->content))
-                        {!! Str::markdown($notes->content) !!}
+                    @if (filled($notes->refined_content))
+                        {!! Str::markdown($notes->refined_content) !!}
                     @else
                         <div class="text-center py-10 text-gray-500">
                             <h3 class="text-lg font-semibold mb-2">No Notes Available</h3>

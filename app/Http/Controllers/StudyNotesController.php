@@ -84,6 +84,62 @@ class StudyNotesController extends Controller
         ]);
     }
 
+    public function refined(School $school, Section $section, string $topic): View
+    {
+        // 1. Fetch data efficiently using eager loading and database queries
+        $topicRecord = $section->topics()->where('slug', $topic)->firstOrFail();
+        $notes = Notes::where('topic_id', $topicRecord->id)->firstOrFail();
+
+        // Eager load topics to prevent N+1 queries during sidebar rendering and cross-section logic
+        $sections = $school->sections()->with('topics')->get();
+
+        // 2. Fetch adjacent notes within the current section in a single query
+        $baseQuery = Notes::with('topic')->whereIn('topic_id', $section->topics->pluck('id'));
+
+        $previousQuery = (clone $baseQuery)->where('id', '<', $notes->id)->orderBy('id', 'desc')->limit(1);
+
+        $adjacentNotes = (clone $baseQuery)->where('id', '>', $notes->id)->orderBy('id', 'asc')->limit(1)
+            ->unionAll($previousQuery)
+            ->get();
+
+        $previousNote = $adjacentNotes->first(fn ($n) => $n->id < $notes->id);
+        $nextNote = $adjacentNotes->first(fn ($n) => $n->id > $notes->id);
+
+        // 3. Determine Previous URL (Current section OR fallback to previous section)
+        if ($previousNote) {
+            $previousNoteUrl = route('study-notes.content', [$school->slug, $section->slug, $previousNote->topic->slug]);
+        } else {
+            $prevSection = $sections->where('id', '<', $section->id)->sortBy('id')->last();
+            $prevTopic = $prevSection?->topics->sortBy('id')->last();
+
+            $previousNoteUrl = $prevTopic
+                ? route('study-notes.content', [$school->slug, $prevSection->slug, $prevTopic->slug])
+                : null;
+        }
+
+        // 4. Determine Next URL (Current section OR fallback to next section)
+        if ($nextNote) {
+            $nextNoteUrl = route('study-notes.content', [$school->slug, $section->slug, $nextNote->topic->slug]);
+        } else {
+            $nextSection = $sections->where('id', '>', $section->id)->sortBy('id')->first();
+            $nextTopic = $nextSection?->topics->sortBy('id')->first();
+
+            $nextNoteUrl = $nextTopic
+                ? route('study-notes.content', [$school->slug, $nextSection->slug, $nextTopic->slug])
+                : null;
+        }
+
+        return view('study-notes.refined_chapter', [
+            'notes' => $notes,
+            'sections' => $sections,
+            'topic' => $topicRecord,
+            'section' => $section,
+            'school' => $school,
+            'previousNoteUrl' => $previousNoteUrl,
+            'nextNoteUrl' => $nextNoteUrl,
+        ]);
+    }
+
     public function sources(School $school, Section $section, Topic $topic): View
     {
         $notes = Notes::where('topic_id', $topic->id)->first();

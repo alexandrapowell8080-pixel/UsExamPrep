@@ -38,6 +38,9 @@ Route::prefix('study-notes')
         Route::get('/{school:slug}/{section:slug}/{topic}', 'show')
             ->name('content');
 
+        Route::get('/{school:slug}/{section:slug}/{topic}/refined', 'refined')
+            ->name('refined');
+
         // Route::get('/{school:slug}/{section:slug}/{topic:slug}/edit', 'edit')
         //     ->name('edit');
 
