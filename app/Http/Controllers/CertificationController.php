@@ -308,7 +308,7 @@ class CertificationController extends Controller
             $otherCerts[] = $certifications[$nextKey];
         }
 
-        // Fetch exams for the current certification (Added logic to fetch nurse-aide if CNA)
+        // Fetch exams for the current certification 
         $pageExams = Exam::with('school')->whereHas('school', function ($query) use ($currentCert) {
             if ($currentCert['id'] === 'certified-nursing-assistant') {
                 $query->whereIn('slug', [$currentCert['id'], 'nurse-aide']);

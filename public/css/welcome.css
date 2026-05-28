@@ -2652,3 +2652,37 @@ body {
         padding: 0.85rem 1rem;
     }
 }
+
+/* --- About Us Page Specific Spacing Adjustments --- */
+.about-hero-spacing {
+    padding-bottom: 4rem !important;
+}
+.about-cert-spacing {
+    padding-top: 2rem !important;
+}
+.about-title-mb-2 {
+    margin-bottom: 2rem !important;
+}
+.about-title-mb-3 {
+    margin-bottom: 3rem !important;
+}
+.about-pill-stack-mb {
+    margin-bottom: 4rem !important;
+}
+
+/* Mobile scaling for About Us page gaps */
+@media (max-width: 767px) {
+    .about-hero-spacing {
+        padding-bottom: 1.5rem !important;
+    }
+    .about-cert-spacing {
+        padding-top: 1.5rem !important;
+    }
+    .about-title-mb-2,
+    .about-title-mb-3 {
+        margin-bottom: 1.5rem !important;
+    }
+    .about-pill-stack-mb {
+        margin-bottom: 2rem !important;
+    }
+}

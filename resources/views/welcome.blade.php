@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
@@ -18,7 +17,7 @@
         content="An interactive, animated, and smart exam preparation platform designed to help healthcare students master their certification tests through gamified practice."
         property="og:description">
     <meta content="{{ asset('images/logo.png') }}" property="og:image">
-    <meta content="https://usexamprep.com" property="og:url">
+    <meta content="https://usexamprep.com/" property="og:url">
     <meta content="website" property="og:type">
     <meta content="UsExamPrep" property="og:site_name">
 
@@ -28,12 +27,12 @@
         name="twitter:description">
     <meta content="{{ asset('images/logo.png') }}" name="twitter:image">
     <meta content="summary_large_image" name="twitter:card">
-    <meta content="https://usexamprep.com" name="twitter:url">
+    <meta content="https://usexamprep.com/" name="twitter:url">
 
     <meta content="yes" name="mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="UsExamPrep" name="apple-mobile-web-app-title">
-    <link href="https://usexamprep.com" rel="canonical">
+    <link href="https://usexamprep.com/" rel="canonical">
     <meta name="robots" content="noindex, nofollow">
 
     <script type="application/ld+json">
@@ -54,7 +53,7 @@
                 "height": 100
             }
         },
-        "url": "https://usexamprep.com"
+        "url": "https://usexamprep.com/"
     }
     </script>
     
@@ -64,21 +63,16 @@
         "@@type": "Organization",
         "name": "UsExamPrep",
         "logo": "{{ asset('images/logo.png') }}",
-        "url": "https://usexamprep.com"
+        "url": "https://usexamprep.com/"
     }
     </script>
 </head>
-
 <body>
     @include('partials.nav-bar')
-
     <main class="page-main">
-
         <section class="hero-section">
             <div class="hero-background-media bg-vector-img"></div>
-
             <div class="hero-container max-width-wrapper">
-
                 <div class="trust-badge-custom animated fadeInUp delay-1">
                     <div class="trust-stars-wrap">
                         <svg viewBox="0 0 24 24" fill="#00b67a" xmlns="http://www.w3.org/2000/svg" class="trust-star">
