@@ -298,7 +298,7 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr onclick="window.location='{{ route('certification.show', 'nurse-aide') }}'"
+                                <tr onclick="window.location='{{ route('certification.show', 'certified-nursing-assistant') }}'"
                                     class="clickable-row">
                                     <td class="col-id">2</td>
                                     <td>
@@ -332,7 +332,7 @@
                                         <span class="diff-badge diff-beginner">Moderate</span>
                                     </td>
                                     <td class="col-arrow">
-                                        <a href="{{ route('certification.show', 'nurse-aide') }}" class="table-link-btn"
+                                        <a href="{{ route('certification.show', 'certified-nursing-assistant') }}" class="table-link-btn"
                                             style="padding: 0; background: none;"><svg
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
