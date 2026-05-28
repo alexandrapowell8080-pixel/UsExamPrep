@@ -41,9 +41,23 @@
         "@@context": "https://schema.org",
         "@@type": "WebSite",
         "name": "UsExamPrep",
+        "author": "UsExamPrep",
+        "datePublished": "2026-05-28",
+        "dateModified": "2026-05-28",
+        "publisher": {
+            "@@type": "Organization", 
+            "name": "UsExamPrep",
+            "logo": {
+                "@@type": "ImageObject",
+                "url": "{{ asset('images/logo.png') }}",
+                "width": 100,
+                "height": 100
+            }
+        },
         "url": "https://usexamprep.com"
     }
     </script>
+    
     <script type="application/ld+json">
         {
         "@@context": "https://schema.org",
@@ -53,6 +67,7 @@
         "url": "https://usexamprep.com"
     }
     </script>
+    
 </head>
 
 <body>
@@ -174,7 +189,7 @@
                                     </svg>
                                 </div>
                                 <div class="stat-copy">
-                                    <h3 class="stat-number-title">201k+</h3>
+                                    <h3 class="stat-number-title">25,000+</h3>
                                     <p class="stat-description-p">students improved <br>their results</p>
                                 </div>
                             </div>
@@ -241,7 +256,7 @@
                                     <th>Certification</th>
                                     <th class="col-fullname">Full Name</th>
                                     <th class="col-topics">Topics</th>
-                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-questions text-center">Practice Q's</th>
                                     <th class="col-difficulty text-center">Difficulty</th>
                                     <th class="col-arrow"></th>
                                 </tr>
@@ -274,7 +289,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            350+
+                                            850+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -317,7 +332,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            280+
+                                            850+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -360,7 +375,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            220+
+                                            950+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -403,7 +418,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            400+
+                                            1800+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -446,7 +461,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            300+
+                                            2050+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -480,7 +495,7 @@
                                     <th>Certification</th>
                                     <th class="col-fullname">Full Name</th>
                                     <th class="col-topics">Topics</th>
-                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-questions text-center">Practice Q's</th>
                                     <th class="col-difficulty text-center">Difficulty</th>
                                     <th class="col-arrow"></th>
                                 </tr>
@@ -513,7 +528,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            380+
+                                            1200+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -556,7 +571,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            380+
+                                            1100+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -590,7 +605,7 @@
                                     <th>Certification</th>
                                     <th class="col-fullname">Full Name</th>
                                     <th class="col-topics">Topics</th>
-                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-questions text-center">Practice Q's</th>
                                     <th class="col-difficulty text-center">Difficulty</th>
                                     <th class="col-arrow"></th>
                                 </tr>
@@ -623,7 +638,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            360+
+                                            1050+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -667,7 +682,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            360+
+                                            1050+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -701,7 +716,7 @@
                                     <th>Certification</th>
                                     <th class="col-fullname">Full Name</th>
                                     <th class="col-topics">Topics</th>
-                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-questions text-center">Practice Q's</th>
                                     <th class="col-difficulty text-center">Difficulty</th>
                                     <th class="col-arrow"></th>
                                 </tr>
@@ -734,7 +749,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            250+
+                                            760+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -768,7 +783,7 @@
                                     <th>Certification</th>
                                     <th class="col-fullname">Full Name</th>
                                     <th class="col-topics">Topics</th>
-                                    <th class="col-questions text-center">Questions</th>
+                                    <th class="col-questions text-center">Practice Q's</th>
                                     <th class="col-difficulty text-center">Difficulty</th>
                                     <th class="col-arrow"></th>
                                 </tr>
@@ -801,7 +816,7 @@
                                                     d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
                                                 </path>
                                             </svg>
-                                            310+
+                                            1400+
                                         </span>
                                     </td>
                                     <td class="col-difficulty text-center">
@@ -1018,7 +1033,7 @@
                             <thead>
                                 <tr>
                                     <th>Certification</th>
-                                    <th class="text-center">Questions</th>
+                                    <th class="text-center">Exam Q's</th>
                                     <th class="text-center">Duration</th>
                                     <th class="text-center">Pass Score</th>
                                     <th class="text-center">Difficulty</th>

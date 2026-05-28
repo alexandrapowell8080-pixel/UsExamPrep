@@ -172,8 +172,12 @@
                         <div class="srv-format-layout">
                             <div class="srv-format-main">
                                 <span class="srv-label">Exam Format</span>
-                                <h2 class="section-heading">{{ $certification['title_full'] }} Exam Format &amp;
+                                @if(str_contains($certification['title_abbr'], '&'))
+                                <h2 class="section-heading">{{ $certification['title_abbr'] }} Exam Format</h2>
+                                @else
+                                <h2 class="section-heading">{{ $certification['title_abbr'] }} Exam Format and
                                     Structure</h2>
+                                @endif
             
                                 <div class="srv-stat-grid">
                                     <div class="srv-stat-box">

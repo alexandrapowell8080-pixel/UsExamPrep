@@ -12,7 +12,7 @@
                     </span>
                 </a>
                 <p class="footer-tagline">The #1 medical certification exam preparation platform. Trusted by
-                    248,000+ healthcare students worldwide.</p>
+                    25,000+ healthcare students worldwide.</p>
                 <div class="footer-contacts">
                     <a href="mailto:support@usexamprep.com" class="contact-link-row">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -175,10 +175,15 @@
             </div>
             <div>
                 <h3 class="footer-list-heading">Resources</h3>
-                <ul class="footer-links-list">
+                {{-- <ul class="footer-links-list">
                     <li><a href="{{route('home')}}#certifications">Practice Questions</a></li>
                     <li><a href="/study-notes">Study Notes</a></li>
-                    {{-- <li><a href="/blog">Blog &amp; Tips</a></li> --}}
+                    <li><a href="/blog">Blog &amp; Tips</a></li>
+                </ul> --}}
+                <ul class="footer-links-list">
+                    <li>Practice Questions</li>
+                    <li>Study Notes</li>
+                    {{-- <li>Blog &amp; Tips</li> --}}
                 </ul>
             </div>
             <div>
