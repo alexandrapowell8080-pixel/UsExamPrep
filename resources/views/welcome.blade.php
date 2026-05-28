@@ -1065,7 +1065,7 @@
                                             </svg></a>
                                     </td>
                                 </tr>
-                                <tr onclick="window.location='{{ route('certification.show', 'nurse-aide') }}'"
+                                <tr onclick="window.location='{{ route('certification.show', 'certified-nursing-assistant') }}'"
                                     class="clickable-row">
                                     <td>
                                         <div class="comp-cert-info">
@@ -1084,7 +1084,7 @@
                                     <td class="text-center text-salary">$38,130</td>
                                     <td class="text-center text-muted">4%</td>
                                     <td class="text-center">
-                                        <a href="{{ route('certification.show', 'nurse-aide') }}"
+                                        <a href="{{ route('certification.show', 'certified-nursing-assistant') }}"
                                             class="table-link-btn">Start
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
