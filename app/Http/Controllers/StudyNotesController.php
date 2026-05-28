@@ -30,35 +30,58 @@ class StudyNotesController extends Controller
      */
     public function show(School $school, Section $section, string $topic): View
     {
-        $topic = $section->topics->where('slug', $topic)->first();
-        if (! $topic) {
-            abort(404);
-        }
-        $notes = Notes::where('topic_id', $topic->id)->first();
-        if (! $notes) {
-            abort(404, 'No notes found');
-        }
+        // 1. Fetch data efficiently using eager loading and database queries
+        $topicRecord = $section->topics()->where('slug', $topic)->firstOrFail();
+        $notes = Notes::where('topic_id', $topicRecord->id)->firstOrFail();
+
+        // Eager load topics to prevent N+1 queries during sidebar rendering and cross-section logic
         $sections = $school->sections()->with('topics')->get();
-        $previousNoteUrl = null;
-        $nextNoteUrl = null;
 
-        if ($notes) {
-            // Get the note created immediately before this one
-            $previousNote = Notes::with('topic')->where('id', '<', $notes->id)
-                ->orderBy('id', 'desc')
-                ->first();
+        // 2. Fetch adjacent notes within the current section in a single query
+        $baseQuery = Notes::with('topic')->whereIn('topic_id', $section->topics->pluck('id'));
 
-            // Get the note created immediately after this one
-            $nextNote = Notes::with('topic')->where('id', '>', $notes->id)
-                ->orderBy('id', 'asc')
-                ->first();
+        $previousQuery = (clone $baseQuery)->where('id', '<', $notes->id)->orderBy('id', 'desc')->limit(1);
 
-            // Generate your URLs safely if the records exist
-            $previousNoteUrl = $previousNote ? route('study-notes.content', ['school' => $school->slug, 'section' => $section->slug, 'topic' => $previousNote->topic->slug]) : null;
-            $nextNoteUrl = $nextNote ? route('study-notes.content', ['school' => $school->slug, 'section' => $section->slug, 'topic' => $nextNote->topic->slug]) : null;
+        $adjacentNotes = (clone $baseQuery)->where('id', '>', $notes->id)->orderBy('id', 'asc')->limit(1)
+            ->unionAll($previousQuery)
+            ->get();
+
+        $previousNote = $adjacentNotes->first(fn ($n) => $n->id < $notes->id);
+        $nextNote = $adjacentNotes->first(fn ($n) => $n->id > $notes->id);
+
+        // 3. Determine Previous URL (Current section OR fallback to previous section)
+        if ($previousNote) {
+            $previousNoteUrl = route('study-notes.content', [$school->slug, $section->slug, $previousNote->topic->slug]);
+        } else {
+            $prevSection = $sections->where('id', '<', $section->id)->sortBy('id')->last();
+            $prevTopic = $prevSection?->topics->sortBy('id')->last();
+
+            $previousNoteUrl = $prevTopic
+                ? route('study-notes.content', [$school->slug, $prevSection->slug, $prevTopic->slug])
+                : null;
         }
 
-        return view('study-notes.chapter', compact('notes', 'sections', 'topic', 'section', 'school', 'previousNoteUrl', 'nextNoteUrl'));
+        // 4. Determine Next URL (Current section OR fallback to next section)
+        if ($nextNote) {
+            $nextNoteUrl = route('study-notes.content', [$school->slug, $section->slug, $nextNote->topic->slug]);
+        } else {
+            $nextSection = $sections->where('id', '>', $section->id)->sortBy('id')->first();
+            $nextTopic = $nextSection?->topics->sortBy('id')->first();
+
+            $nextNoteUrl = $nextTopic
+                ? route('study-notes.content', [$school->slug, $nextSection->slug, $nextTopic->slug])
+                : null;
+        }
+
+        return view('study-notes.chapter', [
+            'notes' => $notes,
+            'sections' => $sections,
+            'topic' => $topicRecord,
+            'section' => $section,
+            'school' => $school,
+            'previousNoteUrl' => $previousNoteUrl,
+            'nextNoteUrl' => $nextNoteUrl,
+        ]);
     }
 
     public function sources(School $school, Section $section, Topic $topic): View

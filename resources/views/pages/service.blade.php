@@ -108,7 +108,7 @@
                                 <p class="srv-subtitle">{{ $certification['title_full'] }}</p>
                                 <p class="srv-desc">{{ $certification['description'] }}</p>
             
-                                <div class="srv-meta-flex">
+                                <div class="srv-meta-flex" id="exams">
                                     <div class="srv-meta-item">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -136,10 +136,10 @@
                                 </div>
             
                                 @if(!empty($groupedExams))
-                                <div class="srv-exam-library">
+                                <div class="srv-exam-library" >
                                     @foreach($groupedExams as $groupName => $exams)
                                     @if(count($exams) > 0)
-                                    <div class="library-section">
+                                    <div class="library-section" >
                                         <div class="library-header">
                                             <h3 class="library-group-title">{{ $groupName }} Practice Exams</h3>
                                             <span class="library-group-count">{{ count($exams) }} Tests</span>
