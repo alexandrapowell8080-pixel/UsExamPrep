@@ -2,10 +2,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @section('title', $school->name.' | Study Guide')
+    @section('title', $school->name . ' | Study Guide')
     @section('description', $school->name . ' outline')
     @section('keywords', $school->name)
     @section('canonical', config('app.url') . '/study-notes/' . $school->slug)
+    @push('schema')
+        <script type="application/ld+json">
+{
+  "@@context": "https://schema.org/",
+  "@@type": "LearningResource",
+  "name": "{{ $school->name }} Complete Study Guide",
+  "description": "Comprehensive textbook hub and study syllabus organized by chapters and topics for {{ $school->name }} preparation.",
+  "learningResourceType": "Syllabus",
+  "educationalLevel": [
+    "Medical Student",
+    "Continuing Medical Education",
+    "Professional"
+  ],
+  "url": "{{ url()->current() }}",
+  "inLanguage": "en",
+  "audience": {
+    "@@type": "EducationalAudience",
+    "educationalRole": "Medical Professional"
+  },
+  "author": {
+    "@@type": "Organization",
+    "name": "UsExamPrep",
+    "url": "https://usexamprep.com"
+  },
+  "hasPart": [
+     @foreach ($sections as $index => $section)
+{
+      "@@type": "CreativeWork",
+      "name": "Chapter {{ $index + 1 }}: {{ $section->name }}",
+      "description": "Fundamental clinical procedures and responsibilities for {{ $section->name }}.",
+      "hasPart": [
+         @foreach ($section->topics as $toipic_index => $topic)
+        {
+          "@@type": "LearningResource",
+          "position": 1,
+          "name": "{{ $topic->name }}",
+          "learningResourceType": "Study Guide",
+          "url": "{{ url('study-notes/'.$school->slug.'/'.$section->slug.'/'.$topic->slug) }}"
+        }@if(!$loop->last),@endif
+        @endforeach
+         
+      ]
+    }@if(!$loop->last),@endif
+     @endforeach
+  ]
+}
+</script>
+    @endpush
     <meta name="robots" content="noindex, nofollow">
 
     <div class="min-h-screen bg-brand-hero sm:py-16 py-5 px-4">
