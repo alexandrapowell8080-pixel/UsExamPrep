@@ -7,12 +7,86 @@
     <title>{{ $metaTitle }}</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta name="description" content="{{ $metaDescription }}">
+    @if(isset($keywords))
+    <meta name="keywords" content="{{ $keywords }}">
+    @endif
     <link rel="canonical" href="{{ $canonicalUrl }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <script src="{{ asset('js/welcome.js') }}" defer></script>
     <meta name="robots" content="noindex, nofollow">
-
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@graph": [
+            {
+                "@@type": "Organization",
+                "name": "UsExamPrep",
+                "url": "https://usexamprep.com",
+                "logo": "https://usexamprep.com/images/logo.png",
+                "sameAs": [
+                    "https://facebook.com/usexamprep",
+                    "https://twitter.com/usexamprep",
+                    "https://linkedin.com/company/usexamprep"
+                ],
+                "contactPoint": {
+                    "@@type": "ContactPoint",
+                    "contactType": "customer support",
+                    "email": "support@usexamprep.com"
+                }
+            },
+            {
+                "@@type": "WebSite",
+                "name": "UsExamPrep",
+                "url": "https://usexamprep.com",
+                "potentialAction": {
+                    "@@type": "SearchAction",
+                    "target": "https://usexamprep.com/search?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            },
+            {
+                "@@type": "LearningResource",
+                "name": "{{ $exam->name }} Practice Questions",
+                "description": "{{ $metaDescription }}",
+                "url": "{{ $canonicalUrl }}",
+                "provider": {
+                    "@@type": "Organization",
+                    "name": "UsExamPrep",
+                    "url": "https://usexamprep.com"
+                },
+                "about": {
+                    "@@type": "Thing",
+                    "name": "{{ $exam->school->name }} Certification Exam Prep"
+                },
+                "educationalLevel": "Professional Certification",
+                "learningResourceType": "TestBank",
+                "inLanguage": "en-US",
+                "hasPart": [
+                    @foreach($questions as $q)
+                    {
+                        "@@type": "Quiz",
+                        "name": "Question {{ $loop->iteration }}",
+                        "description": "{{ strip_tags($q->question) }}",
+                        "suggestedAnswer": [
+                            @foreach($q->choices as $choice)
+                            {
+                                "@@type": "Answer",
+                                "text": "{{ $choice['text'] }}",
+                                "itemReviewed": {
+                                    "@@type": "CreativeWork",
+                                    "name": "Option {{ $choice['letter'] }}"
+                                }
+                            }@if(!$loop->last),@endif
+                            @endforeach
+                        ]
+                    }@if(!$loop->last),@endif
+                    @endforeach
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body class="bg-teal-50">
@@ -270,40 +344,6 @@
                                                 {{ $question->wrong_answer ?? 'Review this question carefully.' }}
                                             </p>
                                         </div>
-                                        <div class="grid sm:grid-cols-2 gap-3">
-                                            <div class="bg-white rounded-xl border p-4 flex items-center gap-3">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                        height="20" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" class="text-blue-600">
-                                                        <path d="M12 7v14" />
-                                                        <path
-                                                            d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
-                                                    </svg>
-                                                </div>
-                                                <div>
-                                                    <p class="text-xs text-gray-500">Related Notes</p>
-                                                    <p class="text-sm font-semibold">{{ $question->question_type }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="bg-white rounded-xl border p-4 flex items-center gap-3">
-                                                <div
-                                                    class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                        height="20" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2"
-                                                        class="text-purple-600">
-                                                        <polygon points="6 3 20 12 6 21 6 3" />
-                                                    </svg>
-                                                </div>
-                                                <div>
-                                                    <p class="text-xs text-gray-500">Suggested Video</p>
-                                                    <p class="text-sm font-semibold">{{ $exam->name }} Review</p>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <button
@@ -340,8 +380,7 @@
                                             <p class="text-xs text-gray-600">{{ $exam->school->name }}</p>
                                         </div>
                                     </div>
-                                    {{-- <a href="/cert/{{ $exam->school->slug }}"> --}}
-                                        <a href="{{ route('certification.show',['slug' =>  $exam->school->slug]) }}">
+                                    <a href="{{ route('certification.show',['slug' =>  $exam->school->slug]) }}">
                                         <button
                                             class="w-full text-xs rounded-md border border-gray-200 px-3 py-2 hover:bg-gray-50">View
                                             Full Course</button>
@@ -414,11 +453,9 @@
                                     <p class="text-xs text-white/80 mb-4">Unlock unlimited questions, video lessons,
                                         and
                                         exam simulations.</p>
-                                    <button>
-                                        <button
-                                            class="w-full text-xs rounded-md px-3 py-2 bg-white text-teal-600 hover:bg-white/90 font-semibold">View
+                                    <button
+                                        class="w-full text-xs rounded-md px-3 py-2 bg-white text-teal-600 hover:bg-white/90 font-semibold">View
                                             Plans →</button>
-                                    </button>
                                 </div>
 
                                 <div class="bg-white rounded-2xl border p-5">
