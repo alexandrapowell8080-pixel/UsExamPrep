@@ -10,7 +10,7 @@ use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
-#[Signature('notes:drefinement')]
+#[Signature('notes:refinement')]
 #[Description('Refine notes to have a custom feel')]
 class NotesRefinement extends Command
 {
