@@ -33,7 +33,7 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="UsExamPrep" name="apple-mobile-web-app-title">
     <link href="https://usexamprep.com/" rel="canonical">
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="index, follow">
 
     <script type="application/ld+json">
         {

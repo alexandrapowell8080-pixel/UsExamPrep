@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0" name="viewport">
     
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="index, follow">
     
     <title>Terms of Service | UsExamPrep</title>
     <meta content="Terms of Service for UsExamPrep." name="description">
