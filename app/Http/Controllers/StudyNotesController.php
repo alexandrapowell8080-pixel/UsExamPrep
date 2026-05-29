@@ -215,13 +215,14 @@ class StudyNotesController extends Controller
     /**
      * Update the note
      */
-    public function update(Request $request, Section $section, Topic $topic)
+    public function update(Request $request, School $school, Section $section, string $topic)
     {
 
         $request->validate([
             'content' => 'required',
         ]);
-        $topic = $section->topics->where('slug', $topic->slug)->first();
+
+        $topic = $school->sections->where('slug', $section->slug)->first()->topics->where('slug', $topic)->first();
         if (! $topic) {
             abort(404);
         }
