@@ -88,7 +88,7 @@
                     class="w-11/12 mx-auto prose max-w-none ai-content bg-white rounded-b-[2rem] pb-5 shadow-sm  overflow-hidden">
 
                     @if (filled($notes->content))
-                        <form action="{{ route('study-notes.update', ['section' =>  request('section')->slug  ,'topic' => $topic->slug]) }}" method="POST">
+                        <form action="{{ route('study-notes.update', ['school' =>request('school')->slug,'section' =>  request('section')->slug  ,'topic' => $topic->slug]) }}" method="POST">
                             @csrf
                             @method('PUT')
 
