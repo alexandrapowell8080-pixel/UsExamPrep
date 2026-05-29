@@ -71,10 +71,12 @@ class NotesRefinement extends Command
                         ]
                     );
                 });
+                logger("✅ DONE: {$topic->name}");
                 $this->info("✅ DONE: {$topic->name}");
 
             } catch (\Throwable $e) {
                 $this->error("❌ FAILED: {$topic->name}");
+                logger("❌ FAILED: {$topic->name}");
                 $this->error($e->getMessage());
                 logger('--------------------------------');
                 logger('-----NOTES GENERATION FAILED----');
