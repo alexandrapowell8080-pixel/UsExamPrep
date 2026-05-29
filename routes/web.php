@@ -41,16 +41,16 @@ Route::prefix('study-notes')
         Route::get('/{school:slug}/{section:slug}/{topic}/refined', 'refined')
             ->name('refined');
 
-        // Route::get('/{school:slug}/{section:slug}/{topic:slug}/edit', 'edit')
-        //     ->name('edit');
+        Route::get('/{school:slug}/{section:slug}/{topic:slug}/edit', 'edit')
+            ->name('edit');
 
         Route::get('/{school:slug}/{section:slug}/{topic:slug}/sources', 'sources')
             ->name('sources');
         // Route::get('/{school:slug}/{section:slug}/{topic:slug}/sources/edit', 'sourcesEdit')
         //     ->name('sourcesEdit');
 
-        // Route::put('/update/{section:slug}/{topic:slug}', 'update')
-        //     ->name('update');
+        Route::put('/update/{section:slug}/{topic:slug}', 'update')
+            ->name('update');
 
         // Route::put('/update-sources/{topic:slug}', 'updateSources')
         //     ->name('update_sources');
