@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <script src="{{ asset('js/welcome.js') }}" defer></script>
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="index, follow">
     <script type="application/ld+json">
     {
         "@@context": "https://schema.org",
