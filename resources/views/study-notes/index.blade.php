@@ -54,7 +54,7 @@
 }
 </script>
     @endpush
-    <meta name="robots" content="noindex, nofollow">
+     
 
     <div class="min-h-screen bg-brand-hero sm:py-16 py-5 px-4">
         <div class="max-w-7xl mx-auto">
