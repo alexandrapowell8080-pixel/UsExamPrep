@@ -254,25 +254,32 @@ class StudyNotesController extends Controller
 
     public function sitemap()
     {
-        $schools = School::with(['sections'=>function($query){
-            $query->select('id','school_id','slug','updated_at');
-        }])->get(['id','slug', 'updated_at']);
+        $schools = School::select(['id', 'slug', 'updated_at'])
+            ->with([
+                'sections' => function ($query) {
+                    $query->select(['id', 'school_id', 'slug']);
+                },
+                'sections.topics' => function ($query) {
+                    $query->select(['id', 'section_id', 'slug','updated_at']);
+                },
+            ])->get();
+
         $urls = [];
-        foreach ($schools as $key => $value) {
-
+        foreach ($schools as $school) {
             $urls[] = [
-                'url' => url('/study-notes/'.$value->slug),
-                'lastmod' => $value->updated_at,
-                'priority' => 0.8
+                'url' => url('/study-notes/'.$school->slug),
+                'lastmod' => $school->updated_at,
+                'priority' => 0.8,
             ];
-             
 
-            foreach($value->sections as $section){
-                $urls[] = [
-                'url' => url('/study-notes/'.$value->slug.'/'.$section->slug),
-                'lastmod' => $value->updated_at,
-                'priority' => 0.64
-            ];
+            foreach ($school->sections as $section) {
+                foreach ($section->topics as $topic) {
+                    $urls[] = [
+                        'url' => url('/study-notes/'.$school->slug.'/'.$section->slug.'/'.$topic->slug),
+                        'lastmod' => $topic->updated_at,
+                        'priority' => 0.64,
+                    ];
+                }
             }
         }
 
