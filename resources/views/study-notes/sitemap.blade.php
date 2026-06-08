@@ -1,4 +1,4 @@
-{!! '<?xml version="1.0" encoding="UTF-8"?>' !!}
+{!! '<' . '?xml version="1.0" encoding="UTF-8"?' . '>' !!}
 <urlset xmlns="http://sitemaps.org">
     <url>
         <loc>https://usexamprep.com/</loc>
@@ -11,7 +11,7 @@
             <lastmod>
                 {{ (isset($collection['updated_at']) ? carbon($collection['updated_at']) : now())->utc()->toIso8601String() }}
             </lastmod>
-            <changefreq>weekly</changefreq>
+            <changefreq>monthly</changefreq>
             <priority>0.8</priority>
         </url>
     @endforeach
