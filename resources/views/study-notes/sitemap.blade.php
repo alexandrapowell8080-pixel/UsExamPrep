@@ -12,7 +12,7 @@
                 {{ (isset($collection['updated_at']) ? carbon($collection['updated_at']) : now())->utc()->toIso8601String() }}
             </lastmod>
             <changefreq>monthly</changefreq>
-            <priority>0.8</priority>
+            <priority>{{ $collection['priority'] }}</priority>
         </url>
     @endforeach
 </urlset>

@@ -254,14 +254,26 @@ class StudyNotesController extends Controller
 
     public function sitemap()
     {
-        $schools = School::get(['slug', 'updated_at']);
+        $schools = School::with(['sections'=>function($query){
+            $query->select('id','school_id','slug','updated_at');
+        }])->get(['id','slug', 'updated_at']);
         $urls = [];
         foreach ($schools as $key => $value) {
 
             $urls[] = [
                 'url' => url('/study-notes/'.$value->slug),
                 'lastmod' => $value->updated_at,
+                'priority' => 0.8
             ];
+             
+
+            foreach($value->sections as $section){
+                $urls[] = [
+                'url' => url('/study-notes/'.$value->slug.'/'.$section->slug),
+                'lastmod' => $value->updated_at,
+                'priority' => 0.64
+            ];
+            }
         }
 
         return response()->view('study-notes.sitemap', compact('urls'))->header('Content-Type', 'text/xml');
