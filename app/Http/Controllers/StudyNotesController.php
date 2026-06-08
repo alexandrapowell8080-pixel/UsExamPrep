@@ -251,4 +251,19 @@ class StudyNotesController extends Controller
 
     //     return redirect()->back()->with('success', $topic->name.' updated successfully');
     // }
+
+    public function sitemap()
+    {
+        $schools = School::get(['slug', 'updated_at']);
+        $urls = [];
+        foreach ($schools as $key => $value) {
+
+            $urls[] = [
+                'url' => url('/study-notes/'.$value->slug),
+                'lastmod' => $value->updated_at,
+            ];
+        }
+
+        return response()->view('study-notes.sitemap', compact('urls'))->header('Content-Type', 'text/xml');
+    }
 }
