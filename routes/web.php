@@ -63,3 +63,5 @@ Route::get('questions/{schoolSlug}/{examSlug}/', [QuestionController::class, 'in
 
 Route::get('questions/{schoolSlug}/{examSlug}/question/{id}', [QuestionController::class, 'show'])
     ->name('questions.show');
+
+Route::get('/study-sitemap.xml',[StudyNotesController::class,'sitemap']);
